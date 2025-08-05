@@ -1,0 +1,44 @@
+package org.skillbrain.utilities;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Properties;
+
+public class WebDriverConfig {
+
+    private WebDriver driver;
+
+    public WebDriver getDriver() {
+        Properties properties = new Properties();
+        String fileLocation = System.getProperty("user.dir") + "/src/test/resources/config.properties";
+        try {
+            properties.load(Files.newInputStream(Paths.get(fileLocation)));
+            String browser = properties.getProperty("browser");
+
+            if (driver == null) {
+                switch (browser.toUpperCase()) {
+                    case "CHROME":
+                        WebDriverManager.chromedriver().setup();
+                        driver = new ChromeDriver();
+                        break;
+                    case "FIREFOX":
+                        WebDriverManager.firefoxdriver().setup();
+                        driver = new FirefoxDriver();
+                        break;
+                    default:
+                        throw new RuntimeException("INVALID BROWSER!");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return driver;
+    }
+
+}
