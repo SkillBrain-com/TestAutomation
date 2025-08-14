@@ -7,6 +7,7 @@ public class PageObjectFactory {
     private WebDriver driver;
     private LoginPage loginPage;
     private HomePage homePage;
+    private AttractionForm attractionForm;
 
 //    dependency injection
     public PageObjectFactory(WebDriver driver) {
@@ -21,6 +22,11 @@ public class PageObjectFactory {
     public HomePage getHomePage() {
         homePage = new HomePage(driver);
         return homePage;
+    }
+
+    public AttractionForm getAttractionForm() {
+        attractionForm = new AttractionForm(driver);
+        return attractionForm;
     }
 
 

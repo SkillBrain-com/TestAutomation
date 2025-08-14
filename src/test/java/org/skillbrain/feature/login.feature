@@ -1,7 +1,6 @@
 @gui @login
 Feature: Login feature
 
-  @cris
   Scenario: Login with valid credentials
     Given User navigates to login page
     When User logs in with valid credentials
