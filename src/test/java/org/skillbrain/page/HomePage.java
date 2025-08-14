@@ -14,6 +14,12 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//span[normalize-space()='Create attraction']")
     private WebElement createEventButton;
+    @FindBy(xpath = "//p[normalize-space()='Attractions'] //parent::div")
+    private WebElement attractionsSidebar;
+    @FindBy(css = "a.current-page")
+    private WebElement myAttractions;
+    @FindBy(xpath = "//span[normalize-space()='Create attraction'] //parent::button")
+    private WebElement createAttraction;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -21,9 +27,21 @@ public class HomePage extends BasePage {
         PageFactory.initElements(this.driver, this);
     }
 
+    public void clickAttractionSidebar() {
+        attractionsSidebar.click();
+    }
+
+    public void clickMyAttractions() {
+        myAttractions.click();
+    }
+
+    public void createAttraction() {
+        createAttraction.click();
+    }
 
     public void checkUserIsLoggedIn() {
         waitForText("My attractions", Duration.ofSeconds(10));
         Assert.assertTrue(createEventButton.isDisplayed());
     }
+
 }

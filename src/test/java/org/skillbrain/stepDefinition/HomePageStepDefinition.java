@@ -1,6 +1,8 @@
 package org.skillbrain.stepDefinition;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.skillbrain.page.HomePage;
 import org.skillbrain.page.LoginPage;
 import org.skillbrain.utilities.TestContextSetup;
@@ -21,4 +23,18 @@ public class HomePageStepDefinition {
         homePage.checkUserIsLoggedIn();
     }
 
+    @When("I click on attractions sidebar")
+    public void iClickOnAttractionsSidebar() {
+        homePage.clickAttractionSidebar();
+    }
+
+    @And("I click on my attractions")
+    public void iClickOnMyAttractions() {
+        homePage.clickMyAttractions();
+    }
+
+    @And("I click on Create attraction button")
+    public void iClickOnCreateAttractionButton() {
+        homePage.createAttraction();
+    }
 }
