@@ -37,4 +37,9 @@ public class HomePageStepDefinition {
     public void iClickOnCreateAttractionButton() {
         homePage.createAttraction();
     }
+
+    @When("I click on Vouchers")
+    public void iClickOnVouchers() {
+        homePage.clickVouchers();
+    }
 }

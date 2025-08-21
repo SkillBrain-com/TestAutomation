@@ -1,5 +1,6 @@
 package org.skillbrain.page;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -24,6 +25,16 @@ public class BasePage {
         driverWait = new WebDriverWait(driver, duration);
         driverWait.until(ExpectedConditions.presenceOfElementLocated(xpath));
     }
+    public void setWait()
+    {
+        if(driverWait== null)
+        {
+            driverWait=new WebDriverWait(driver,Duration.ofSeconds(5));
 
+        }
+    }
 
+    public WebDriverWait getDriverWait() {
+        return driverWait;
+    }
 }
