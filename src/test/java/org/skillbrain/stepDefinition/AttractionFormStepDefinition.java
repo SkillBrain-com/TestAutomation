@@ -1,5 +1,6 @@
 package org.skillbrain.stepDefinition;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.skillbrain.page.AttractionForm;
@@ -24,5 +25,10 @@ public class AttractionFormStepDefinition {
     @Then("I check the following error message is displayed {string}")
     public void iCheckTheFollowingErrorMessageIsDisplayed(String errorMessage) {
         attractionForm.checkErrorIsDisplayed(errorMessage);
+    }
+
+    @And("I input the mandatory field of a attractions with the name {string} and location {string}")
+    public void iInputTheMandatoryFieldOfAAttractionsWithTheNameAndLocation(String name, String location) {
+        attractionForm.fillAttractionMandatory(name,location);
     }
 }
