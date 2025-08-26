@@ -1,6 +1,6 @@
 package org.skillbrain.page;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,7 +11,7 @@ import java.time.Duration;
 
 public class AttractionForm extends BasePage{
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public AttractionForm(WebDriver driver) {
         super(driver);
@@ -19,23 +19,144 @@ public class AttractionForm extends BasePage{
         PageFactory.initElements(this.driver, this);
     }
 
-
     @FindBy(xpath = "//span[normalize-space()='Next'] //parent::button")
     private WebElement nextButton;
+    @FindBy(xpath = "//a[contains(normalize-space(.), 'Preview & Publish')]")
+    private WebElement papTabButton;
+    @FindBy(xpath = "//span[normalize-space()='Create ticket'] //parent::button")
+    private WebElement createTicketButton;
+    @FindBy(xpath = "//button[@data-label=\"Save\"][1]")
+    private WebElement ticketSaveButton;
+    @FindBy(xpath = "//button[@data-slot='button'][2]")
+    private WebElement addButton;
+    @FindBy(xpath = "//button[normalize-space()='Continue']")
+    private WebElement continueButton;
+    @FindBy(xpath = "//p[contains(text(), 'Autoprocess')] //parent::div")
+    private WebElement autoprocButton;
+    @FindBy(xpath = "//button[normalize-space()='Pay']")
+    private WebElement payButton;
+
+    @FindBy(xpath = "//span[contains(text(), 'Location')]")
+    private WebElement locationAccordion;
+
+    @FindBy(xpath = "//iframe[@id='oveit-hub-iframe']")
+    private WebElement iframe;
+
+    @FindBy(css = "input#react-select-3-input")
+    private WebElement stateDropdown;
+
+    @FindBy(xpath = "//input[@name=\"name\"]")
+    private WebElement attractionNameField;
+    @FindBy(xpath = "//input[@name=\"location\"]")
+    private WebElement locationNameField;
+    @FindBy(xpath = "//input[@placeholder=\"e.g. VIP Area, Entry ticket, etc.\"]")
+    private WebElement ticketNameField;
+    @FindBy(xpath = "//input[@name=\"price[0]\"]")
+    private WebElement ticketPriceField;
+    @FindBy(css = "input[name=\"email\"]")
+    private WebElement emailField;
+    @FindBy(css = "input[name=\"name\"]")
+    private WebElement nameField;
+    @FindBy(css = "input[name=\"city\"]")
+    private WebElement cityField;
+    @FindBy(css = "input[name=\"address\"]")
+    private WebElement addressField;
+
+    @FindBy(xpath = "//h2[normalize-space()=\"Tickets\"]")
+    private WebElement ticketsLabel;
+    @FindBy(xpath = "//h2[normalize-space()=\"My billing information\"]")
+    private WebElement billingLabel;
+    @FindBy(xpath = "//h2[normalize-space()='✅ Order complete']")
+    private WebElement orderCompleteLabel;
+
+    public WebElement getOrderCompleteLabel() {
+        return orderCompleteLabel;
+    }
+
+    public void fillAttractionName(String attractionName) {
+        attractionNameField.sendKeys("Test123");
+    }
+
+    public void clickOnLocationAccordion() {
+        locationAccordion.click();
+    }
+
+    public void fillLocationName(String locationName) {
+        waitForVisibility(locationNameField, Duration.ofSeconds(10));
+        scrollToElement(locationNameField);
+
+        locationNameField.sendKeys("SomeRandomPlace");
+    }
 
     public void clickOnNext() {
         nextButton.click();
+
+        waitForVisibility(createTicketButton, Duration.ofSeconds(10));
     }
 
-    public void checkErrorIsDisplayed(String errorMessage) {
-        waitForText("Please fix the following issues to continue:", Duration.ofSeconds(10));
-        String targetMessage =
-                String.format("//li[contains(.,\"%s\")]", errorMessage);
-        WebElement errorWebElement = driver.findElement(By.xpath(targetMessage));
-        Assert.assertEquals(errorWebElement.getText(), errorMessage);
+    public void clickOnCreateTicket() {
+        createTicketButton.click();
 
+        waitForVisibility(ticketNameField, Duration.ofSeconds(10));
     }
 
+    public void fillTicketNamePrice(String Data) {
+        ticketNameField.sendKeys("Test123");
+        ticketPriceField.clear();
+        ticketPriceField.sendKeys("30");
+    }
 
+    public void clickOnTicketSave() {
+        ticketSaveButton.click();
+
+        waitForVisibility(ticketsLabel, Duration.ofSeconds(10));
+    }
+
+    public void clickOnPaPTab() {
+        papTabButton.click();
+    }
+
+    public void clickOnAddButton() {
+        driver.switchTo().frame(iframe);
+        waitForVisibility(addButton, Duration.ofSeconds(10));
+
+        addButton.click();
+    }
+
+    public void clickOnContinueButton() {
+        waitForVisibility(addButton, Duration.ofSeconds(10));
+
+        continueButton.click();
+
+        waitForVisibility(billingLabel, Duration.ofSeconds(20));
+        driver.switchTo().defaultContent();
+    }
+
+    public void fillCustomerForm(String info) {
+        driver.switchTo().frame(iframe);
+
+        emailField.sendKeys("test@example.com");
+        nameField.sendKeys("Popescu Ion");
+        stateDropdown.sendKeys("Alabama");
+        stateDropdown.sendKeys(Keys.ENTER);
+        cityField.sendKeys("Pandora");
+        addressField.sendKeys("Calea Victoriei 199");
+
+        waitForVisibility(autoprocButton, Duration.ofSeconds(10));
+        scrollToElement(autoprocButton);
+        autoprocButton.click();
+        scrollToElement(payButton);
+        payButton.click();
+        driver.switchTo().defaultContent();
+    }
+
+    public void assertOrderCompleted() {
+        driver.switchTo().frame(iframe);
+
+        waitForText("✅ Order complete", Duration.ofSeconds(30));
+        Assert.assertEquals(getOrderCompleteLabel().getText(), "✅ Order complete");
+
+        driver.switchTo().defaultContent();
+    }
 
 }
