@@ -74,4 +74,9 @@ public class AttractionFormStepDefinition {
     public void iCheckIfTheOrderIsCompleted() {
         attractionForm.assertOrderCompleted();
     }
+
+    @And("I input the mandatory field of a attractions with the name {string} and location {string}")
+    public void iInputTheMandatoryFieldOfAAttractionsWithTheNameAndLocation(String name, String location) {
+        attractionForm.fillAttractionMandatory(name,location);
+    }
 }

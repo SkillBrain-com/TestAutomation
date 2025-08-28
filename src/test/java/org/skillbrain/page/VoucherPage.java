@@ -1,9 +1,6 @@
 package org.skillbrain.page;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.ElementNotInteractableException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -44,6 +41,8 @@ public class VoucherPage extends BasePage {
     private WebElement generateCodesButton;
     @FindBy(xpath = "//button[span[normalize-space()='OK']]")
     private WebElement okAfterGeneratedCodes;
+
+
 
     public VoucherPage(WebDriver driver) {
         super(driver);
@@ -113,16 +112,14 @@ public class VoucherPage extends BasePage {
     }
 
     public void ConfirmGenerateCodes() {
-        for (int i = 0; i <3 ; i++) {
-            try{
+        for (int i = 0; i < 3; i++) {
+            try {
                 waitForText("Code generator", Duration.ofSeconds(5));
                 generateCodesButton.click();
                 waitForText("Results", Duration.ofSeconds(5));
                 okAfterGeneratedCodes.click();
                 break;
-            }
-            catch(ElementNotInteractableException E)
-            {
+            } catch (ElementNotInteractableException E) {
                 continue;
             }
 
