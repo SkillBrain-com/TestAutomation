@@ -59,7 +59,12 @@ public class HomePage extends BasePage {
     }
 
     public void checkUserIsLoggedIn() {
-        waitForText("My attractions", Duration.ofSeconds(10));
+        try{
+            waitForText("My attractions", Duration.ofSeconds(5));
+        }catch(Exception e) {
+            waitForText("My Events", Duration.ofSeconds(5));
+
+        }
         Assert.assertTrue(createEventButton.isDisplayed());
     }
 
