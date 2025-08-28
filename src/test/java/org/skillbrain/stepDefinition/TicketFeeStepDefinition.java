@@ -29,7 +29,7 @@ public class TicketFeeStepDefinition
 
     @Then("I create a ticket with the price {double} ron and with the name  {string} with tax not included")
     public void iCreateATicketWithThePriceRonAndWithTheNameWithTaxNotIncluded(double price, String name) {
-        ticketPage.FillTicketNameAndPrice(150,"testbilet123");
+        ticketPage.FillTicketNameAndPrice(price,name);
     }
 
     @Then("I click on Preview & Publish of my aplication")
@@ -38,7 +38,47 @@ public class TicketFeeStepDefinition
     }
 
     @Then("I check if ticket with the {string} appears with the price {double} and the corect fee")
-    public void iCheckIfTicketWithTheAppearsWithThePriceAndTheCorectFee(String name, int price) {
+    public void iCheckIfTicketWithTheAppearsWithThePriceAndTheCorectFee(String name, double price) {
         ticketPage.CheckingFee(price);
+    }
+
+    @Then("I publish my attraction")
+    public void iPublishMyAttraction() {
+        ticketPage.publishAttraction();
+    }
+
+    @Then("I delete the attraction")
+    public void iDeleteTheAttraction() {
+        ticketPage.deleteAttraction();
+    }
+
+    @Then("I click share button")
+    public void iClickShareButton() {
+        ticketPage.shareAttractionMenu();
+    }
+
+    @And("I open AttractionPage")
+    public void iOpenAttractionPage() {
+       ticketPage.RedirectToAttractionPage();
+    }
+
+    @Then("I click buy now")
+    public void iClickCumparaAcum() {
+        ticketPage.BuyNow();
+    }
+
+    @Then("I check if ticket with the {string} appears with the price {double} and the corect fee in the Attraction Page")
+    public void iCheckIfTicketWithTheAppearsWithThePriceAndTheCorectFeeInTheAttractionPage(String name, double price) {
+        ticketPage.CheckingFeeAttractionPage(price);
+    }
+
+    @Then("I change to the home page")
+    public void iChangeToTheHomePage() {
+        ticketPage.ChangeToHomePage();
+    }
+
+    @And("I close Share menu")
+    public void iCloseShareMenu() {
+        ticketPage.closeShareMenu();
     }
 }

@@ -1,9 +1,12 @@
 package org.skillbrain.page;
 
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
@@ -17,10 +20,11 @@ public class HomePage extends BasePage {
     private WebElement createEventButton;
     @FindBy(xpath = "//p[normalize-space()='Attractions'] //parent::div")
     private WebElement attractionsSidebar;
-    @FindBy(css = "a.current-page")
+    @FindBy(xpath = "//a[normalize-space()='My attractions']")
     private WebElement myAttractions;
     @FindBy(xpath = "//span[normalize-space()='Create attraction'] //parent::button")
     private WebElement createAttraction;
+
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -29,11 +33,21 @@ public class HomePage extends BasePage {
     }
 
     public void clickAttractionSidebar() {
+
         attractionsSidebar.click();
     }
 
     public void clickMyAttractions() {
-        myAttractions.click();
+        for (int i = 0; i < 3; i++) {
+            try {
+                waitForText("My attractions", Duration.ofSeconds(5));
+                myAttractions.click();
+                break;
+            } catch (ElementNotInteractableException E) {
+                continue;
+            }
+        }
+
     }
 
     public void createAttraction() {
