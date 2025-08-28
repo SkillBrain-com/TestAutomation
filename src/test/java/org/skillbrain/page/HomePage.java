@@ -10,8 +10,9 @@ import java.time.Duration;
 
 public class HomePage extends BasePage {
 
-    private WebDriver driver;
-
+    @FindBy(xpath = ("//a[contains(normalize-space(),'Vouchers')]"))
+    WebElement voucherButton;
+    private final WebDriver driver;
     @FindBy(xpath = "//span[normalize-space()='Create attraction']")
     private WebElement createEventButton;
     @FindBy(xpath = "//p[normalize-space()='Attractions'] //parent::div")
@@ -42,6 +43,9 @@ public class HomePage extends BasePage {
     public void checkUserIsLoggedIn() {
         waitForText("My attractions", Duration.ofSeconds(10));
         Assert.assertTrue(createEventButton.isDisplayed());
+    }
+    public void clickVouchers() {
+        voucherButton.click();
     }
 
 }
