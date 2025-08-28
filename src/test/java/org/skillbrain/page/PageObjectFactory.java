@@ -8,7 +8,8 @@ public class PageObjectFactory {
     private LoginPage loginPage;
     private HomePage homePage;
     private AttractionForm attractionForm;
-
+    private VoucherPage voucherPage;
+   private TicketPage ticketPage;
 //    dependency injection
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;
@@ -29,5 +30,13 @@ public class PageObjectFactory {
         return attractionForm;
     }
 
+    public VoucherPage getVoucherPage() {
+        voucherPage = new VoucherPage(driver);
+        return voucherPage;
+    }
+    public TicketPage getTicketPage() {
+        ticketPage = new TicketPage(driver);
+        return ticketPage;
+    }
 
 }
