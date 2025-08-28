@@ -20,7 +20,7 @@ import java.time.Instant;
 //TODO MERGE DUPLICATE SELECTORS
 public class AttractionForm extends BasePage{
 
-    private final WebDriver driver;
+    private WebDriver driver;
 
     public AttractionForm(WebDriver driver) {
         super(driver);
@@ -84,7 +84,7 @@ public class AttractionForm extends BasePage{
     }
 
     public void fillAttractionName(String attractionName) {
-        attractionNameField.sendKeys("Test123");
+        attractionNameField.sendKeys("IntelliJ Auto Test");
     }
 
     public void clickOnLocationAccordion() {
@@ -129,8 +129,11 @@ public class AttractionForm extends BasePage{
         waitForVisibility(ticketNameField, Duration.ofSeconds(10));
     }
 
-    public void fillTicketNamePrice(String Data) {
+    public void fillTicketName(String ticketName) {
         ticketNameField.sendKeys("Test123");
+    }
+
+    public void fillTicketPrice(String ticketPrice) {
         ticketPriceField.clear();
         ticketPriceField.sendKeys("30");
     }
@@ -184,10 +187,15 @@ public class AttractionForm extends BasePage{
         stateDropdown.sendKeys(Keys.ENTER);
         cityField.sendKeys("Pandora");
         addressField.sendKeys("Calea Victoriei 199");
+    }
 
+    public void clickOnAutoProcButton() {
         waitForVisibility(autoprocButton, Duration.ofSeconds(10));
         scrollToElement(autoprocButton);
         autoprocButton.click();
+    }
+
+    public void clickOnPayButton() {
         scrollToElement(payButton);
         payButton.click();
         driver.switchTo().defaultContent();

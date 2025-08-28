@@ -24,9 +24,9 @@ public class AttractionFormStepDefinition {
     public void iExpandLocationTheAccordion() {
         attractionForm.clickOnLocationAccordion();
     }
-
-    @And("I fill the Location field with {string}")
-    public void iFillTheLocationFieldWith(String locationName) {
+    
+    @And("I fill the Location address field with {string}")
+    public void iFillTheLocationAddressFieldWith(String locationName) {
         attractionForm.fillLocationName(locationName);
     }
 
@@ -40,9 +40,14 @@ public class AttractionFormStepDefinition {
         attractionForm.clickOnCreateTicket();
     }
 
-    @Then("I fill the Name and Price fields with {string}")
-    public void iFillTheNameAndPriceFieldsWith(String ticketNamePrice) {
-        attractionForm.fillTicketNamePrice(ticketNamePrice);
+    @Then("I fill the Name field with {string}")
+    public void iFillTheNameFieldWith(String ticketName) {
+        attractionForm.fillTicketName(ticketName);
+    }
+
+    @And("I fill the Price field with {string}")
+    public void iFillThePriceFieldWith(String ticketPrice) {
+        attractionForm.fillTicketPrice(ticketPrice);
     }
 
     @And("I click the Save button")
@@ -50,7 +55,7 @@ public class AttractionFormStepDefinition {
         attractionForm.clickOnTicketSave();
     }
 
-    @Then("I click on Preview & Publish Tab button")
+    @Then("I click on Preview & Publish tab button")
     public void iClickOnPreviewPublishTabButton() {
         attractionForm.clickOnPaPTab();
     }
@@ -65,9 +70,19 @@ public class AttractionFormStepDefinition {
         attractionForm.clickOnContinueButton();
     }
 
-    @Then("I fill the Mandatory fields with {string}")
+    @Then("I fill the Mandatory * fields with {string}")
     public void iFillTheMandatoryFieldsWith(String info) {
         attractionForm.fillCustomerForm(info);
+    }
+
+    @And("I click the Autoprocess radio button")
+    public void iClickTheAutoprocessRadioButton() {
+        attractionForm.clickOnAutoProcButton();
+    }
+
+    @Then("I click the Pay button")
+    public void iClickThePayButton() {
+        attractionForm.clickOnPayButton();
     }
 
     @Then("I check if the order is completed")
@@ -75,8 +90,10 @@ public class AttractionFormStepDefinition {
         attractionForm.assertOrderCompleted();
     }
 
+
     @And("I input the mandatory field of a attractions with the name {string} and location {string}")
     public void iInputTheMandatoryFieldOfAAttractionsWithTheNameAndLocation(String name, String location) {
         attractionForm.fillAttractionMandatory(name,location);
     }
+
 }
