@@ -24,6 +24,8 @@ public class EventsPageStepDefinition {
         this.testContextSetup = testContextSetup;
         attractionForm = testContextSetup.pageObjectFactory.getAttractionForm();
         eventsPage = testContextSetup.pageObjectFactory.getEventsPage();
+        //voucherPage = testContextSetup.pageObjectFactory.getVoucherPage();
+
     }
 
     @When("I click on Events sidebar")
@@ -31,21 +33,20 @@ public class EventsPageStepDefinition {
         eventsPage.clickSidebar();
     }
 
-    @And("I click on Vouchers")
+   //@And("I click on Vouchers1")
     public void iClickOnVouchers() {
-       // waitForText("Vouchers", Duration.ofSeconds(5));
-        vouchers.click();
+       attractionForm.waitForText("Vouchers", Duration.ofSeconds(5));
+       eventsPage.clickVouchers();
+
     }
 
-    @And("I click on Create voucher button")
+ //@And("I click on Create voucher button1")
     public void iClickOnCreateVoucherButton() {
-        createVoucher.click();
+        attractionForm.waitForText("Create voucher", Duration.ofSeconds(5));
+        eventsPage.clickCreateVoucherButton();
     }
 
-    public void checkUserIsLoggedIn() {
-       // waitForText("Vouchers", Duration.ofSeconds(10));
-        Assert.assertTrue(vouchers.isDisplayed());
-    }
+
 
 }
 

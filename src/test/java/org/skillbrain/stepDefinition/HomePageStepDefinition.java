@@ -40,6 +40,7 @@ public class HomePageStepDefinition {
 
     @When("I click on Vouchers")
     public void iClickOnVouchers() {
+
         homePage.clickVouchers();
     }
 }
