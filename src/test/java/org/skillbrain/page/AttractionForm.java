@@ -1,17 +1,17 @@
 package org.skillbrain.page;
 
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+
 //TODO MERGE DUPLICATE SELECTORS
-public class AttractionForm extends BasePage{
+public class AttractionForm extends BasePage {
 
     private WebDriver driver;
 
@@ -20,6 +20,7 @@ public class AttractionForm extends BasePage{
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
     }
+
     @FindBy(xpath = "//span[normalize-space()='Next'] //parent::button")
     private WebElement nextButton;
     @FindBy(xpath = "//a[contains(normalize-space(.), 'Preview & Publish')]")
@@ -64,6 +65,8 @@ public class AttractionForm extends BasePage{
     private WebElement billingLabel;
     @FindBy(xpath = "//h2[normalize-space()='✅ Order complete']")
     private WebElement orderCompleteLabel;
+    @FindBy(css = ".ticket-type-form-options")
+    private WebElement advancedTicketOptions;
 
     public WebElement getOrderCompleteLabel() {
         return orderCompleteLabel;
@@ -92,13 +95,13 @@ public class AttractionForm extends BasePage{
 
     @FindBy(xpath = "//span[normalize-space()='Next'] //parent::button")
     private WebElement nextButton1;
-    @FindBy(css="input[name=\"name\"]")
+    @FindBy(css = "input[name=\"name\"]")
     private WebElement attractionNameField1;
-    @FindBy(xpath=("//*[normalize-space(text())='Location']"))
+    @FindBy(xpath = ("//*[normalize-space(text())='Location']"))
     private WebElement locationDropDown;
-    @FindBy(xpath=("//input[@name='location' and @type='text']"))
+    @FindBy(xpath = ("//input[@name='location' and @type='text']"))
     private WebElement attractionLocationField;
-    @FindBy(css="img[alt=\"Location pin\"]")
+    @FindBy(css = "img[alt=\"Location pin\"]")
     WebElement mapPin;
     @FindBy(css = "div[aria-label='Hartă'][role='region']")
     WebElement map;
@@ -124,18 +127,17 @@ public class AttractionForm extends BasePage{
         ticketPriceField.sendKeys("11");
     }
 
-   public void fillAttractionMandatory(String name,String location)
-   {
-       waitForText("Attraction name", Duration.ofSeconds(5));
-       attractionNameField1.sendKeys(name);
-       locationDropDown.click();
-       try {
-           Thread.sleep(3000);
-       } catch (InterruptedException e) {
-           e.printStackTrace();
-       }
-    attractionLocationField.sendKeys(location);
-   }
+    public void fillAttractionMandatory(String name, String location) {
+        waitForText("Attraction name", Duration.ofSeconds(5));
+        attractionNameField1.sendKeys(name);
+        locationDropDown.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        attractionLocationField.sendKeys(location);
+    }
 
 
     public void clickOnTicketSave() {
@@ -196,8 +198,9 @@ public class AttractionForm extends BasePage{
         driver.switchTo().defaultContent();
     }
 
-// RAMONA
-    @FindBy(xpath= "//span[contains(text(),'Ticket configuration')]/..")
+    // RAMONA
+//    @FindBy(xpath= "//span[contains(text(),'Ticket configuration')]")
+    @FindBy(xpath = "//span[contains(text(),'Ticket configuration')] //parent::div")
     private WebElement ticketConfigurationButton;
 
     @FindBy(xpath = "//div[span[text()='Ticket visibility']]")
@@ -206,9 +209,22 @@ public class AttractionForm extends BasePage{
     public void clickTicketConfiguration() {
         waitForVisibility(ticketConfigurationButton, Duration.ofSeconds(10));
         scrollToElement(ticketConfigurationButton);
-        ticketConfigurationButton.click();
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+        driverWait.until(ExpectedConditions.elementToBeClickable(ticketConfigurationButton)).click();
+        try {
+//            driverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(".ticket-type-form-options")));
+            driverWait.until(ExpectedConditions.visibilityOfAllElements(advancedTicketOptions));
+        } catch (TimeoutException e) {
+            driverWait.until(ExpectedConditions.elementToBeClickable(ticketConfigurationButton)).click();
+        }
+//        ticketConfigurationButton.click();
     }
+
     public void clickOnTicketVisibility() {
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+        driverWait.until(ExpectedConditions.visibilityOf(ticketVisibilityButton));
         ticketVisibilityButton.click();
     }
 
