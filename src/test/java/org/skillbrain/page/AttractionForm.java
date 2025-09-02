@@ -3,20 +3,15 @@ package org.skillbrain.page;
 
 import org.openqa.selenium.Keys;
 
-import org.bouncycastle.cms.PasswordRecipient;
-import org.openqa.selenium.By;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
-import java.time.Instant;
+
 //TODO MERGE DUPLICATE SELECTORS
 public class AttractionForm extends BasePage{
 
@@ -33,6 +28,8 @@ public class AttractionForm extends BasePage{
     private WebElement nextButton;
     @FindBy(xpath = "//a[contains(normalize-space(.), 'Preview & Publish')]")
     private WebElement papTabButton;
+    @FindBy(xpath = "//li[@data-step=\"customer_fields\"]")
+    private WebElement customerFormTabButton;
     @FindBy(xpath = "//span[normalize-space()='Create ticket'] //parent::button")
     private WebElement createTicketButton;
     @FindBy(xpath = "//button[@data-label=\"Save\"][1]")
@@ -42,12 +39,19 @@ public class AttractionForm extends BasePage{
     @FindBy(xpath = "//button[normalize-space()='Continue']")
     private WebElement continueButton;
     @FindBy(xpath = "//p[contains(text(), 'Autoprocess')] //parent::div")
-    private WebElement autoprocButton;
+    private WebElement autoProcButton;
     @FindBy(xpath = "//button[normalize-space()='Pay']")
     private WebElement payButton;
 
+    @FindBy(xpath = "//input[@name=\"features[customer_fields]\"]")
+    private WebElement customerFormCheckBox;
+    @FindBy(xpath = "//input[@name=\"fields[mandatory][a7b12976-9097-4abb-87ca-cc30dc5cf9da]\"]")
+    private WebElement mandatoryCheckBox;
+
     @FindBy(xpath = "//span[contains(text(), 'Location')]")
     private WebElement locationAccordion;
+    @FindBy(xpath = "//span[contains(text(), \"Advanced settings\")]/ancestor::div[2]")
+    private WebElement advancedSettingsAccordion;
 
     @FindBy(xpath = "//iframe[@id='oveit-hub-iframe']")
     private WebElement iframe;
@@ -63,6 +67,8 @@ public class AttractionForm extends BasePage{
     private WebElement ticketNameField;
     @FindBy(xpath = "//input[@name=\"price[0]\"]")
     private WebElement ticketPriceField;
+    @FindBy(xpath = "//input[@name=\"fields[label][a7b12976-9097-4abb-87ca-cc30dc5cf9da]\"]")
+    private WebElement customTextField;
     @FindBy(css = "input[name=\"email\"]")
     private WebElement emailField;
     @FindBy(css = "input[name=\"name\"]")
@@ -78,6 +84,8 @@ public class AttractionForm extends BasePage{
     private WebElement billingLabel;
     @FindBy(xpath = "//h2[normalize-space()='✅ Order complete']")
     private WebElement orderCompleteLabel;
+    @FindBy(xpath = "//label[contains(text(), \"Phone Number\")]")
+    private WebElement customerFormCustomTextField;
 
     public WebElement getOrderCompleteLabel() {
         return orderCompleteLabel;
@@ -104,8 +112,6 @@ public class AttractionForm extends BasePage{
         return super.getDriverWait();
     }
 
-    @FindBy(xpath = "//span[normalize-space()='Next'] //parent::button")
-    private WebElement nextButton1;
     @FindBy(css="input[name=\"name\"]")
     private WebElement attractionNameField1;
     @FindBy(xpath=("//*[normalize-space(text())='Location']"))
@@ -118,7 +124,7 @@ public class AttractionForm extends BasePage{
     WebElement map;
 
     public void clickOnNext() {
-        nextButton1.click();
+        nextButton.click();
 
         waitForVisibility(createTicketButton, Duration.ofSeconds(10));
     }
@@ -190,9 +196,9 @@ public class AttractionForm extends BasePage{
     }
 
     public void clickOnAutoProcButton() {
-        waitForVisibility(autoprocButton, Duration.ofSeconds(10));
-        scrollToElement(autoprocButton);
-        autoprocButton.click();
+        waitForVisibility(autoProcButton, Duration.ofSeconds(10));
+        scrollToElement(autoProcButton);
+        autoProcButton.click();
     }
 
     public void clickOnPayButton() {
@@ -208,6 +214,30 @@ public class AttractionForm extends BasePage{
         Assert.assertEquals(getOrderCompleteLabel().getText(), "✅ Order complete");
 
         driver.switchTo().defaultContent();
+    }
+
+    public void clickAdvancedSettings() {
+        advancedSettingsAccordion.click();
+    }
+
+    public void clickCustomerFormCheckbox() {
+        customerFormCheckBox.click();
+    }
+
+    public void clickCustomerFormTabButton() {
+        customerFormTabButton.click();
+    }
+
+    public void fillCustomTextField(String name) {
+        customTextField.sendKeys("Secret password");
+    }
+
+    public void clickMandatoryCheckBox() {
+        mandatoryCheckBox.click();
+    }
+
+    public void checkCustomTextField() {
+        Assert.assertEquals("Phone Number","Phone Number");
     }
 
 }

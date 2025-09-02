@@ -15,85 +15,113 @@ public class AttractionFormStepDefinition {
         attractionForm = testContextSetup.pageObjectFactory.getAttractionForm();
     }
 
-    @Then("I fill the Attraction name field with {string}")
+    @Then("Fill the Attraction name field with {string}")
     public void iFillTheAttractionNameFieldWith(String attractionName) {
         attractionForm.fillAttractionName(attractionName);
     }
 
-    @And("I expand the Location accordion")
+    @And("Expand the Location accordion")
     public void iExpandLocationTheAccordion() {
         attractionForm.clickOnLocationAccordion();
     }
     
-    @And("I fill the Location address field with {string}")
+    @And("Fill the Location address field with {string}")
     public void iFillTheLocationAddressFieldWith(String locationName) {
         attractionForm.fillLocationName(locationName);
     }
 
-    @Then("I click on Next button")
+    @Then("Click on Next button")
     public void iClickOnNextButton() {
         attractionForm.clickOnNext();
     }
 
-    @And("I click the Create ticket button")
+    @And("Click the Create ticket button")
     public void iClickTheCreateTicketButton() {
         attractionForm.clickOnCreateTicket();
     }
 
-    @Then("I fill the Name field with {string}")
+    @Then("Fill the Ticket Name field with {string}")
     public void iFillTheNameFieldWith(String ticketName) {
         attractionForm.fillTicketName(ticketName);
     }
 
-    @And("I fill the Price field with {string}")
+    @And("Fill the Ticket Price field with {string}")
     public void iFillThePriceFieldWith(String ticketPrice) {
         attractionForm.fillTicketPrice(ticketPrice);
     }
 
-    @And("I click the Save button")
+    @And("Click the Save button")
     public void iClickTheSaveButton() {
         attractionForm.clickOnTicketSave();
     }
 
-    @Then("I click on Preview & Publish tab button")
+    @Then("Click on Preview & Publish tab button")
     public void iClickOnPreviewPublishTabButton() {
         attractionForm.clickOnPaPTab();
     }
 
-    @And("I click the Add button")
+    @And("Click the Add button")
     public void iClickTheAddButton() {
         attractionForm.clickOnAddButton();
     }
 
-    @And("I click the Continue button")
+    @And("Click the Continue button")
     public void iClickTheContinueButton() {
         attractionForm.clickOnContinueButton();
     }
 
-    @Then("I fill the Mandatory * fields with {string}")
+    @Then("Fill the Mandatory * fields with {string}")
     public void iFillTheMandatoryFieldsWith(String info) {
         attractionForm.fillCustomerForm(info);
     }
 
-    @And("I click the Autoprocess radio button")
+    @And("Click the Autoprocess radio button")
     public void iClickTheAutoprocessRadioButton() {
         attractionForm.clickOnAutoProcButton();
     }
 
-    @Then("I click the Pay button")
+    @Then("Click the Pay button")
     public void iClickThePayButton() {
         attractionForm.clickOnPayButton();
     }
 
-    @Then("I check if the order is completed")
+    @Then("Check if the order is completed")
     public void iCheckIfTheOrderIsCompleted() {
         attractionForm.assertOrderCompleted();
     }
-
 
     @And("I input the mandatory field of a attractions with the name {string} and location {string}")
     public void iInputTheMandatoryFieldOfAAttractionsWithTheNameAndLocation(String name, String location) {
         attractionForm.fillAttractionMandatory(name,location);
     }
 
+    @And("Expand the Advanced settings accordion")
+    public void expandTheAccordion() {
+        attractionForm.clickAdvancedSettings();
+    }
+
+    @And("Click the Enable Customer Form checkbox")
+    public void clickTheEnableCustomerFormCheckbox() {
+        attractionForm.clickCustomerFormCheckbox();
+    }
+
+    @And("Click the Customer form tab button")
+    public void clickTheCustomerFormTabButton() {
+        attractionForm.clickCustomerFormTabButton();
+    }
+
+    @Then("Fill the Custom Field Name field with {string}")
+    public void fillTheCustomFieldNameFieldWith(String name) {
+        attractionForm.fillCustomTextField(name);
+    }
+
+    @And("Click the Mandatory checkbox")
+    public void clickTheMandatoryCheckbox() {
+        attractionForm.clickMandatoryCheckBox();
+    }
+
+    @Then("Check the Custom Text Field")
+    public void checkTheCustomTextField() {
+        attractionForm.checkCustomTextField();
+    }
 }
