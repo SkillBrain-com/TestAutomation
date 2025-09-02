@@ -10,6 +10,7 @@ public class PageObjectFactory {
     private AttractionForm attractionForm;
     private VoucherPage voucherPage;
    private TicketPage ticketPage;
+    private EventsPage eventsPage;
 //    dependency injection
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;
@@ -39,4 +40,8 @@ public class PageObjectFactory {
         return ticketPage;
     }
 
+    public EventsPage getEventsPage() {
+        eventsPage = new EventsPage(driver);
+        return eventsPage;
+    }
 }

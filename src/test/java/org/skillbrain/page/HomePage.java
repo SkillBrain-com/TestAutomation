@@ -43,7 +43,7 @@ public class HomePage extends BasePage {
                 waitForText("My attractions", Duration.ofSeconds(5));
                 myAttractions.click();
                 break;
-            } catch (ElementNotInteractableException E) {
+            } catch (ElementNotInteractableException e) {
                 continue;
             }
         }
