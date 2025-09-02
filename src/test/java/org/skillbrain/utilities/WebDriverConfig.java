@@ -3,6 +3,7 @@ package org.skillbrain.utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.IOException;
@@ -13,6 +14,15 @@ import java.util.Properties;
 public class WebDriverConfig {
 
     private WebDriver driver;
+
+
+    public ChromeOptions getChromeOptions() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
+        options.addArguments("--disable-popup-blocking");
+//        options.addArguments("--headless");
+        return options;
+    }
 
     public WebDriver getDriver() {
         Properties properties = new Properties();
@@ -25,7 +35,7 @@ public class WebDriverConfig {
                 switch (browser.toUpperCase()) {
                     case "CHROME":
                         WebDriverManager.chromedriver().setup();
-                        driver = new ChromeDriver();
+                        driver = new ChromeDriver(getChromeOptions());
                         break;
                     case "FIREFOX":
                         WebDriverManager.firefoxdriver().setup();
