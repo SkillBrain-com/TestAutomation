@@ -26,6 +26,7 @@ public class BasePage {
         driverWait.until(ExpectedConditions.presenceOfElementLocated(xpath));
     }
 
+
     public void setWait() {
         if (driverWait == null) {
             driverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -44,5 +45,8 @@ public class BasePage {
     public WebDriverWait getDriverWait() {
         return driverWait;
     }
+
 }
+
+
 
