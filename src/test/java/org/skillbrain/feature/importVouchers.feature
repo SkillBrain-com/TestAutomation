@@ -8,3 +8,5 @@ Feature: Create a voucher
     When I click on Events sidebar
     And I click on Vouchers
     And I click on Create voucher button
+
+
