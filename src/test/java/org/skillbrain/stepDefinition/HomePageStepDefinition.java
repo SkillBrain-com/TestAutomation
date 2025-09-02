@@ -17,7 +17,6 @@ public class HomePageStepDefinition {
         homePage = testContextSetup.pageObjectFactory.getHomePage();
     }
 
-
     @Then("Check user is logged in")
     public void check_user_is_logged_in() {
         homePage.checkUserIsLoggedIn();
