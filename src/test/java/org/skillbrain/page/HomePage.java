@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
@@ -17,7 +15,9 @@ public class HomePage extends BasePage {
     WebElement voucherButton;
     private final WebDriver driver;
     @FindBy(xpath = "//span[normalize-space()='Create attraction']")
-    private WebElement createEventButton;
+    private WebElement createAttractionButton;
+    @FindBy(xpath = "//span[normalize-space()='Create event']")
+    private WebElement createEventsButton;
     @FindBy(xpath = "//p[normalize-space()='Attractions'] //parent::div")
     private WebElement attractionsSidebar;
     @FindBy(xpath = "//a[normalize-space()='My attractions']")
@@ -57,11 +57,11 @@ public class HomePage extends BasePage {
     public void checkUserIsLoggedIn() {
         try{
             waitForText("My attractions", Duration.ofSeconds(5));
+            Assert.assertTrue(createAttractionButton.isDisplayed());
         }catch(Exception e) {
-            waitForText("My Events", Duration.ofSeconds(5));
-
+            waitForText("My events", Duration.ofSeconds(5));
+            Assert.assertTrue(createEventsButton.isDisplayed());
         }
-        Assert.assertTrue(createEventButton.isDisplayed());
     }
     public void clickVouchers() {
         voucherButton.click();

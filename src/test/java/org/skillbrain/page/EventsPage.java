@@ -7,11 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
 
-public class EventsPage extends BasePage{
+public class EventsPage extends BasePage {
     private WebDriver driver;
     @FindBy(xpath = "//p[normalize-space()='Events'] //parent::div")
     private WebElement eventsSidebar;
-    @FindBy(xpath= "//a[normalize-space()='Vouchers']")
+    @FindBy(xpath = "//a[normalize-space()='Vouchers']")
     private WebElement vouchers;
     @FindBy(css = "button[type='button'] div[class='ripple']")
     private WebElement createVoucher;
@@ -29,16 +29,16 @@ public class EventsPage extends BasePage{
 //        super(driver);
 //    }
 
-    public void clickSidebar(){
-            eventsSidebar.click();
+    public void clickSidebar() {
+        eventsSidebar.click();
     }
 
-    public void clickVouchers(){
+    public void clickVouchers() {
         waitForText("Vouchers", Duration.ofSeconds(5));
         vouchers.click();
     }
 
-    public void clickCreateVoucherButton(){
+    public void clickCreateVoucherButton() {
         createVoucher.click();
     }
 }
