@@ -3,7 +3,7 @@ package org.skillbrain.utilities;
 import org.openqa.selenium.WebDriver;
 import org.skillbrain.page.PageObjectFactory;
 
-public class TestContextSetup {
+public class git TestContextSetup {
 
     public WebDriver driver;
     public WebDriverConfig webDriverConfig;
