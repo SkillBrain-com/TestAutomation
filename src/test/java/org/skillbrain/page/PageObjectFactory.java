@@ -11,6 +11,7 @@ public class PageObjectFactory {
     private VoucherPage voucherPage;
    private TicketPage ticketPage;
    private EventsPage eventsPage;
+   private VoucherPageImport voucherPageImport;
 //    dependency injection
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;
@@ -43,5 +44,10 @@ public class PageObjectFactory {
     public EventsPage getEventsPage() {
         eventsPage = new EventsPage(driver);
         return eventsPage;
+    }
+
+    public VoucherPageImport getVoucherPageImport() {
+        voucherPageImport = new VoucherPageImport(driver);
+        return voucherPageImport;
     }
 }
