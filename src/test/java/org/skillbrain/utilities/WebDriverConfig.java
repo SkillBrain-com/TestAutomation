@@ -20,7 +20,7 @@ public class WebDriverConfig {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments("--disable-popup-blocking");
-//        options.addArguments("--headless");
+        // options.addArguments("--headless");
         return options;
     }
 

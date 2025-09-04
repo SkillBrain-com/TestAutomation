@@ -10,6 +10,8 @@ public class PageObjectFactory {
     private AttractionForm attractionForm;
     private VoucherPage voucherPage;
    private TicketPage ticketPage;
+   private ApprovalTicket approvalTicket;
+   private ApproveTicketOrder approveATicketOrder;
 //    dependency injection
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;
@@ -38,5 +40,13 @@ public class PageObjectFactory {
         ticketPage = new TicketPage(driver);
         return ticketPage;
     }
+    public ApprovalTicket getApprovalTicket(){
+        approvalTicket = new ApprovalTicket(driver);
+        return approvalTicket;
+    }
+    public ApproveTicketOrder getApproveATicketOrder(){
+        approveATicketOrder =new ApproveTicketOrder(driver);
+        return approveATicketOrder;
 
+    }
 }
