@@ -21,3 +21,21 @@ Feature: Create attractions feature
     And I click the Autoprocess radio button
     Then I click the Pay button
     Then I check if the order is completed
+
+#    Data driver Test Scenario
+  @demo
+  Scenario Outline: Demo for multiple inputs
+    Given User navigates to login page
+    When User logs in with valid credentials
+    Then Check user is logged in
+    And I click on Create attraction button
+    Then I fill the Attraction name field with <attractionName>
+    Then I expand the Location accordion
+    And I fill the Location address field with <locationName>
+
+    Examples:
+      | attractionName | locationName    |
+      | "#!@%^"        | "locationName1" |
+      | "testName2"    | "locationName2" |
+      | "testName3"    | "locationName3" |
+      | "testName4"    | "locationName4" |
