@@ -1,6 +1,6 @@
 Feature: Create attractions feature
 
-  @cris
+#  @cris
   Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -17,7 +17,9 @@ Feature: Create attractions feature
     Then Click on Preview & Publish tab button
     And Click the Add button
     And Click the Continue button
-    Then Fill the Mandatory * fields with "Customer Info"
+    Then Fill the Mandatory fields with:
+      | email                   | name                  | country                 | state                 | city                  | address                   |
+      | john.doe@example.com    | John Doe              | United States           | California            | Los Angeles           | 123 Maple Street, Apt 4B  |
     And Click the Autoprocess radio button
     Then Click the Pay button
     Then Check if the order is completed
