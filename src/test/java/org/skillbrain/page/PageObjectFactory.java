@@ -35,6 +35,9 @@ public class PageObjectFactory {
     private OveitHubPage oveitHub;
     private OveitHubTicketsPage oveitHubTickets;
 
+   private ApprovalTicket approvalTicket;
+   private ApproveTicketOrder approveATicketOrder;
+
 //    dependency injection
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;
@@ -63,7 +66,13 @@ public class PageObjectFactory {
         ticketPage = new TicketPage(driver);
         return ticketPage;
     }
-
+    public ApprovalTicket getApprovalTicket(){
+        approvalTicket = new ApprovalTicket(driver);
+        return approvalTicket;
+    }
+    public ApproveTicketOrder getApproveATicketOrder(){
+        approveATicketOrder =new ApproveTicketOrder(driver);
+        return approveATicketOrder;
 
     public AttractionFormOverviewPage getAttractionFormOverview() {
         attractionFormOverview = new AttractionFormOverviewPage(driver);
@@ -94,7 +103,6 @@ public class PageObjectFactory {
         attractionFormPreviewPublish = new AttractionFormPreviewPublishPage(driver);
         return attractionFormPreviewPublish;
     }
-
 
     public DefaultHubCheckOutPage getDefaultHubCheckOut() {
         defaultHubCheckOut = new DefaultHubCheckOutPage(driver);

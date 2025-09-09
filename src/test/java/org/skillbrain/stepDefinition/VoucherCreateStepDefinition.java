@@ -71,4 +71,6 @@ public class VoucherCreateStepDefinition {
     public void iGenerateCodes() {
         voucherPage.ConfirmGenerateCodes();
     }
+
+
 }
