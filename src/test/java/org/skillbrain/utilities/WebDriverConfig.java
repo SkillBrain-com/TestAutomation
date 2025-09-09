@@ -20,9 +20,6 @@ public class WebDriverConfig {
 
     public ChromeOptions getChromeOptions() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        options.addArguments("--disable-popup-blocking");
-        // options.addArguments("--headless");
 
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("autofill.profile_enabled", false);
