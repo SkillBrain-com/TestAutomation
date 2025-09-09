@@ -1,6 +1,6 @@
 Feature: Checking fees
 
-  @cris
+#  @cris
   Scenario: Creating 2 tickets and checking Fees for an allready created attraction
     Given User navigates to login page
     When User logs in with valid credentials

@@ -4,7 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.skillbrain.page.HomePage;
-import org.skillbrain.page.LoginPage;
 import org.skillbrain.utilities.TestContextSetup;
 
 public class HomePageStepDefinition {
@@ -16,7 +15,6 @@ public class HomePageStepDefinition {
         this.testContextSetup = testContextSetup;
         homePage = testContextSetup.pageObjectFactory.getHomePage();
     }
-
 
     @Then("Check user is logged in")
     public void check_user_is_logged_in() {
@@ -33,7 +31,7 @@ public class HomePageStepDefinition {
         homePage.clickMyAttractions();
     }
 
-    @And("I click on Create attraction button")
+    @And("Click the Create attraction button")
     public void iClickOnCreateAttractionButton() {
         homePage.createAttraction();
     }
