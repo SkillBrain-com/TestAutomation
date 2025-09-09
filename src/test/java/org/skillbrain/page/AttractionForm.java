@@ -1,8 +1,15 @@
 package org.skillbrain.page;
 
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import java.time.Duration;
 
 public class AttractionForm extends BasePage {
 
@@ -13,7 +20,7 @@ public class AttractionForm extends BasePage {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
     }
- }
+
 
     @FindBy(xpath = "//span[normalize-space()='Next'] //parent::button")
     private WebElement nextButton;

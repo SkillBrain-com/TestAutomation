@@ -70,9 +70,10 @@ public class PageObjectFactory {
         approvalTicket = new ApprovalTicket(driver);
         return approvalTicket;
     }
-    public ApproveTicketOrder getApproveATicketOrder(){
-        approveATicketOrder =new ApproveTicketOrder(driver);
+    public ApproveTicketOrder getApproveATicketOrder() {
+        approveATicketOrder = new ApproveTicketOrder(driver);
         return approveATicketOrder;
+    }
 
     public AttractionFormOverviewPage getAttractionFormOverview() {
         attractionFormOverview = new AttractionFormOverviewPage(driver);
