@@ -38,7 +38,6 @@ public class VoucherPageImport extends BasePage {
         PageFactory.initElements(this.voucherNameBox, this);
     }
 
-
     public void FillVoucherBoxName(){
         voucherNameBox.sendKeys("TC10 import vouchers");
     }
@@ -50,21 +49,22 @@ public class VoucherPageImport extends BasePage {
       //  BrowseButton.click();
    // }
 
-    public void ImportTxtFile(){
-        FillInTxtFile();
-        ImportButton.click();
-    }
 
     private void FillInTxtFile() {
         Properties prop = new Properties();
+
         try {
           prop.load(Files.newInputStream(
-              Paths.get(System.getProperty("user.dir") + "/src/test/resources/toUpload/testCase1Voucher.txt")));
+              Paths.get(System.getProperty("user.dir") + "/src/test/resources/toUpload/tc1.csv")));
            //String file1Prop = prop.getProperty("file1.txt");
-           ImportCodes.sendKeys(System.getProperty("user.dir") + "/src/test/resources/toUpload/testCase1Voucher.txt");
+           ImportCodes.sendKeys(System.getProperty("user.dir") + "/src/test/resources/toUpload/tc1.csv");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void ImportTxtFile(){
+        FillInTxtFile();
+        ImportButton.click();
     }
 
     public void ClickSaveButton(){
