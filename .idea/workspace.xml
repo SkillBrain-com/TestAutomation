@@ -4,21 +4,53 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/ApproveATicketOrder.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/approvel.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/ApprovalTicket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/ApproveTicketOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/ApprovalTicketStepDefinition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/ApproveATicketStepDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="Reorganizing own branch.&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;src/test/java/org/skillbrain/cucumberOptions/TestRunner.java">
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormAdvancedPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormCustomerFormPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormGuestFormPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormOverviewPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormPreviewPublishPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormTicketsPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/defaulthub/DefaultHubCheckOutPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/defaulthub/DefaultHubCustomerFormPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/defaulthub/DefaultHubGuestFormPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/defaulthub/DefaultHubTicketsPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/merchant/StripePaymentPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubGuestFormPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubTicketsPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/attractionformsteps/AttractionFormAdvancedStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/attractionformsteps/AttractionFormCustomerFormStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/attractionformsteps/AttractionFormGuestFormStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/attractionformsteps/AttractionFormOverviewStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/attractionformsteps/AttractionFormPreviewPublishStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/attractionformsteps/AttractionFormTicketsStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/defaulthubsteps/DefaultHubCheckOutStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/defaulthubsteps/DefaultHubCustomerFormStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/defaulthubsteps/DefaultHubGuestFormStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/defaulthubsteps/DefaultHubTicketsStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/merchantsteps/StripePaymentStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubCustomerFormStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubGuestFormStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubStepDefinition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubTicketsStepDefinition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/CheckingFees.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/CheckingFees.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/attractions.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/attractions.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/customerForm.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/customerForm.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/oveitHub.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/oveitHub.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/privateInvitation.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/privateInvitation.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/AttractionForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/AttractionForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/BasePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/CustomerFormPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/OveitHubPage.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/PageObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/PageObjectFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/VoucherCreateStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/VoucherCreateStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/PrivateInvitationPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/AttractionFormStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/AttractionFormStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/CustomerFormStepDefinition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/OveitHubStepDefinition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/PrivateInvitationStepDefinition.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +90,9 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="32B55Uiz6k9miVgBZOsHkuxAFjp" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -70,7 +105,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "TestNG.TestRunner.executor": "Run",
-    "git-widget-placeholder": "SM-TM-263d6",
+    "git-widget-placeholder": "#9 on Rebasing Liviu__Sorin__Rusu",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
@@ -193,5 +228,9 @@
       <updated>1756880942896</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="git ignore changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="git ignore changes." />
   </component>
 </project>
