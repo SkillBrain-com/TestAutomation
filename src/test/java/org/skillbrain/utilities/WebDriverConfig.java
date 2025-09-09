@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WebDriverConfig {
 
@@ -21,6 +23,20 @@ public class WebDriverConfig {
         options.addArguments("--start-maximized");
         options.addArguments("--disable-popup-blocking");
         // options.addArguments("--headless");
+
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("autofill.profile_enabled", false);
+        prefs.put("autofill.credit_card_enabled", false);
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.password_manager_enabled", false);
+        prefs.put("profile.default_content_setting_values.notifications", 2);
+
+        options.setExperimentalOption("prefs", prefs);
+
+        options.addArguments("--start-maximized");
+        options.addArguments("--disable-popup-blocking");
+//        options.addArguments("--headless");
+
         return options;
     }
 
