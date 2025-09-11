@@ -1,15 +1,12 @@
 package org.skillbrain.page;
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import java.time.Duration;
 import java.util.ArrayList;
-
 public class TicketPage extends BasePage {
     private final WebDriver driver;
     @FindBy(xpath = "//p[normalize-space()='Edit']")
@@ -64,6 +61,25 @@ public class TicketPage extends BasePage {
         String taxFeeString = AttractionPageFeeBrute.getText();
         return Double.parseDouble(taxFeeString.replaceAll("[^0-9,]", "").replace(",", "."));
     }
+
+        public void FillTicketNameAndPrice ( int price, String name)
+        {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            CreateTicketButton.click();
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            TicketNameField.sendKeys(name);
+            TicketPriceField.sendKeys(String.valueOf(price));
+            SaveTicketButton.click();
+        }
+
 
     public void EditAttraction() {
         EditAttractionButton.click();
@@ -208,3 +224,4 @@ public class TicketPage extends BasePage {
         closeButtonShareMenu.click();
     }
 }
+

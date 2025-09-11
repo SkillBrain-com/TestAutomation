@@ -21,15 +21,8 @@ public class VoucherCreateStepDefinition {
         voucherPage.CreateVoucherButtonClick();
     }
 
-    @And("I input voucher's name")
-    public void iInputVoucherSName() {
-        voucherPage.FillVoucherName();
-    }
 
-    @And("I input voucher's discount")
-    public void iInputVoucherSDiscount() {
-        voucherPage.InputDiscountPercentage();
-    }
+
 
 
     @When("I click on Save button")
@@ -42,10 +35,7 @@ public class VoucherCreateStepDefinition {
         voucherPage.verifyTextPresent(text);
     }
 
-    @And("I input a code manually")
-    public void iInputACodeManually() {
-        voucherPage.InputaCode();
-    }
+
 
     @Then("Delete the voucher")
     public void deleteTheVoucher() {
@@ -72,5 +62,131 @@ public class VoucherCreateStepDefinition {
         voucherPage.ConfirmGenerateCodes();
     }
 
+    @And("I generate a code with each posible combination settings")
+    public void iGenerateACodeWithEachPosibleCombinationSettings() {
+        voucherPage.GenerateCodeEveryCase();
+    }
+
+    @Then("I check the codes if they respect the pattern")
+    public void iCheckTheCodesIfTheyRespectThePattern() {
+        voucherPage.verifyGeneratedCodes();
+
+    }
+
+    @Then("I input a {string} manually")
+    public void iInputAManually(String code) {
+        voucherPage.InputaCode(code);
+    }
+
+
+
+    @Then("I input voucher's discount of {string} \\(STRING)")
+    public void iInputVoucherSDiscountOfSTRING(String discount) {
+        voucherPage.InputDiscountPercentageString(discount);
+    }
+
+    @Then("I check if mandatory fields error appears")
+    public void iCheckIfMandatoryFieldsErrorAppears() {
+        voucherPage.MandatoryFieldsErrorCheck();
+    }
+
+    @Then("I check if the duplicate code error appears.")
+    public void iCheckIfICanHaveDuplicatesCode() {
+        voucherPage.doublecodealert();
+    }
+
+
+    @Then("I input voucher's discount of {double}")
+    public void iInputVoucherSDiscountOf(double x) {
+        voucherPage.InputDiscountPercentage(x);
+    }
+
+    @Then("I import good codes from a txt file")
+    public void iImportGoodCodesFromATxtFile() {
+        voucherPage.AddCodeFile();
+    }
+
+    @Then("I verify if the good code is imported {string}")
+    public void iVerifyIfTheGoodCodeIsImported(String code) {
+        voucherPage.VerifyCode(code);
+    }
+
+    @Then("I click ok on alert")
+    public void iClicOkOnAlert() {
+        voucherPage.IclickOKAllert();
+    }
+
+    @Then("I input voucher's name of {string}")
+    public void iInputVoucherSNameOf(String name) {
+        voucherPage.FillVoucherName(name);
+    }
+
+    @Then("I input the until date to {string}")
+    public void iInputTheUntilDateTo(String date) {
+        voucherPage.UntilDateFill(date);
+    }
+
+    @Then("I verify if the until date changed to today's date")
+    public void iVerifyIfTheUntilDateChangedToTodaySDate() {
+        voucherPage.UntildateVerify();
+    }
+
+    @And("I import a imagine to code section")
+    public void iImportAImagineToCodeSection() {
+        voucherPage.importaImagine();
+    }
+
+    @And("Verify if i get the {string} error")
+    public void verifyIfIGetTheError(String error) {
+        voucherPage.ErrorTextVerify(error);
+    }
+
+    @And("I import a bad format code")
+    public void iImportABadFormatCode() {
+        voucherPage.importaBadCode();
+    }
+
+    @Then("I set number of codes to {string}")
+    public void iSetNumberOfCodesTo(String numberofcodes) {
+        voucherPage.setnumberofcodes(numberofcodes);
+    }
+
+    @Then("I check if an error appears")
+    public void iCheckIfAnErrorAppears() {
+        voucherPage.CheckForCodeGeneratorError();
+    }
+
+    @Then("I set codes length to {string}")
+    public void iSetCodesLenghtTo(String text) {
+        voucherPage.setleghtofcodes(text);
+    }
+
+
+    @Then("I click ok after i generate codes")
+    public void iClickOkAfterIGenerateCodes() {
+        voucherPage.okafterGeneratedcodesclick();
+    }
+
+
+
+    @Then("I verify if the Active from date changed to today's date")
+    public void iVerifyIfTheActiveFromDateChangedToTodaySDate() {
+        voucherPage.ActiveFromdateVerify();
+    }
+
+    @Then("I input the active date to {string}")
+    public void iInputTheActiveDateTo(String data) {
+        voucherPage.fillActiveFromField(data);
+    }
+
+    @And("I delete the code")
+    public void iDeleteTheCode() {
+        voucherPage.RemoveCode();
+    }
+
+    @And("Verify if the code {string} is still active")
+    public void verifyIfTheCodeIsStillActive(String code) {
+        voucherPage.verifyIfCodeisActive(code);
+    }
 
 }
