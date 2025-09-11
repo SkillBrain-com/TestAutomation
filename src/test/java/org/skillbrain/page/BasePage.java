@@ -30,9 +30,6 @@ public class BasePage {
         driverWait.until(ExpectedConditions.presenceOfElementLocated(xpath));
     }
 
-
-
-
     public void waitForVisibility(WebElement element, Duration duration) {
         WebDriverWait wait = new WebDriverWait(driver, duration);
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -43,13 +40,11 @@ public class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-
     public void setWait() {
         if (driverWait == null) {
             driverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
         }
     }
-
 
     public WebDriverWait getDriverWait() {
         return driverWait;
