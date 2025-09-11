@@ -62,6 +62,10 @@ public class VoucherPage extends BasePage {
     private WebElement untilDateField;
     @FindBy(css="div[class=\"modal-body alert alert-danger\"]")
     private WebElement codegeneratorError;
+    @FindBy(css="input[name=\"valid_from_date\"]")
+    private WebElement activeFromField;
+    @FindBy(css="button[data-role=\"delete\"]")
+    WebElement removeButtonCode;
     public VoucherPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -425,5 +429,59 @@ public class VoucherPage extends BasePage {
 
     }
 
-}
+
+
+    public void okafterGeneratedcodesclick()
+    {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        okAfterGeneratedCodes.click();
+    }
+    public void fillActiveFromField(String data)
+    {
+        activeFromField.clear();
+        activeFromField.sendKeys(data);
+    }
+
+    public void ActiveFromdateVerify()
+    {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedToday = today.format(formatter);
+        String untilDateText = activeFromField.getAttribute("value").trim();
+        Assert.assertEquals(untilDateText, formattedToday, "not good");
+    }
+    public void RemoveCode()
+    {
+        removeButtonCode.click();
+    }
+
+
+    public void verifyIfCodeisActive(String code)
+    {
+        boolean notFound = false;
+
+        for (int i = 0; i < 3; i++) {
+            try {
+                driver.findElement(By.xpath("//*[contains(text(),'" + code + "')]"));
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                notFound = true;
+                break;
+            }
+        }
+
+        Assert.assertTrue(notFound, "nu e ok");
+}}
+
+
+
 
