@@ -15,21 +15,17 @@ public class PageObjectFactory {
     private AttractionForm attractionForm;
     private VoucherPage voucherPage;
     private TicketPage ticketPage;
-
     private AttractionFormOverviewPage attractionFormOverview;
     private AttractionFormTicketsPage attractionFormTickets;
     private AttractionFormAdvancedPage attractionFormAdvanced;
     private AttractionFormCustomerFormPage attractionFormCustomerForm;
     private AttractionFormGuestFormPage attractionFormGuestForm;
     private AttractionFormPreviewPublishPage attractionFormPreviewPublish;
-
     private DefaultHubCheckOutPage defaultHubCheckOut;
     private DefaultHubCustomerFormPage defaultHubCustomerForm;
     private DefaultHubGuestFormPage defaultHubGuestForm;
     private DefaultHubTicketsPage defaultHubTickets;
-
     private StripePaymentPage stripePayment;
-
     private OveitHubCustomerFormPage oveitHubCustomerForm;
     private OveitHubGuestFormPage oveitHubGuestForm;
     private OveitHubPage oveitHub;
@@ -37,7 +33,6 @@ public class PageObjectFactory {
 
    private ApprovalTicket approvalTicket;
    private ApproveTicketOrder approveATicketOrder;
-
 //    dependency injection
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;

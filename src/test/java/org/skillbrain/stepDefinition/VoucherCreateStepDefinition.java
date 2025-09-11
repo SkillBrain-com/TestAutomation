@@ -72,5 +72,4 @@ public class VoucherCreateStepDefinition {
         voucherPage.ConfirmGenerateCodes();
     }
 
-
 }
