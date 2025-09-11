@@ -2,6 +2,7 @@ package org.skillbrain.page;
 
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -255,7 +256,10 @@ public class AttractionForm extends BasePage {
         waitForVisibility(nextButton3, Duration.ofSeconds(10));
         setWait();
         WebDriverWait driverWait = getDriverWait();
-        nextButton3.click();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(nextButton3).perform();
+        actions.click(nextButton3).perform();
+        //nextButton3.click();
     }
 
     public void insertTheString() {
