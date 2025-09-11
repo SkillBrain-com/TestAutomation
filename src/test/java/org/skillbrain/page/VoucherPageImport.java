@@ -1,16 +1,16 @@
 package org.skillbrain.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-import java.io.IOException;
-import java.nio.file.Files;
+import java.io.File;
 import java.nio.file.Paths;
 import java.time.Duration;
-import java.util.Properties;
+import java.util.List;
 
 public class VoucherPageImport extends BasePage {
 
@@ -18,62 +18,62 @@ public class VoucherPageImport extends BasePage {
     @FindBy(xpath = ("//input[@name='name']"))
     private WebElement voucherNameBox;
     @FindBy(xpath = ("//input[@name='discount']"))
-    WebElement DiscountBox;
+    private WebElement discountBox;
     //@FindBy(css = (".btn.btn-default.btn-file.btn-sm"))
     //WebElement BrowseButton;
     @FindBy(xpath = ("//div[@class='form-control-file']//input[@type='text']"))
-    WebElement ImportCodes;
+    private WebElement importCodes;
     @FindBy(xpath = ("(//button[@class='btn btn-primary btn-sm'])[2]"))
-    WebElement ImportButton;
+    private WebElement importButton;
     @FindBy(xpath = ("//span[text()=' Save '] //parent::button"))
-    WebElement SaveButton;
+    private WebElement saveButton;
+    @FindBy(css = ".alert-message")
+    private WebElement importResultMessage;
     @FindBy(xpath = ("//h2[normalize-space()='All discount vouchers']"))
-    WebElement AllDiscountVouchers;
+    private WebElement allDiscountVouchers;
 
 
     public VoucherPageImport(WebDriver driver) {
         super(driver);
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
-        PageFactory.initElements(this.voucherNameBox, this);
+
     }
 
-    public void FillVoucherBoxName(){
-        voucherNameBox.sendKeys("TC10 import vouchers");
+    public void FillVoucherBoxName(String voucherName){
+        voucherNameBox.sendKeys(voucherName);
     }
 
-    public void FillDiscountBox(){
-        DiscountBox.sendKeys("10");
+    public void FillDiscountBox(String discount){
+        discountBox.sendKeys(discount);
     }
-    //public void PressBrowseButton(){
-      //  BrowseButton.click();
-   // }
 
+    private void FillInTxtFile(String file){
 
-    private void FillInTxtFile() {
-        Properties prop = new Properties();
-
-        try {
-          prop.load(Files.newInputStream(
-              Paths.get(System.getProperty("user.dir") + "/src/test/resources/toUpload/tc1.csv")));
-           //String file1Prop = prop.getProperty("file1.txt");
-           ImportCodes.sendKeys(System.getProperty("user.dir") + "/src/test/resources/toUpload/tc1.csv");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        String baseDir = System.getProperty("user.dir") + "/src/test/resources/toUpload/";
+        String filePath = Paths.get(baseDir, file).toString();
+        File f = new File(filePath);
+        if (!f.exists()) {
+            throw new RuntimeException("Fișierul nu există: " + filePath);
         }
+
+        importCodes.sendKeys(filePath);
     }
-    public void ImportTxtFile(){
-        FillInTxtFile();
-        ImportButton.click();
+
+    public void ImportTxtFile( String file){
+        FillInTxtFile(file);
+        importButton.click();
     }
 
     public void ClickSaveButton(){
-        waitForVisibility(SaveButton, Duration.ofSeconds(5));
-        SaveButton.click();
+        waitForText("Save", Duration.ofSeconds(20));
+        saveButton.click();
     }
 
-    public void CheckedSavedVouchers(){
-        Assert.assertTrue(AllDiscountVouchers.isDisplayed());
+    public boolean isVoucherPresent(String voucherName) {
+        List<WebElement> vouchers = driver.findElements(
+                By.xpath("//table//td[normalize-space(text())='" + voucherName + "']")
+        );
+        return !vouchers.isEmpty();
     }
-
 }
