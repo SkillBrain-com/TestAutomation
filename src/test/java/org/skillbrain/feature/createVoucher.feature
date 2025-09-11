@@ -1,4 +1,5 @@
 Feature: Create voucher feature
+
   @cris
   Scenario: Create attraction without filling in mandatory fields
     Given User navigates to login page

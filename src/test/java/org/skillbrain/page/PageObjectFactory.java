@@ -8,7 +8,6 @@ import org.skillbrain.page.echipa1.merchant.*;
 import org.skillbrain.page.echipa1.oveithub.*;
 
 public class PageObjectFactory {
-
     private WebDriver driver;
     private LoginPage loginPage;
     private HomePage homePage;
@@ -30,10 +29,10 @@ public class PageObjectFactory {
     private OveitHubGuestFormPage oveitHubGuestForm;
     private OveitHubPage oveitHub;
     private OveitHubTicketsPage oveitHubTickets;
-
    private ApprovalTicket approvalTicket;
    private ApproveTicketOrder approveATicketOrder;
-//    dependency injection
+
+
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;
     }
@@ -61,6 +60,7 @@ public class PageObjectFactory {
         ticketPage = new TicketPage(driver);
         return ticketPage;
     }
+
     public ApprovalTicket getApprovalTicket(){
         approvalTicket = new ApprovalTicket(driver);
         return approvalTicket;

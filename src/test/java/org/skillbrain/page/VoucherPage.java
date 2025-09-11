@@ -9,8 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import java.time.Duration;
 public class VoucherPage extends BasePage {
-
-
     private final WebDriver driver;
     @FindBy(css = ("div[class='ripple']"))
     WebElement CreateVoucherButton;
@@ -109,24 +107,21 @@ public class VoucherPage extends BasePage {
 
     public void ConfirmGenerateCodes() {
 
-        for (int i = 0; i <3 ; i++) {
-            try{
+
+
+        for (int i = 0; i < 3; i++) {
+            try {
 
                 waitForText("Code generator", Duration.ofSeconds(5));
                 generateCodesButton.click();
                 waitForText("Results", Duration.ofSeconds(5));
                 okAfterGeneratedCodes.click();
                 break;
-
             }
-            catch(ElementNotInteractableException E)
-            {
+             catch (ElementNotInteractableException E) {
                 continue;
             }
 
-
         }
-
     }
-
 }
