@@ -3,11 +3,20 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class VoucherPage extends BasePage {
     private final WebDriver driver;
     @FindBy(css = ("div[class='ripple']"))
@@ -37,7 +46,22 @@ public class VoucherPage extends BasePage {
     private WebElement generateCodesButton;
     @FindBy(xpath = "//button[span[normalize-space()='OK']]")
     private WebElement okAfterGeneratedCodes;
-
+    @FindBy(css = "input[value=\"alpha_lower\"]")
+    private WebElement LowerCaseCheckBox;
+    @FindBy(css = "input[value=\"alpha_upper\"]")
+    private WebElement UpperCaseCheckBox;
+    @FindBy(css = "input[value=\"digits\"]")
+    private WebElement DigitCheckBox;
+    @FindBy(css="div[class=\"alert alert-error\"]")
+    private WebElement ErrorMandatoryFields;
+    @FindBy(xpath = "//*[contains(text(),'Browse')]")
+    private WebElement browseButton;
+    @FindBy(css="button svg[data-icon='upload']")
+    private WebElement submitFileButton;
+    @FindBy(css="input[name=\"valid_to_date\"]")
+    private WebElement untilDateField;
+    @FindBy(css="div[class=\"modal-body alert alert-danger\"]")
+    private WebElement codegeneratorError;
     public VoucherPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -48,17 +72,31 @@ public class VoucherPage extends BasePage {
         CreateVoucherButton.click();
     }
 
-    public void FillVoucherName() {
-        VoucherNameInput.sendKeys("VOUCHERTEST22142");
+    public void FillVoucherName(String name) {
+        VoucherNameInput.sendKeys(name);
     }
 
-    public void InputDiscountPercentage() {
-        DiscoutPercentInput.sendKeys("22");
+    public void InputDiscountPercentage(double x) {
+        DiscoutPercentInput.sendKeys(String.valueOf(x));
+    }
+    public void InputDiscountPercentageString(String discount) {
+        DiscoutPercentInput.clear();
+        DiscoutPercentInput.sendKeys(discount);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void InputaCode() {
-        ManualCodeInput.sendKeys("celmaitestatcod");
+    public void InputaCode(String code) {
+        ManualCodeInput.sendKeys(code);
         AddCodeButton.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void ClickSaveButton() {
@@ -124,4 +162,268 @@ public class VoucherPage extends BasePage {
 
         }
     }
+    public void GenerateCodeEveryCase() {
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+
+        for (int i = 1; i <= 7; i++) {
+            switch (i) {
+                case 1: // toate
+                    driverWait.until(ExpectedConditions.elementToBeClickable(openGeneratorButton)).click();
+                    numberOfCodesField.sendKeys("1");
+                    driverWait.until(ExpectedConditions.elementToBeClickable(generateCodesButton)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(okAfterGeneratedCodes)).click();
+                    break;
+
+                case 2: // mici + cifre
+                    driverWait.until(ExpectedConditions.elementToBeClickable(openGeneratorButton)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(UpperCaseCheckBox)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(generateCodesButton)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(okAfterGeneratedCodes)).click();
+                    break;
+
+                case 3: // mici
+                    driverWait.until(ExpectedConditions.elementToBeClickable(openGeneratorButton)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(DigitCheckBox)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(generateCodesButton)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(okAfterGeneratedCodes)).click();
+                    break;
+
+                case 4: // mari
+                    driverWait.until(ExpectedConditions.elementToBeClickable(openGeneratorButton)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(LowerCaseCheckBox)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(DigitCheckBox)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(generateCodesButton)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(okAfterGeneratedCodes)).click();
+                    break;
+
+                case 5: // mari + cifre
+                    driverWait.until(ExpectedConditions.elementToBeClickable(openGeneratorButton)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(LowerCaseCheckBox)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(generateCodesButton)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(okAfterGeneratedCodes)).click();
+                    break;
+
+                case 6: // cifre
+                    driverWait.until(ExpectedConditions.elementToBeClickable(openGeneratorButton)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(UpperCaseCheckBox)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(LowerCaseCheckBox)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(generateCodesButton)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(okAfterGeneratedCodes)).click();
+                    break;
+
+                case 7: // mici + mari
+                    driverWait.until(ExpectedConditions.elementToBeClickable(openGeneratorButton)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(DigitCheckBox)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(generateCodesButton)).click();
+                    driverWait.until(ExpectedConditions.elementToBeClickable(okAfterGeneratedCodes)).click();
+                    break;
+            }
+        }
+    }
+
+    public void verifyGeneratedCodes() {
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+
+
+        List<WebElement> codeElements = driver.findElements(By.xpath("//table[contains(@class,'dataTable')]//tbody//tr/td[1]//code"));
+
+
+        ArrayList<String> codes = new ArrayList<>();
+        for (WebElement el : codeElements) {
+            codes.add(el.getText().trim());
+        }
+
+
+        for (int i = 0; i < codes.size(); i++) {
+            String code = codes.get(i);
+            boolean ok;
+
+            switch (i + 1) {
+                case 1: // L U D -> lowercase + uppercase + digits permise
+                    ok = code.matches("^[a-zA-Z0-9]+$");
+                    break;
+
+                case 2: // L D -> lowercase + digits
+                    ok = code.matches("^[a-z0-9]+$");
+                    break;
+
+                case 3: // L -> doar lowercase
+                    ok = code.matches("^[a-z]+$");
+                    break;
+
+                case 4: // D -> doar cifre
+                    ok = code.matches("^\\d+$");
+                    break;
+
+                case 5: // L D -> lowercase + digits
+                    ok = code.matches("^[a-z0-9]+$");
+                    break;
+
+                case 6: // U D -> uppercase + digits
+                    ok = code.matches("^[A-Z0-9]+$");
+                    break;
+
+                case 7: // U -> doar uppercase
+                    ok = code.matches("^[A-Z]+$");
+                    break;
+
+                default:
+                    ok = false;
+                    break;
+            }
+
+            Assert.assertTrue(ok, "Case " + (i+1) + " FAIL " + code);
+        }
+    }
+    public void MandatoryFieldsErrorCheck() {
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+
+        try {
+            driverWait.withTimeout(Duration.ofSeconds(4))
+                    .until(ExpectedConditions.visibilityOf(ErrorMandatoryFields));
+
+            Assert.assertTrue(ErrorMandatoryFields.isDisplayed(),
+                    "e vizibila");
+
+        } catch (TimeoutException e) {
+            Assert.fail("nu a aparut");
+        }
+    }
+    public void doublecodealert()
+    {
+        setWait();
+        WebDriverWait wait = getDriverWait();
+
+        try {
+
+            Alert alert = wait.withTimeout(Duration.ofSeconds(2))
+                    .until(ExpectedConditions.alertIsPresent());
+            alert.accept();
+
+        } catch (TimeoutException e) {
+            Assert.fail("NU apare eroare");
+        }
+
+    }
+    public void AddCodeFile()
+    {
+        setWait();
+        WebDriverWait wait = getDriverWait();
+        WebElement fileInput = driver.findElement(By.cssSelector("input[type='file']"));
+        fileInput.sendKeys("C:\\Users\\User\\Desktop\\oveit\\src\\test\\resources\\codecorecte.txt");
+        wait.withTimeout(Duration.ofSeconds(4))
+                .until(ExpectedConditions.visibilityOf(submitFileButton));
+        submitFileButton.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    public void IclickOKAllert()
+    {
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void VerifyCode(String code)
+    {  waitForText(code,Duration.ofSeconds(2));
+        String bodyText = driver.findElement(By.tagName("body")).getText();
+        Assert.assertTrue(bodyText.contains(code));
+    }
+
+    public void UntilDateFill(String date)
+    {
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+        driverWait.until(ExpectedConditions.elementToBeClickable(untilDateField)).sendKeys(date);
+    }
+
+    public void UntildateVerify()
+    {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedToday = today.format(formatter);
+        String untilDateText = untilDateField.getAttribute("value").trim();
+        Assert.assertEquals(untilDateText, formattedToday, "not good");
+    }
+
+    public void importaImagine()
+    {
+        setWait();
+        WebDriverWait wait = getDriverWait();
+        WebElement fileInput = driver.findElement(By.cssSelector("input[type='file']"));
+        fileInput.sendKeys("C:\\Users\\User\\Desktop\\oveit\\src\\test\\resources\\poza.jpg");
+        wait.withTimeout(Duration.ofSeconds(4))
+                .until(ExpectedConditions.visibilityOf(submitFileButton));
+        submitFileButton.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void ErrorTextVerify(String error)
+    {
+        setWait();
+        WebDriverWait driverWait =getDriverWait();
+        Alert alert = driverWait.until(ExpectedConditions.alertIsPresent());
+        String alertText = alert.getText();
+        Assert.assertEquals(alertText, error, "error");
+        alert.accept();
+    }
+
+    public void importaBadCode()
+    {
+        setWait();
+        WebDriverWait wait = getDriverWait();
+        WebElement fileInput = driver.findElement(By.cssSelector("input[type='file']"));
+        fileInput.sendKeys("C:\\Users\\User\\Desktop\\oveit\\src\\test\\resources\\codrau.txt");
+        wait.withTimeout(Duration.ofSeconds(4))
+                .until(ExpectedConditions.visibilityOf(submitFileButton));
+        submitFileButton.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void setnumberofcodes(String text)
+    {
+        numberOfCodesField.sendKeys(text);
+
+    }
+    public void CheckForCodeGeneratorError()
+    {
+        try {
+            setWait();
+            WebDriverWait driverWait =getDriverWait();
+            driverWait.until(ExpectedConditions.visibilityOf(codegeneratorError));
+        } catch (TimeoutException e) {
+            Assert.fail("nu apare erroarea");
+        }
+    }
+
+    public void setleghtofcodes(String text)
+    {
+        lenghtOfCodeField.sendKeys(text);
+
+    }
+
 }
+
