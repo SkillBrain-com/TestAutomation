@@ -36,7 +36,7 @@ public class PrivateTicketStepDefinition {
 
     @Then("I click again on Next button")
     public void ClickAgainOnNextButton() {
-        privateTicket.ClickOnNextButton();
+        privateTicket.ClickAgainOnNextButton();
     }
 
     @And("I insert the {string}")
