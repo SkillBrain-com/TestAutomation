@@ -29,10 +29,9 @@ public class TicketFeeStepDefinition
 
     @Then("I create a ticket with the price {double} ron and with the name  {string} with tax not included")
     public void iCreateATicketWithThePriceRonAndWithTheNameWithTaxNotIncluded(double price, String name) {
-
         ticketPage.FillTicketNameAndPrice(price,name);
-
         ticketPage.FillTicketNameAndPrice(150,"testbilet123");
+        ticketPage.FillTicketNameAndPrice(price,name);
 
     }
 
@@ -42,6 +41,12 @@ public class TicketFeeStepDefinition
     }
 
     @Then("I check if ticket with the {string} appears with the price {double} and the corect fee")
+
+
+    public void iCheckIfTicketWithTheAppearsWithThePriceAndTheCorectFee(String name, int price) {
+        ticketPage.CheckingFee(price);
+    }
+
 
     public void iCheckIfTicketWithTheAppearsWithThePriceAndTheCorectFee(String name, double price) {
         ticketPage.CheckingFee(price);
@@ -85,10 +90,6 @@ public class TicketFeeStepDefinition
     @And("I close Share menu")
     public void iCloseShareMenu() {
         ticketPage.closeShareMenu();
-    }
-
-    public void iCheckIfTicketWithTheAppearsWithThePriceAndTheCorectFee(String name, int price) {
-        ticketPage.CheckingFee(price);
     }
 
 }
