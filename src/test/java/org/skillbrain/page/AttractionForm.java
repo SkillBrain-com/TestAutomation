@@ -205,8 +205,18 @@ public class AttractionForm extends BasePage {
     @FindBy(xpath = "//span[contains(text(),'Ticket configuration')] //parent::div")
     private WebElement ticketConfigurationButton;
 
-    @FindBy(xpath = "//div[span[text()='Ticket visibility']]")
+    @FindBy(xpath = "//span[contains(.,'Ticket visibility')]")
     private WebElement ticketVisibilityButton;
+
+    @FindBy(css = "input[name='visibility'][value='private']")
+    private WebElement privateInvitationButton;
+
+    @FindBy(css = "input[placeholder='e.g. CNBvXh7d']")
+    private WebElement invitationCode;
+
+    @FindBy(xpath = "//button[.//span[normalize-space()='Next']]")
+    private WebElement nextButton3;
+
 
     public void clickTicketConfiguration() {
         waitForVisibility(ticketConfigurationButton, Duration.ofSeconds(10));
@@ -224,22 +234,34 @@ public class AttractionForm extends BasePage {
     }
 
     public void clickOnTicketVisibility() {
-        setWait();
-        WebDriverWait driverWait = getDriverWait();
-        driverWait.until(ExpectedConditions.visibilityOf(ticketVisibilityButton));
+        scrollToElement(ticketVisibilityButton);
         ticketVisibilityButton.click();
     }
 
     public void clickOnPrivateInvitation() {
+        waitForVisibility(privateInvitationButton, Duration.ofSeconds(10));
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+        privateInvitationButton.click();
     }
 
     public void fillTheInvitationCode() {
+        waitForVisibility(invitationCode, Duration.ofSeconds(10));
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+        invitationCode.sendKeys("1234");
     }
 
-    public void ClickOnNextButton() {
+    public void ClickAgainOnNextButton() {
+        scrollToElement(nextButton3);
+        waitForVisibility(nextButton3, Duration.ofSeconds(10));
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+        nextButton3.click();
     }
 
     public void insertTheString() {
+
     }
 
     public void insertTheEmailAdress() {
@@ -250,5 +272,7 @@ public class AttractionForm extends BasePage {
 
     public void clickOnPublishAttraction() {
     }
-
 }
+
+
+
