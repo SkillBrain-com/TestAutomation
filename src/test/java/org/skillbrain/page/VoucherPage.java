@@ -12,6 +12,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -64,6 +65,17 @@ public class VoucherPage extends BasePage {
     private WebElement codegeneratorError;
     @FindBy(css = "input[name=\"valid_from_date\"]")
     private WebElement activeFromField;
+    @FindBy(css="input[id=\"voucherCode\"]")
+    WebElement VoucherCodeInputField;
+    @FindBy(css = "button[data-slot='button']")
+    private WebElement ApplyButton;
+    private String code1;
+    private String code2;
+    private String code3;
+    private String code4;
+    private String code5;
+    private String code6;
+    private String code7;
 
     public VoucherPage(WebDriver driver) {
         super(driver);
@@ -228,6 +240,7 @@ public class VoucherPage extends BasePage {
             switch (i) {
                 case 1: // toate
                     driverWait.until(ExpectedConditions.elementToBeClickable(openGeneratorButton)).click();
+                    numberOfCodesField.clear();
                     numberOfCodesField.sendKeys("1");
                     driverWait.until(ExpectedConditions.elementToBeClickable(generateCodesButton)).click();
                     driverWait.until(ExpectedConditions.elementToBeClickable(okAfterGeneratedCodes)).click();
@@ -240,14 +253,14 @@ public class VoucherPage extends BasePage {
                     driverWait.until(ExpectedConditions.elementToBeClickable(okAfterGeneratedCodes)).click();
                     break;
 
-                case 3: // mici
+                case 3: // doar mici
                     driverWait.until(ExpectedConditions.elementToBeClickable(openGeneratorButton)).click();
                     driverWait.until(ExpectedConditions.elementToBeClickable(DigitCheckBox)).click();
                     driverWait.until(ExpectedConditions.elementToBeClickable(generateCodesButton)).click();
                     driverWait.until(ExpectedConditions.elementToBeClickable(okAfterGeneratedCodes)).click();
                     break;
 
-                case 4: // mari
+                case 4: // doar mari
                     driverWait.until(ExpectedConditions.elementToBeClickable(openGeneratorButton)).click();
                     driverWait.until(ExpectedConditions.elementToBeClickable(LowerCaseCheckBox)).click();
                     driverWait.until(ExpectedConditions.elementToBeClickable(DigitCheckBox)).click();
@@ -262,7 +275,7 @@ public class VoucherPage extends BasePage {
                     driverWait.until(ExpectedConditions.elementToBeClickable(okAfterGeneratedCodes)).click();
                     break;
 
-                case 6: // cifre
+                case 6: // doar cifre
                     driverWait.until(ExpectedConditions.elementToBeClickable(openGeneratorButton)).click();
                     driverWait.until(ExpectedConditions.elementToBeClickable(UpperCaseCheckBox)).click();
                     driverWait.until(ExpectedConditions.elementToBeClickable(LowerCaseCheckBox)).click();
@@ -277,8 +290,27 @@ public class VoucherPage extends BasePage {
                     driverWait.until(ExpectedConditions.elementToBeClickable(okAfterGeneratedCodes)).click();
                     break;
             }
+            WebElement lastCode = driverWait.until(
+                    ExpectedConditions.visibilityOfElementLocated(
+                            By.xpath("//table[contains(@class,'dataTable')]//tbody//tr[last()]/td[1]//code")
+                    )
+            );
+            String generatedCode = lastCode.getText().trim();
+            switch (i) {
+                case 1: code1 = generatedCode; break;
+                case 2: code2 = generatedCode; break;
+                case 3: code3 = generatedCode; break;
+                case 4: code4 = generatedCode; break;
+                case 5: code5 = generatedCode; break;
+                case 6: code6 = generatedCode; break;
+                case 7: code7 = generatedCode; break;
+            }
+
+
         }
+
     }
+
 
     public void verifyGeneratedCodes() {
         setWait();
@@ -472,7 +504,71 @@ public class VoucherPage extends BasePage {
 
     }
 
+public void ApplyVoucherOnTicket(String code) {
+    try {
+        Thread.sleep(2000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+    VoucherCodeInputField.sendKeys(code);
+    try {
+        Thread.sleep(2000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+    ApplyButton.click();
+    try {
+        Thread.sleep(2000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
 
+    }
 }
+    public void checkFeeAfterVoucher(double discount, double beforePrice) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement priceElement = wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='p2-semibold']"))
+        );
+        String priceText = priceElement.getText();
+        String numericValue = priceText.replaceAll("[^0-9,\\.]", "").replace(",", ".");
+        double price = Double.parseDouble(numericValue);
+        double expectedPrice = beforePrice - (beforePrice * discount / 100);
+        Assert.assertEquals(price, expectedPrice, 0.01,
+                "Price after discount is not good!");
+    }
 
+
+    public void applyAllSavedCodesAndVerify(double discount,double beforePrice) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+
+        List<String> codes = Arrays.asList(code1, code2, code3, code4, code5, code6, code7);
+
+        for (int i = 0; i < codes.size(); i++) {
+            String code = codes.get(i);
+            WebElement input = wait.until(ExpectedConditions.elementToBeClickable(VoucherCodeInputField));
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            input.clear();
+            input.sendKeys(code);
+            wait.until(ExpectedConditions.elementToBeClickable(ApplyButton)).click();
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            checkFeeAfterVoucher(discount, beforePrice);
+            driver.navigate().refresh();
+            wait.until(ExpectedConditions.elementToBeClickable(ApplyButton));
+        }
+    }
+
+    public void RefreshPage()
+    {
+        driver.navigate().refresh();
+    }
+}
 

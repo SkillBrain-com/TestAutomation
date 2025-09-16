@@ -62,7 +62,6 @@ public class TicketPage extends BasePage {
         return Double.parseDouble(taxFeeString.replaceAll("[^0-9,]", "").replace(",", "."));
     }
 
-
         public void FillTicketNameAndPrice ( int price, String name)
         {
             try {
@@ -78,8 +77,8 @@ public class TicketPage extends BasePage {
             }
             TicketNameField.sendKeys(name);
             TicketPriceField.sendKeys(String.valueOf(price));
-            SaveTicketButton.click();
-        }
+            SaveTicketButton.click();}
+
 
 
     public void EditAttraction() {
@@ -87,6 +86,11 @@ public class TicketPage extends BasePage {
     }
 
     public void TicketPageTab() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         TicketPageButton.click();
     }
 
@@ -223,13 +227,18 @@ public class TicketPage extends BasePage {
 
 
     public void closeShareMenu() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        WebElement closeButton = wait.until(
+                ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@data-dismiss='modal' and normalize-space()='Close']"))
+        );
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", closeButton);
+        wait.until(ExpectedConditions.elementToBeClickable(closeButton));
         try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            closeButton.click();
+        } catch (Exception e) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", closeButton);
         }
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", closeButtonShareMenu);
-        closeButtonShareMenu.click();
     }
 
 

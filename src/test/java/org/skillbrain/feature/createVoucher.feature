@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-
-
 
 Feature: Testing voucher page
-
   Scenario: Create attraction without filling in mandatory fields
     Given User navigates to login page
     When User logs in with valid credentials

@@ -59,6 +59,10 @@ public class HomePage extends BasePage {
         Assert.assertTrue(createEventButton.isDisplayed());
     }
     public void clickVouchers() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // timeout 20s
+        WebElement voucherBtn = wait.until(
+                ExpectedConditions.elementToBeClickable(voucherButton) // sau By.xpath("...") etc.
+        );
         voucherButton.click();
     }
 
