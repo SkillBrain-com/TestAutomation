@@ -11,6 +11,7 @@ public class PageObjectFactory {
     private VoucherPage voucherPage;
     private TicketPage ticketPage;
     private AttractionForm privateTicket;
+    private AttractionForm customerForm;
 
     //    dependency injection
     public PageObjectFactory(WebDriver driver) {
@@ -45,5 +46,10 @@ public class PageObjectFactory {
     public AttractionForm getPrivateTicket() {
         privateTicket = new AttractionForm(driver);
         return privateTicket;
+    }
+
+    public AttractionForm getCustomerForm() {
+        customerForm = new AttractionForm(driver);
+        return customerForm;
     }
 }
