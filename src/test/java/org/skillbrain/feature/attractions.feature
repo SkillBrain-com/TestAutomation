@@ -1,5 +1,5 @@
 Feature: Create attractions feature
-  @cris
+
   Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method.
     Given User navigates to login page
     When User logs in with valid credentials

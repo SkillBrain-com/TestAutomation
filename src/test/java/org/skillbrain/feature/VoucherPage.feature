@@ -152,7 +152,7 @@ Feature: Verifying generate codes feature
     Then I click on Save button
     And I delete the attraction
 
-@cris
+
   Scenario: I input into the until field a past date 2025-07-07                                         // e BUG , data se schimba doar daca apesi enter dupa, daca lasi textul si apesi pe altceva nu se schimba si poti face un voucher ce e valabil pana in trecut
     Given User navigates to login page
     When User logs in with valid credentials
@@ -317,3 +317,138 @@ Feature: Verifying generate codes feature
     And I delete the code
     And I click ok on alert
     And Verify if the code "codunidasdc22" is still active
+
+
+  Scenario: I create a voucher with the a manually added code and check the price after i applied the voucher
+    Given User navigates to login page
+    When User logs in with valid credentials
+    Then Check user is logged in
+    When I click on attractions sidebar
+    When I click on Vouchers
+    And I click on Create voucher button
+    And I input voucher's name of "Adrian"
+    And I input voucher's discount of 22
+    And I input a "codunidasdc22" manually
+    And I click on Save button
+    And I click on my attractions
+    And Click the Create attraction button
+    And I input the mandatory field of a attractions with the name "Test223" and location "Cluj"
+    Then I click on my tickets of attraction
+    Then I create a ticket with the price 150 ron and with the name  "name" with tax not included
+    Then I click on Preview & Publish of my aplication
+    Then I publish my attraction
+    Then I click share button
+    And  I open AttractionPage
+    And I click buy now
+    And I apply the voucher code "codunidasdc22"
+    And I check if the discount of 22 applied to the price of 150
+    And I change to the home page
+    Then I close Share menu
+    Then I click on attractions sidebar
+    And I click on Vouchers
+    And Delete the voucher
+    And I click on my attractions
+    And I delete the attraction
+
+
+  Scenario: I create a voucher with the a imported from txt code and check the price after i applied the voucher
+    Given User navigates to login page
+    When User logs in with valid credentials
+    Then Check user is logged in
+    When I click on attractions sidebar
+    When I click on Vouchers
+    And I click on Create voucher button
+    And I input voucher's name of "Adrian"
+    And I input voucher's discount of 22
+    And I import good codes from a txt file
+    And I click ok on alert
+    And I click on Save button
+    And I click on my attractions
+    And Click the Create attraction button
+    And I input the mandatory field of a attractions with the name "Test223" and location "Cluj"
+    Then I click on my tickets of attraction
+    Then I create a ticket with the price 150 ron and with the name  "name" with tax not included
+    Then I click on Preview & Publish of my aplication
+    Then I publish my attraction
+    Then I click share button
+    And  I open AttractionPage
+    And I click buy now
+    And I apply the voucher code "2210adrian"
+    And I check if the discount of 22 applied to the price of 150
+    And I change to the home page
+    Then I close Share menu
+    Then I click on attractions sidebar
+    And I click on Vouchers
+    And Delete the voucher
+    And I click on my attractions
+    And I delete the attraction
+
+
+  Scenario: I create a voucher with the every possible generated code and check the price after i applied the voucher for each one
+    Given User navigates to login page
+    When User logs in with valid credentials
+    Then Check user is logged in
+    When I click on attractions sidebar
+    When I click on Vouchers
+    And I click on Create voucher button
+    And I input voucher's name of "Adrian"
+    And I input voucher's discount of 22
+    And I generate a code with each posible combination settings
+    And I click on Save button
+    And I click on my attractions
+    And Click the Create attraction button
+    And I input the mandatory field of a attractions with the name "Test223" and location "Cluj"
+    Then I click on my tickets of attraction
+    Then I create a ticket with the price 150 ron and with the name  "name" with tax not included
+    Then I click on Preview & Publish of my aplication
+    Then I publish my attraction
+    Then I click share button
+    And  I open AttractionPage
+    And I click buy now
+    And i input every code generated and check if the prices is discount by 22 from 150 lei
+    And I change to the home page
+    Then I close Share menu
+    Then I click on attractions sidebar
+    And I click on Vouchers
+    And Delete the voucher
+    And I click on my attractions
+    And I delete the attraction
+
+  @radu
+  Scenario: I create a voucher with the every way of adding a code and i check them
+    Given User navigates to login page
+    When User logs in with valid credentials
+    Then Check user is logged in
+    When I click on attractions sidebar
+    When I click on Vouchers
+    And I click on Create voucher button
+    And I input voucher's name of "Adrian"
+    And I input voucher's discount of 22
+    And I generate a code with each posible combination settings
+    And I input a "Adrian2212" manually
+    And I import good codes from a txt file
+    And I click ok on alert
+    And I click on Save button
+    And I click on my attractions
+    And Click the Create attraction button
+    And I input the mandatory field of a attractions with the name "Test223" and location "Cluj"
+    Then I click on my tickets of attraction
+    Then I create a ticket with the price 150 ron and with the name  "name" with tax not included
+    Then I click on Preview & Publish of my aplication
+    Then I publish my attraction
+    Then I click share button
+    And  I open AttractionPage
+    And I click buy now
+    And i input every code generated and check if the prices is discount by 22 from 150 lei
+    And I apply the voucher code "2210adrian"
+    And I check if the discount of 22 applied to the price of 150
+    And I refresh the page
+    And I apply the voucher code "Adrian2212"
+    And I check if the discount of 22 applied to the price of 150
+    And I change to the home page
+    Then I close Share menu
+    Then I click on attractions sidebar
+    And I click on Vouchers
+    And Delete the voucher
+    And I click on my attractions
+    And I delete the attraction

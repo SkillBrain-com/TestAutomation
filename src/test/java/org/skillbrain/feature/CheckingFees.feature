@@ -26,3 +26,5 @@ Feature: Checking fees
     Then I delete the attraction
     When I click on attractions sidebar
     And I click on my attractions
+
+

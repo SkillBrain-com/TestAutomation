@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/ApproveATicketOrder.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/approvel.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/ApprovalTicket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/ApproveTicketOrder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/ApprovalTicketStepDefinition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/ApproveATicketStepDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/BasePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/PageObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/PageObjectFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/VoucherCreateStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/VoucherCreateStepDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java" afterDir="false" />
-    </list>
+    <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,8 +33,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:SkillBrain-com/TestAutomation.git&quot;,
-    &quot;accountId&quot;: &quot;10822f6e-3e39-4747-84c1-60875e0f927e&quot;
+    &quot;url&quot;: &quot;https://github.com/SkillBrain-com/TestAutomation.git&quot;,
+    &quot;accountId&quot;: &quot;30ff04e7-0d24-4157-b590-9b137d065851&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -62,20 +46,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Cucumber Java.Feature: ApproveATicketOrder.executor": "Run",
-    "Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "TestNG.TestRunner.executor": "Run",
-    "git-widget-placeholder": "SM-TM-263d6",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Cucumber Java.Feature: ApproveATicketOrder.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;TestNG.TestRunner.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Mare&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="TestNG.TestRunner">
     <configuration name="Scenario: Create an attraction and place an order for a ticket with approval option on" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
@@ -184,6 +169,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="" />
@@ -193,5 +179,21 @@
       <updated>1756880942896</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/HomePageStepDefinition.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/HomePage.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

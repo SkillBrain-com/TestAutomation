@@ -2,6 +2,7 @@ package org.skillbrain.stepDefinition.echipa1.attractionformsteps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import org.skillbrain.page.AttractionForm;
 import org.skillbrain.page.echipa1.attractionform.AttractionFormTicketsPage;
 import org.skillbrain.utilities.TestContextSetup;
 
@@ -9,6 +10,7 @@ public class AttractionFormTicketsStepDefinition {
 
     private TestContextSetup testContextSetup;
     private AttractionFormTicketsPage attractionFormTickets;
+    private AttractionForm attractionForm;
 
     public AttractionFormTicketsStepDefinition(TestContextSetup testContextSetup) {
         this.testContextSetup = testContextSetup;
@@ -84,5 +86,6 @@ public class AttractionFormTicketsStepDefinition {
     public void clickTheSaveBundleButton() {
         attractionFormTickets.clickOnBundleSave();
     }
+
 
 }

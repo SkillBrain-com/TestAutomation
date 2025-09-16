@@ -1,5 +1,5 @@
 Feature: Approve a Ticket Order
-  @radu
+
     Scenario: Approve a ticket order
     Given User navigates to login page
     When User logs in with valid credentials

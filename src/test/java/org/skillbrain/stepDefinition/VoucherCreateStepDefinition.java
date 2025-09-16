@@ -161,6 +161,10 @@ public class VoucherCreateStepDefinition {
         voucherPage.setleghtofcodes(text);
     }
 
+    @And("I delete the code")
+    public void iDeleteTheCode() {
+        voucherPage.RemoveCode();
+    }
 
     @Then("I click ok after i generate codes")
     public void iClickOkAfterIGenerateCodes() {
@@ -179,14 +183,29 @@ public class VoucherCreateStepDefinition {
         voucherPage.fillActiveFromField(data);
     }
 
-    @And("I delete the code")
-    public void iDeleteTheCode() {
-        voucherPage.RemoveCode();
-    }
 
     @And("Verify if the code {string} is still active")
     public void verifyIfTheCodeIsStillActive(String code) {
         voucherPage.verifyIfCodeisActive(code);
     }
 
+    @And("I apply the voucher code {string}")
+    public void iApplyTheVoucherCode(String code) {
+        voucherPage.ApplyVoucherOnTicket(code);
+    }
+
+    @And("I check if the discount of {double} applied to the price of {double}")
+    public void iCheckIfTheDiscountOfAppliedToThePriceOf(double discount, double price) {
+        voucherPage.checkFeeAfterVoucher(discount,price);
+    }
+
+    @And("i input every code generated and check if the prices is discount by {double} from {double} lei")
+    public void iInputEveryCodeGeneratedAndCheckIfThePricesIsDiscountByFromLei(double discount, double price) {
+        voucherPage.applyAllSavedCodesAndVerify(discount,price);
+    }
+
+    @And("I refresh the page")
+    public void iRefreshThePage() {
+        voucherPage.RefreshPage();
+    }
 }
