@@ -62,6 +62,24 @@ public class TicketPage extends BasePage {
         return Double.parseDouble(taxFeeString.replaceAll("[^0-9,]", "").replace(",", "."));
     }
 
+
+
+
+
+
+
+    public void FillTicketNameAndPrice(double price, String name) {
+        WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(15));
+        WebElement el = wait.until(ExpectedConditions.elementToBeClickable(CreateTicketButton));}
+
+        public void EditAttraction ()
+        {
+            EditAttractionButton.click();
+        }
+        public void TicketPageTab ()
+        {
+            TicketPageButton.click();
+        }
         public void FillTicketNameAndPrice ( int price, String name)
         {
             try {
@@ -81,128 +99,102 @@ public class TicketPage extends BasePage {
         }
 
 
-    public void EditAttraction() {
-        EditAttractionButton.click();
-    }
+            public void PreviewPage ()
+            {
+                PreviewTabPage.click();
+            }
+            public void CheckingFee ( double price){
 
-    public void TicketPageTab() {
-        TicketPageButton.click();
-    }
-
-    public void FillTicketNameAndPrice(double price, String name) {
-        WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(15));
-        WebElement el = wait.until(ExpectedConditions.elementToBeClickable(CreateTicketButton));
-        CreateTicketButton.click();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        TicketNameField.sendKeys(name);
-        TicketPriceField.sendKeys(String.valueOf(price));
-        SaveTicketButton.click();
-    }
-
-    public void PreviewPage() {
-        setWait();
-        WebDriverWait driverWait = getDriverWait();
-        driverWait.until(ExpectedConditions.visibilityOf(PreviewTabPage));
-        try {
-            PreviewTabPage.click();
-        } catch (Exception e) {
-            driver.navigate().refresh();
-            driverWait.until(ExpectedConditions.visibilityOf(PreviewTabPage));
-            PreviewTabPage.click();
-        }
-
-    }
-
-    public void CheckingFee(double price) {
-        setWait();
-        WebDriverWait driverWait = getDriverWait();
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        driver.switchTo().frame("oveit-hub-iframe");
-
-        driverWait.until(ExpectedConditions.visibilityOf(TaxFeeBrute));
-
-        double taxFee = getTaxFee();
-        double expectedTax = price * 0.03;
-
-        if (expectedTax < 4.34) {
-            expectedTax = 4.34;
-        }
-
-        Assert.assertEquals(taxFee, expectedTax, 0.01, "Taxa  nu este corecta! Expected: " + expectedTax + ", Actual: " + taxFee);
-        driver.switchTo().defaultContent();
-    }
-
-    public void publishAttraction() {
-        PublishAttractionButton.click();
-    }
-
-    public void deleteAttraction() {
-        setWait();
-        WebDriverWait driverWait = getDriverWait();
-        driverWait.until(ExpectedConditions.visibilityOf(MoreAttractionButton));
-        MoreAttractionButton.click();
-        waitForText("Remove attraction", Duration.ofSeconds(5));
-        RemoveAttractionButton.click();
-        Alert alert = driverWait.until(ExpectedConditions.alertIsPresent());
-        alert.accept();
-    }
-
-    public void shareAttractionMenu() {
-        waitForText("Your attraction was published successfully", Duration.ofSeconds(5));
-        shareAttractionButton.click();
-    }
-
-    public void RedirectToAttractionPage() {
-        setWait();
-        WebDriverWait driverWait = getDriverWait();
-        driverWait.until(ExpectedConditions.visibilityOf(redirectAttractionButton));
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        redirectAttractionButton.click();
-        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(1));
-
-    }
-
-    public void BuyNow() {
-        setWait();
-        WebDriverWait driverWait = getDriverWait();
-        driverWait.until(ExpectedConditions.elementToBeClickable(BuyNowButton));
-        BuyNowButton.click();
-
-    }
-
-    public void CheckingFeeAttractionPage(double price) {
-        setWait();
-        WebDriverWait driverWait = getDriverWait();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
 
-        double taxFee = getTaxFeeAttraction();
-        double expectedTax = price * 0.03;
+                driver.switchTo().frame("oveit-hub-iframe");
 
-        if (expectedTax < 4.34) {
-            expectedTax = 4.34;
-        }
+                driverWait.until(ExpectedConditions.visibilityOf(TaxFeeBrute));
 
-        Assert.assertEquals(taxFee, expectedTax, 0.01, "Taxa  nu este corecta! Expected: " + expectedTax + ", Actual: " + taxFee);
-    }
+                double taxFee = getTaxFee();
+                double expectedTax = price * 0.03;
+
+                if (expectedTax < 4.34) {
+                    expectedTax = 4.34;
+                }
+
+                Assert.assertEquals(taxFee, expectedTax, 0.01, "Taxa  nu este corecta! Expected: " + expectedTax + ", Actual: " + taxFee);
+                driver.switchTo().defaultContent();
+            }
+
+            public void publishAttraction () {
+                PublishAttractionButton.click();
+            }
+
+            public void deleteAttraction () {
+                setWait();
+                WebDriverWait driverWait = getDriverWait();
+                driverWait.until(ExpectedConditions.visibilityOf(MoreAttractionButton));
+                MoreAttractionButton.click();
+                waitForText("Remove attraction", Duration.ofSeconds(5));
+                RemoveAttractionButton.click();
+                Alert alert = driverWait.until(ExpectedConditions.alertIsPresent());
+                alert.accept();
+            }
+
+            public void shareAttractionMenu () {
+                waitForText("Your attraction was published successfully", Duration.ofSeconds(5));
+                shareAttractionButton.click();
+            }
+
+            public void RedirectToAttractionPage () {
+                setWait();
+                WebDriverWait driverWait = getDriverWait();
+                driverWait.until(ExpectedConditions.visibilityOf(redirectAttractionButton));
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                redirectAttractionButton.click();
+                ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+                driver.switchTo().window(tabs.get(1));
+
+            }
+
+            public void BuyNow () {
+                setWait();
+                WebDriverWait driverWait = getDriverWait();
+                driverWait.until(ExpectedConditions.elementToBeClickable(BuyNowButton));
+                BuyNowButton.click();
+
+            }
+
+            public void CheckingFeeAttractionPage ( double price){
+                setWait();
+                WebDriverWait driverWait = getDriverWait();
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+
+                double taxFee = getTaxFeeAttraction();
+                double expectedTax = price * 0.03;
+
+                if (expectedTax < 4.34) {
+                    expectedTax = 4.34;
+                }
+
+                Assert.assertEquals(taxFee, expectedTax, 0.01, "Taxa  nu este corecta! Expected: " + expectedTax + ", Actual: " + taxFee);
+            }
+
+
+
+
+
+
 
     public void ChangeToHomePage() {
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
@@ -223,5 +215,6 @@ public class TicketPage extends BasePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", closeButtonShareMenu);
         closeButtonShareMenu.click();
     }
-}
 
+
+}
