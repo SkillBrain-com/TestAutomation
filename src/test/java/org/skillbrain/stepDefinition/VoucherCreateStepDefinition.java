@@ -111,8 +111,12 @@ public class VoucherCreateStepDefinition {
         voucherPage.VerifyCode(code);
     }
 
+<<<<<<< HEAD
 
     @Then("I clic ok on alert")
+=======
+    @Then("I click ok on alert")
+>>>>>>> 9315e17 (fixed2)
     public void iClicOkOnAlert() {
         voucherPage.IclickOKAllert();
     }
@@ -189,5 +193,33 @@ public class VoucherCreateStepDefinition {
     }
 
 
+
+
+    @Then("I click ok after i generate codes")
+    public void iClickOkAfterIGenerateCodes() {
+        voucherPage.okafterGeneratedcodesclick();
+    }
+
+
+
+    @Then("I verify if the Active from date changed to today's date")
+    public void iVerifyIfTheActiveFromDateChangedToTodaySDate() {
+        voucherPage.ActiveFromdateVerify();
+    }
+
+    @Then("I input the active date to {string}")
+    public void iInputTheActiveDateTo(String data) {
+        voucherPage.fillActiveFromField(data);
+    }
+
+    @And("I delete the code")
+    public void iDeleteTheCode() {
+        voucherPage.RemoveCode();
+    }
+
+    @And("Verify if the code {string} is still active")
+    public void verifyIfTheCodeIsStillActive(String code) {
+        voucherPage.verifyIfCodeisActive(code);
+    }
 
 }
