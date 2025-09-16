@@ -38,11 +38,9 @@ public class TicketFeeStepDefinition
     }
 
     @Then("I check if ticket with the {string} appears with the price {double} and the corect fee")
-
-
-
-
-
+    public void iCheckIfTicketWithTheAppearsWithThePriceAndTheCorectFee(String name, int price) {
+        ticketPage.CheckingFee(price);
+    }
 
     public void iCheckIfTicketWithTheAppearsWithThePriceAndTheCorectFee(String name, double price) {
         ticketPage.CheckingFee(price);
@@ -87,11 +85,5 @@ public class TicketFeeStepDefinition
     public void iCloseShareMenu() {
         ticketPage.closeShareMenu();
     }
-
-
-    public void iCheckIfTicketWithTheAppearsWithThePriceAndTheCorectFee(String name, int price) {
-        ticketPage.CheckingFee(price);
-    }
-
 
 }

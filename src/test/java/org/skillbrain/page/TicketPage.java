@@ -63,23 +63,6 @@ public class TicketPage extends BasePage {
     }
 
 
-
-
-
-
-
-    public void FillTicketNameAndPrice(double price, String name) {
-        WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(15));
-        WebElement el = wait.until(ExpectedConditions.elementToBeClickable(CreateTicketButton));}
-
-        public void EditAttraction ()
-        {
-            EditAttractionButton.click();
-        }
-        public void TicketPageTab ()
-        {
-            TicketPageButton.click();
-        }
         public void FillTicketNameAndPrice ( int price, String name)
         {
             try {
@@ -99,33 +82,28 @@ public class TicketPage extends BasePage {
         }
 
 
-            public void PreviewPage ()
-            {
-                PreviewTabPage.click();
-            }
-            public void CheckingFee ( double price){
+    public void EditAttraction() {
+        EditAttractionButton.click();
+    }
 
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+    public void TicketPageTab() {
+        TicketPageButton.click();
+    }
 
+    public void FillTicketNameAndPrice(double price, String name) {
+        WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(15));
+        WebElement el = wait.until(ExpectedConditions.elementToBeClickable(CreateTicketButton));
+        CreateTicketButton.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        TicketNameField.sendKeys(name);
+        TicketPriceField.sendKeys(String.valueOf(price));
+        SaveTicketButton.click();
+    }
 
-                driver.switchTo().frame("oveit-hub-iframe");
-
-                driverWait.until(ExpectedConditions.visibilityOf(TaxFeeBrute));
-
-                double taxFee = getTaxFee();
-                double expectedTax = price * 0.03;
-
-                if (expectedTax < 4.34) {
-                    expectedTax = 4.34;
-                }
-
-                Assert.assertEquals(taxFee, expectedTax, 0.01, "Taxa  nu este corecta! Expected: " + expectedTax + ", Actual: " + taxFee);
-                driver.switchTo().defaultContent();
-            }
 
             public void publishAttraction () {
                 PublishAttractionButton.click();
@@ -192,7 +170,44 @@ public class TicketPage extends BasePage {
 
 
 
+    public void PreviewPage() {
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+        driverWait.until(ExpectedConditions.visibilityOf(PreviewTabPage));
+        try {
+            PreviewTabPage.click();
+        } catch (Exception e) {
+            driver.navigate().refresh();
+            driverWait.until(ExpectedConditions.visibilityOf(PreviewTabPage));
+            PreviewTabPage.click();
 
+        }
+    }
+
+
+    public void CheckingFee(double price) {
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.switchTo().frame("oveit-hub-iframe");
+
+        driverWait.until(ExpectedConditions.visibilityOf(TaxFeeBrute));
+
+        double taxFee = getTaxFee();
+        double expectedTax = price * 0.03;
+
+        if (expectedTax < 4.34) {
+            expectedTax = 4.34;
+        }
+
+        Assert.assertEquals(taxFee, expectedTax, 0.01, "Taxa  nu este corecta! Expected: " + expectedTax + ", Actual: " + taxFee);
+        driver.switchTo().defaultContent();
+    }
 
 
 
@@ -206,6 +221,7 @@ public class TicketPage extends BasePage {
         }
     }
 
+
     public void closeShareMenu() {
         try {
             Thread.sleep(2000);
@@ -217,4 +233,8 @@ public class TicketPage extends BasePage {
     }
 
 
+
 }
+
+
+

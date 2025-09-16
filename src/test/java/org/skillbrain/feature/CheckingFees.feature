@@ -27,3 +27,4 @@ Feature: Checking fees
     When I click on attractions sidebar
     And I click on my attractions
 
+
