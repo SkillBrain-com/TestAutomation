@@ -66,6 +66,7 @@ public class VoucherPage extends BasePage {
     private WebElement activeFromField;
     @FindBy(css="button[data-role=\"delete\"]")
     WebElement removeButtonCode;
+
     public VoucherPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -151,18 +152,24 @@ public class VoucherPage extends BasePage {
 
 
 
-        for (int i = 0; i < 3; i++) {
-            try {
+
+
+        for (int i = 0; i <3 ; i++) {
+            try{
+
 
                 waitForText("Code generator", Duration.ofSeconds(5));
                 generateCodesButton.click();
                 waitForText("Results", Duration.ofSeconds(5));
                 okAfterGeneratedCodes.click();
                 break;
+
             }
              catch (ElementNotInteractableException E) {
-                continue;
+
+
             }
+
 
         }
     }

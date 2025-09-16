@@ -62,6 +62,7 @@ public class VoucherCreateStepDefinition {
         voucherPage.ConfirmGenerateCodes();
     }
 
+
     @And("I generate a code with each posible combination settings")
     public void iGenerateACodeWithEachPosibleCombinationSettings() {
         voucherPage.GenerateCodeEveryCase();
@@ -188,5 +189,6 @@ public class VoucherCreateStepDefinition {
     public void verifyIfTheCodeIsStillActive(String code) {
         voucherPage.verifyIfCodeisActive(code);
     }
+
 
 }
