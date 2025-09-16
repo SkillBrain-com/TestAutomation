@@ -62,7 +62,6 @@ public class VoucherCreateStepDefinition {
         voucherPage.ConfirmGenerateCodes();
     }
 
-
     @And("I generate a code with each posible combination settings")
     public void iGenerateACodeWithEachPosibleCombinationSettings() {
         voucherPage.GenerateCodeEveryCase();
@@ -112,7 +111,8 @@ public class VoucherCreateStepDefinition {
         voucherPage.VerifyCode(code);
     }
 
-    @Then("I click ok on alert")
+
+    @Then("I clic ok on alert")
     public void iClicOkOnAlert() {
         voucherPage.IclickOKAllert();
     }
@@ -161,8 +161,6 @@ public class VoucherCreateStepDefinition {
     public void iSetCodesLenghtTo(String text) {
         voucherPage.setleghtofcodes(text);
     }
-
-
     @Then("I click ok after i generate codes")
     public void iClickOkAfterIGenerateCodes() {
         voucherPage.okafterGeneratedcodesclick();
@@ -189,6 +187,7 @@ public class VoucherCreateStepDefinition {
     public void verifyIfTheCodeIsStillActive(String code) {
         voucherPage.verifyIfCodeisActive(code);
     }
+
 
 
 }

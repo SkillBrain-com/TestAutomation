@@ -1,5 +1,8 @@
 package org.skillbrain.page;
-
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -7,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -81,6 +83,7 @@ public class VoucherPage extends BasePage {
 
     public void InputDiscountPercentage(double x) {
         DiscoutPercentInput.sendKeys(String.valueOf(x));
+
     }
 
     public void InputDiscountPercentageString(String discount) {
@@ -92,6 +95,11 @@ public class VoucherPage extends BasePage {
             e.printStackTrace();
         }
     }
+
+
+
+
+
 
     public void InputaCode(String code) {
         ManualCodeInput.sendKeys(code);
@@ -170,6 +178,53 @@ public class VoucherPage extends BasePage {
 
     }
 
+    public void okafterGeneratedcodesclick() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        okAfterGeneratedCodes.click();
+    }
+
+    public void fillActiveFromField(String data) {
+        activeFromField.clear();
+        activeFromField.sendKeys(data);
+    }
+
+    public void ActiveFromdateVerify() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedToday = today.format(formatter);
+        String untilDateText = activeFromField.getAttribute("value").trim();
+        Assert.assertEquals(untilDateText, formattedToday, "not good");
+    }
+
+    public void RemoveCode() {
+        removeButtonCode.click();
+    }
+
+
+    public void verifyIfCodeisActive(String code) {
+        boolean notFound = false;
+
+        for (int i = 0; i < 3; i++) {
+            try {
+                driver.findElement(By.xpath("//*[contains(text(),'" + code + "')]"));
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                notFound = true;
+                break;
+            }
+        }
+
+        Assert.assertTrue(notFound, "nu e ok");
+    }
     public void GenerateCodeEveryCase() {
         setWait();
         WebDriverWait driverWait = getDriverWait();
@@ -282,31 +337,33 @@ public class VoucherPage extends BasePage {
                     break;
             }
 
-            Assert.assertTrue(ok, "Case " + (i + 1) + " FAIL " + code);
+            Assert.assertTrue(ok, "Case " + (i+1) + " FAIL " + code);
         }
     }
-
     public void MandatoryFieldsErrorCheck() {
         setWait();
         WebDriverWait driverWait = getDriverWait();
 
         try {
-            driverWait.withTimeout(Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOf(ErrorMandatoryFields));
+            driverWait.withTimeout(Duration.ofSeconds(4))
+                    .until(ExpectedConditions.visibilityOf(ErrorMandatoryFields));
 
-            Assert.assertTrue(ErrorMandatoryFields.isDisplayed(), "e vizibila");
+            Assert.assertTrue(ErrorMandatoryFields.isDisplayed(),
+                    "e vizibila");
 
         } catch (TimeoutException e) {
             Assert.fail("nu a aparut");
         }
     }
-
-    public void doublecodealert() {
+    public void doublecodealert()
+    {
         setWait();
         WebDriverWait wait = getDriverWait();
 
         try {
 
-            Alert alert = wait.withTimeout(Duration.ofSeconds(2)).until(ExpectedConditions.alertIsPresent());
+            Alert alert = wait.withTimeout(Duration.ofSeconds(2))
+                    .until(ExpectedConditions.alertIsPresent());
             alert.accept();
 
         } catch (TimeoutException e) {
@@ -314,13 +371,14 @@ public class VoucherPage extends BasePage {
         }
 
     }
-
-    public void AddCodeFile() {
+    public void AddCodeFile()
+    {
         setWait();
         WebDriverWait wait = getDriverWait();
         WebElement fileInput = driver.findElement(By.cssSelector("input[type='file']"));
         fileInput.sendKeys("C:\\Users\\User\\Desktop\\oveit\\src\\test\\resources\\codecorecte.txt");
-        wait.withTimeout(Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOf(submitFileButton));
+        wait.withTimeout(Duration.ofSeconds(4))
+                .until(ExpectedConditions.visibilityOf(submitFileButton));
         submitFileButton.click();
         try {
             Thread.sleep(2000);
@@ -330,25 +388,26 @@ public class VoucherPage extends BasePage {
 
 
     }
-
-    public void IclickOKAllert() {
+    public void IclickOKAllert()
+    {
         Alert alert = driver.switchTo().alert();
         alert.accept();
     }
-
-    public void VerifyCode(String code) {
-        waitForText(code, Duration.ofSeconds(2));
+    public void VerifyCode(String code)
+    {  waitForText(code,Duration.ofSeconds(2));
         String bodyText = driver.findElement(By.tagName("body")).getText();
         Assert.assertTrue(bodyText.contains(code));
     }
 
-    public void UntilDateFill(String date) {
+    public void UntilDateFill(String date)
+    {
         setWait();
         WebDriverWait driverWait = getDriverWait();
         driverWait.until(ExpectedConditions.elementToBeClickable(untilDateField)).sendKeys(date);
     }
 
-    public void UntildateVerify() {
+    public void UntildateVerify()
+    {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -361,12 +420,14 @@ public class VoucherPage extends BasePage {
         Assert.assertEquals(untilDateText, formattedToday, "not good");
     }
 
-    public void importaImagine() {
+    public void importaImagine()
+    {
         setWait();
         WebDriverWait wait = getDriverWait();
         WebElement fileInput = driver.findElement(By.cssSelector("input[type='file']"));
         fileInput.sendKeys("C:\\Users\\User\\Desktop\\oveit\\src\\test\\resources\\poza.jpg");
-        wait.withTimeout(Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOf(submitFileButton));
+        wait.withTimeout(Duration.ofSeconds(4))
+                .until(ExpectedConditions.visibilityOf(submitFileButton));
         submitFileButton.click();
         try {
             Thread.sleep(2000);
@@ -377,21 +438,24 @@ public class VoucherPage extends BasePage {
 
     }
 
-    public void ErrorTextVerify(String error) {
+    public void ErrorTextVerify(String error)
+    {
         setWait();
-        WebDriverWait driverWait = getDriverWait();
+        WebDriverWait driverWait =getDriverWait();
         Alert alert = driverWait.until(ExpectedConditions.alertIsPresent());
         String alertText = alert.getText();
         Assert.assertEquals(alertText, error, "error");
         alert.accept();
     }
 
-    public void importaBadCode() {
+    public void importaBadCode()
+    {
         setWait();
         WebDriverWait wait = getDriverWait();
         WebElement fileInput = driver.findElement(By.cssSelector("input[type='file']"));
         fileInput.sendKeys("C:\\Users\\User\\Desktop\\oveit\\src\\test\\resources\\codrau.txt");
-        wait.withTimeout(Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOf(submitFileButton));
+        wait.withTimeout(Duration.ofSeconds(4))
+                .until(ExpectedConditions.visibilityOf(submitFileButton));
         submitFileButton.click();
         try {
             Thread.sleep(2000);
@@ -402,75 +466,27 @@ public class VoucherPage extends BasePage {
 
     }
 
-    public void setnumberofcodes(String text) {
+    public void setnumberofcodes(String text)
+    {
         numberOfCodesField.sendKeys(text);
 
     }
-
-    public void CheckForCodeGeneratorError() {
+    public void CheckForCodeGeneratorError()
+    {
         try {
             setWait();
-            WebDriverWait driverWait = getDriverWait();
+            WebDriverWait driverWait =getDriverWait();
             driverWait.until(ExpectedConditions.visibilityOf(codegeneratorError));
         } catch (TimeoutException e) {
             Assert.fail("nu apare erroarea");
         }
     }
 
-    public void setleghtofcodes(String text) {
+    public void setleghtofcodes(String text)
+    {
         lenghtOfCodeField.sendKeys(text);
 
     }
-
-
-    public void okafterGeneratedcodesclick() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        okAfterGeneratedCodes.click();
     }
-
-    public void fillActiveFromField(String data) {
-        activeFromField.clear();
-        activeFromField.sendKeys(data);
-    }
-
-    public void ActiveFromdateVerify() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        LocalDate today = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String formattedToday = today.format(formatter);
-        String untilDateText = activeFromField.getAttribute("value").trim();
-        Assert.assertEquals(untilDateText, formattedToday, "not good");
-    }
-
-    public void RemoveCode() {
-        removeButtonCode.click();
-    }
-
-
-    public void verifyIfCodeisActive(String code) {
-        boolean notFound = false;
-
-        for (int i = 0; i < 3; i++) {
-            try {
-                driver.findElement(By.xpath("//*[contains(text(),'" + code + "')]"));
-                Thread.sleep(1000);
-            } catch (Exception e) {
-                notFound = true;
-                break;
-            }
-        }
-
-        Assert.assertTrue(notFound, "nu e ok");
-    }
-}
-
 
 
