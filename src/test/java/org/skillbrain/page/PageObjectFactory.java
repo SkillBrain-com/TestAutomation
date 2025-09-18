@@ -31,8 +31,8 @@ public class PageObjectFactory {
     private OveitHubTicketsPage oveitHubTickets;
    private ApprovalTicket approvalTicket;
    private ApproveTicketOrder approveATicketOrder;
-
-
+   private TicketWithCalendar ticketWithCalendar;
+//    dependency injection
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;
     }
@@ -143,5 +143,11 @@ public class PageObjectFactory {
     public OveitHubTicketsPage getOveitHubTickets() {
         oveitHubTickets = new OveitHubTicketsPage(driver);
         return oveitHubTickets;
+    }
+
+    public TicketWithCalendar getTicketWithCalendar() {
+        ticketWithCalendar = new TicketWithCalendar(driver);
+        return ticketWithCalendar;
+
     }
 }

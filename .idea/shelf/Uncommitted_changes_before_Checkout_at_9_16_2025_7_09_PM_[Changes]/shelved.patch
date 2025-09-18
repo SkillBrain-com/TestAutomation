@@ -1,0 +1,409 @@
+Index: src/test/java/org/skillbrain/cucumberOptions/TestRunner.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.skillbrain.cucumberOptions;\r\n\r\nimport io.cucumber.testng.AbstractTestNGCucumberTests;\r\nimport io.cucumber.testng.CucumberOptions;\r\nimport org.testng.annotations.DataProvider;\r\n\r\n@CucumberOptions(\r\n        features = \"src/test/java/org/skillbrain/feature\",\r\n        glue = \"org.skillbrain.stepDefinition\",\r\n        monochrome = true,\r\n        tags = \"@radu\",\r\n        plugin = {\"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:\",\r\n                \"rerun:target/failed_scenarios.txt\"},\r\n        dryRun = false\r\n\r\n)\r\npublic class TestRunner extends AbstractTestNGCucumberTests {\r\n\r\n    @Override\r\n    @DataProvider(parallel = true)\r\n    public Object[][] scenarios() {\r\n        return super.scenarios();\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java b/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java
+--- a/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java	(revision 0ac09dd795e29a0923bbc030f8e47ef920a85173)
++++ b/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java	(date 1758037567282)
+@@ -8,7 +8,7 @@
+         features = "src/test/java/org/skillbrain/feature",
+         glue = "org.skillbrain.stepDefinition",
+         monochrome = true,
+-        tags = "@radu",
++        tags = "@radu1",
+         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+                 "rerun:target/failed_scenarios.txt"},
+         dryRun = false
+Index: src/test/java/org/skillbrain/page/TicketWithCalendar.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/org/skillbrain/page/TicketWithCalendar.java b/src/test/java/org/skillbrain/page/TicketWithCalendar.java
+new file mode 100644
+--- /dev/null	(date 1757873759587)
++++ b/src/test/java/org/skillbrain/page/TicketWithCalendar.java	(date 1757873759587)
+@@ -0,0 +1,144 @@
++package org.skillbrain.page;
++
++import org.openqa.selenium.WebDriver;
++import org.openqa.selenium.WebElement;
++import org.openqa.selenium.support.FindBy;
++import org.openqa.selenium.support.PageFactory;
++import org.openqa.selenium.support.ui.WebDriverWait;
++
++import java.time.Duration;
++
++public class TicketWithCalendar extends BasePage {
++
++
++    public TicketWithCalendar(WebDriver driver) {
++        super(driver);
++        this.driver = driver;
++        PageFactory.initElements(this.driver, this);
++        this.driverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
++    }
++
++    @FindBy(xpath = "//input[@id=\"date-interval\"]")
++    private WebElement dateInterval;
++    @FindBy(xpath = "//input[@name=\"start_date\"]")
++    private WebElement dateStart;
++    @FindBy(xpath = "//input[@name=\"start_time\"]")
++    private WebElement timeStart;
++    @FindBy(xpath = "//input[@name=\"end_date\"]")
++    private WebElement endData;
++    @FindBy(xpath = "//input[@name=\"end_time\"]")
++    private WebElement endTime;
++    @FindBy(xpath = ("(//div[@class='toggler-container toggle-options'])[2]"))
++    private WebElement availabilitySchedule;
++    @FindBy(xpath = "//input[@name=\"sold_from_date\"]")
++    private WebElement startDateWhenTicketCanBeBuy;
++    @FindBy(xpath = "//input[@name=\"sold_from_time\"]")
++    private WebElement startTimeWhenTicketCanBeBuy;
++    @FindBy(xpath = "//input[@name=\"sold_to_date\"]")
++    private WebElement endDateWhenTicketCanBeBuy;
++    @FindBy(xpath = "//input[@name=\"sold_to_time\"]")
++    private WebElement endTimeWhenTicketCanBeBuy;
++    @FindBy(xpath = "//label[normalize-space()=\"On specific weekdays\"]")
++    private WebElement specificWeekEnd;
++    @FindBy(xpath = "//input[@name=\"timetable[days][start_date]\"]")
++    private WebElement addStartSpecificWeekend;
++    @FindBy(xpath = "//input[@name=\"timetable[days][end_date]\"]")
++    private WebElement addEndSpecificWeekend;
++    @FindBy(css = "input[value=\"monday\"]")
++    private WebElement addTicketsMonday;
++    @FindBy(css = "input[value=\"friday\"]")
++    private WebElement addTicketsFriday;
++
++    public void clickOnTimeStart() {
++        timeStart.click();
++    }
++
++    public void clickOnDateStart() {
++        dateStart.click();
++    }
++
++    public void clickOnEndData() {
++        endData.click();
++
++
++    }
++
++    public void clickOnEndTime() {
++        endTime.click();
++
++    }
++
++    public void clickOnStartDateWhenTicketCanBeBuy() {
++        startTimeWhenTicketCanBeBuy.click();
++    }
++
++    public void clickStartTimeWhenTicketCanBeBuy() {
++        startTimeWhenTicketCanBeBuy.click();
++    }
++
++    public void clickOnEndDateWhenTicketCanBeBuy() {
++        endDateWhenTicketCanBeBuy.click();
++    }
++
++    public void clickOnStartTimeWhenTicketCanBeBuy() {
++        endTimeWhenTicketCanBeBuy.click();
++    }
++
++    public void getStartSpecificWeekEnd() {
++        addStartSpecificWeekend.click();
++
++    }
++
++    public void getEndSpecificWeekEnd() {
++        addEndSpecificWeekend.click();
++    }
++
++
++    public void clickOnDateInterval() {
++        dateInterval.click();
++    }
++
++    public void fillDataAndTime(String DataAndTime) {
++        endData.sendKeys("2025-10-01");
++        endTime.sendKeys("8:00");
++        dateStart.sendKeys("2025-07-01");
++        timeStart.sendKeys("08:00");
++
++    }
++
++    public void clickOnAvailabilitySchedule() {
++        waitForVisibility(availabilitySchedule, Duration.ofSeconds(15));
++        scrollToElement(availabilitySchedule);
++        availabilitySchedule.click();
++    }
++
++    public void clickDateWhenTicketCanBeBuy(String AvailableDateAndTimeTicket) {
++        waitForVisibility(startDateWhenTicketCanBeBuy, Duration.ofSeconds(15));
++        startDateWhenTicketCanBeBuy.sendKeys("2025-07-03");
++        startTimeWhenTicketCanBeBuy.sendKeys("8:00");
++        endDateWhenTicketCanBeBuy.sendKeys("2025-09-28");
++        endTimeWhenTicketCanBeBuy.sendKeys("00:00");
++    }
++
++    public void clickOnSpecificWeekend() {
++        waitForVisibility(specificWeekEnd, Duration.ofSeconds(10));
++        specificWeekEnd.click();
++    }
++
++    public void getSpecificWeekend(String Date) {
++        addStartSpecificWeekend.sendKeys("2025-11-01");
++        addEndSpecificWeekend.sendKeys("2025-12-20");
++
++    }
++
++    public void getTicketMonday() {
++        addTicketsMonday.click();
++    }
++
++    public void getTicketFriday() {
++        scrollToElement(addTicketsFriday);
++        addTicketsFriday.click();
++    }
++
++
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"af8d402a-98ea-4809-87f5-062a874f5397\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/feature/ApproveATicketOrder.feature\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/feature/approvel.feature\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/page/ApprovalTicket.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/page/ApproveTicketOrder.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/ApprovalTicketStepDefinition.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/ApproveATicketStepDefinition.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/.gitignore\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/vcs.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/page/BasePage.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/page/BasePage.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/page/PageObjectFactory.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/page/PageObjectFactory.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/VoucherCreateStepDefinition.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/VoucherCreateStepDefinition.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;RaduMarian&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;git@github.com:SkillBrain-com/TestAutomation.git&quot;,\r\n    &quot;accountId&quot;: &quot;10822f6e-3e39-4747-84c1-60875e0f927e&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;customColor&quot;: &quot;&quot;,\r\n  &quot;associatedIndex&quot;: 4\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"32B55Uiz6k9miVgBZOsHkuxAFjp\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Cucumber Java.Feature: ApproveATicketOrder.executor\": \"Run\",\r\n    \"Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option.executor\": \"Run\",\r\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"TestNG.TestRunner.executor\": \"Run\",\r\n    \"git-widget-placeholder\": \"SM-TM-263d6\",\r\n    \"project.structure.last.edited\": \"Project\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"TestNG.TestRunner\">\r\n    <configuration name=\"Scenario: Create an attraction and place an order for a ticket with approval option on\" type=\"CucumberJavaRunConfigurationType\" factoryName=\"Cucumber java\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"CUCUMBER_CORE_VERSION\" value=\"5\" />\r\n      <option name=\"FILE_PATH\" value=\"$PROJECT_DIR$/src/test/java/org/skillbrain/feature/approvel.feature\" />\r\n      <option name=\"GLUE\" value=\"org.skillbrain.stepDefinition\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"io.cucumber.core.cli.Main\" />\r\n      <module name=\"TestAutomation\" />\r\n      <option name=\"NAME_FILTER\" value=\"^Create an attraction and place an order for a ticket with approval option on$\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Create an attraction and place an order for a ticket with approval option on$&quot;\" />\r\n      <option name=\"SUGGESTED_NAME\" value=\"Scenario: Create an attraction and place an order for a ticket with approval option on\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$MODULE_WORKING_DIR$\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"io.cucumber.core.cli.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Scenario: Create an attraction and place an order for a ticket with approval option\" type=\"CucumberJavaRunConfigurationType\" factoryName=\"Cucumber java\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"CUCUMBER_CORE_VERSION\" value=\"5\" />\r\n      <option name=\"FILE_PATH\" value=\"$PROJECT_DIR$/src/test/java/org/skillbrain/feature/approvel.feature\" />\r\n      <option name=\"GLUE\" value=\"org.skillbrain.stepDefinition\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"io.cucumber.core.cli.Main\" />\r\n      <module name=\"TestAutomation\" />\r\n      <option name=\"NAME_FILTER\" value=\"^Create an attraction and place an order for a ticket with approval option$\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Create an attraction and place an order for a ticket with approval option$&quot;\" />\r\n      <option name=\"SUGGESTED_NAME\" value=\"Scenario: Create an attraction and place an order for a ticket with approval option\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$MODULE_WORKING_DIR$\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"io.cucumber.core.cli.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Scenario: Create an attraction and place an order for a ticket with approval setting enable\" type=\"CucumberJavaRunConfigurationType\" factoryName=\"Cucumber java\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"CUCUMBER_CORE_VERSION\" value=\"5\" />\r\n      <option name=\"FILE_PATH\" value=\"$PROJECT_DIR$/src/test/java/org/skillbrain/feature/approvel.feature\" />\r\n      <option name=\"GLUE\" value=\"org.skillbrain.stepDefinition\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"io.cucumber.core.cli.Main\" />\r\n      <module name=\"TestAutomation\" />\r\n      <option name=\"NAME_FILTER\" value=\"^Create an attraction and place an order for a ticket with approval setting enable$\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Create an attraction and place an order for a ticket with approval setting enable$&quot;\" />\r\n      <option name=\"SUGGESTED_NAME\" value=\"Scenario: Create an attraction and place an order for a ticket with approval setting enable\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$MODULE_WORKING_DIR$\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"io.cucumber.core.cli.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method.\" type=\"CucumberJavaRunConfigurationType\" factoryName=\"Cucumber java\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"CUCUMBER_CORE_VERSION\" value=\"5\" />\r\n      <option name=\"FILE_PATH\" value=\"$PROJECT_DIR$/src/test/java/org/skillbrain/feature/attractions.feature\" />\r\n      <option name=\"GLUE\" value=\"org.skillbrain.stepDefinition\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"io.cucumber.core.cli.Main\" />\r\n      <module name=\"TestAutomation\" />\r\n      <option name=\"NAME_FILTER\" value=\"^Place an Order for an Attraction\\, for a person\\, using the Autoprocess payment method\\.$\" />\r\n      <option name=\"PROGRAM_PARAMETERS\" value=\" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Place an Order for an Attraction\\, for a person\\, using the Autoprocess payment method\\.$&quot;\" />\r\n      <option name=\"SUGGESTED_NAME\" value=\"Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method.\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$MODULE_WORKING_DIR$\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"io.cucumber.core.cli.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"TestRunner\" type=\"TestNG\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"TestAutomation\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.skillbrain.cucumberOptions.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"org.skillbrain.cucumberOptions\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.skillbrain.cucumberOptions.TestRunner\" />\r\n      <option name=\"TEST_OBJECT\" value=\"CLASS\" />\r\n      <properties />\r\n      <listeners />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"TestNG.TestRunner\" />\r\n        <item itemvalue=\"Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option\" />\r\n        <item itemvalue=\"Cucumber Java.Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method.\" />\r\n        <item itemvalue=\"Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval setting enable\" />\r\n        <item itemvalue=\"Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option on\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"af8d402a-98ea-4809-87f5-062a874f5397\" name=\"Changes\" comment=\"\" />\r\n      <created>1756880942896</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1756880942896</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 0ac09dd795e29a0923bbc030f8e47ef920a85173)
++++ b/.idea/workspace.xml	(date 1758038907255)
+@@ -5,21 +5,12 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/ApproveATicketOrder.feature" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/approvel.feature" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/ApprovalTicket.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/ApproveTicketOrder.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/ApprovalTicketStepDefinition.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/ApproveATicketStepDefinition.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/Calendar.feature" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/TicketWithCalendar.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/TicketWithCalendarStepDefinition.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/BasePage.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/PageObjectFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/PageObjectFactory.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/VoucherCreateStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/VoucherCreateStepDefinition.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -62,20 +53,20 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Cucumber Java.Feature: ApproveATicketOrder.executor": "Run",
+-    "Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option.executor": "Run",
+-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "TestNG.TestRunner.executor": "Run",
+-    "git-widget-placeholder": "SM-TM-263d6",
+-    "project.structure.last.edited": "Project",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.0"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Cucumber Java.Feature: ApproveATicketOrder.executor&quot;: &quot;Run&quot;,
++    &quot;Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option.executor&quot;: &quot;Run&quot;,
++    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;TestNG.TestRunner.executor&quot;: &quot;Run&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;SM-TM-263d6&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager" selected="TestNG.TestRunner">
+     <configuration name="Scenario: Create an attraction and place an order for a ticket with approval option on" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+       <option name="CUCUMBER_CORE_VERSION" value="5" />
+Index: src/test/java/org/skillbrain/stepDefinition/TicketWithCalendarStepDefinition.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/org/skillbrain/stepDefinition/TicketWithCalendarStepDefinition.java b/src/test/java/org/skillbrain/stepDefinition/TicketWithCalendarStepDefinition.java
+new file mode 100644
+--- /dev/null	(date 1757873759577)
++++ b/src/test/java/org/skillbrain/stepDefinition/TicketWithCalendarStepDefinition.java	(date 1757873759577)
+@@ -0,0 +1,60 @@
++package org.skillbrain.stepDefinition;
++
++
++import io.cucumber.java.en.And;
++import io.cucumber.java.en.Then;
++import org.skillbrain.page.TicketWithCalendar;
++import org.skillbrain.utilities.TestContextSetup;
++
++public class TicketWithCalendarStepDefinition {
++    private TestContextSetup testContextSetup;
++    private TicketWithCalendar ticketWithCalendar;
++
++    public TicketWithCalendarStepDefinition(TestContextSetup testContextSetup) {
++        this.testContextSetup = testContextSetup;
++        this.ticketWithCalendar = testContextSetup.pageObjectFactory.getTicketWithCalendar();
++    }
++
++    @Then("I click on date interval")
++    public void iClickOnDateInterval() {
++        ticketWithCalendar.clickOnDateInterval();
++    }
++
++    @And("I fill {string}")
++    public void iFill(String DataAndTime) {
++        ticketWithCalendar.fillDataAndTime(DataAndTime);
++
++    }
++
++    @Then("I click on Availability Schedule")
++    public void iClickOnAvailabilitySchedule() {
++        ticketWithCalendar.clickOnAvailabilitySchedule();
++
++    }
++
++    @And("I fill {string} ticket availability")
++    public void iFillTicketAvailability(String AvailableDateAndTimeTicket) {
++        ticketWithCalendar.clickDateWhenTicketCanBeBuy(AvailableDateAndTimeTicket);
++    }
++
++    @Then("I click on Specific Weekend")
++    public void iClickOnSpecificDates() {
++        ticketWithCalendar.clickOnSpecificWeekend();
++    }
++
++
++    @Then("I add {string} when the ticket can be buy")
++    public void iAddWhenTheTicketCanBeBuy(String Data) {
++        ticketWithCalendar.getSpecificWeekend(Data);
++    }
++
++    @Then("Click on Monday")
++    public void clickOnMonday() {
++        ticketWithCalendar.getTicketMonday();
++    }
++
++    @Then("Click on Friday")
++    public void clickOnFriday() {
++        ticketWithCalendar.getTicketFriday();
++    }
++}
+Index: src/test/java/org/skillbrain/feature/Calendar.feature
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/org/skillbrain/feature/Calendar.feature b/src/test/java/org/skillbrain/feature/Calendar.feature
+new file mode 100644
+--- /dev/null	(date 1758037656932)
++++ b/src/test/java/org/skillbrain/feature/Calendar.feature	(date 1758037656932)
+@@ -0,0 +1,57 @@
++Feature: Create a ticket use calendar
++
++
++  Scenario: Create a ticket use calendar
++    Given User navigates to login page
++    When User logs in with valid credentials
++    Then Check user is logged in
++    And I click on Create attraction button
++    Then I fill the Attraction name field with "Attraction name"
++    Then I click on date interval
++    And I fill "Date and Time"
++    Then I expand the Location accordion
++    And I fill the Location address field with "Location name"
++    Then I click on Next button
++    Then I click the Create ticket button
++    Then I fill the Name field with "Name"
++    Then I fill the Price field with "Price"
++    Then I expand the Ticket Configuration
++    Then I click on Availability Schedule
++    And I fill "DateAndTime" ticket availability
++    Then I click the Save button
++    Then I click on Preview & Publish tab button
++    And I click the Add button
++    Then I click the Continue button
++    Then I fill the Mandatory * fields with "Customer Info"
++    And I click the Autoprocess radio button
++    Then I click the Pay button
++    And I check if the order is completed
++
++  @radu1
++  Scenario: Create a ticket available just for some days
++    Given User navigates to login page
++    When User logs in with valid credentials
++    Then Check user is logged in
++    And I click on Create attraction button
++    Then I fill the Attraction name field with "Attraction name"
++    Then I expand the Location accordion
++    And I fill the Location address field with "Location name"
++    Then I click on Next button
++    And I click the Create ticket button
++    Then I fill the Name field with "Name"
++    And I fill the Price field with "Price"
++    Then I expand the Ticket Configuration
++    Then I click on Availability Schedule
++    Then I click on Specific Weekend
++    Then I add "Weekends" when the ticket can be buy
++    Then Click on Monday
++    Then Click on Friday
++    Then I click the Save button
++    Then I click on Preview & Publish tab button
++    Then I click the Add button
++    And I click the Continue button
++    Then I fill the Mandatory * fields with "Customer Info"
++    And I click the Autoprocess radio button
++    Then I click the Pay button
++    Then I check if the order is completed
++
+Index: src/test/java/org/skillbrain/page/PageObjectFactory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.skillbrain.page;\r\n\r\nimport org.openqa.selenium.WebDriver;\r\n\r\npublic class PageObjectFactory {\r\n\r\n    private WebDriver driver;\r\n    private LoginPage loginPage;\r\n    private HomePage homePage;\r\n    private AttractionForm attractionForm;\r\n    private VoucherPage voucherPage;\r\n   private TicketPage ticketPage;\r\n   private ApprovalTicket approvalTicket;\r\n   private ApproveTicketOrder approveATicketOrder;\r\n//    dependency injection\r\n    public PageObjectFactory(WebDriver driver) {\r\n        this.driver = driver;\r\n    }\r\n\r\n    public LoginPage getLoginPage() {\r\n        loginPage = new LoginPage(driver);\r\n        return loginPage;\r\n    }\r\n\r\n    public HomePage getHomePage() {\r\n        homePage = new HomePage(driver);\r\n        return homePage;\r\n    }\r\n\r\n    public AttractionForm getAttractionForm() {\r\n        attractionForm = new AttractionForm(driver);\r\n        return attractionForm;\r\n    }\r\n\r\n    public VoucherPage getVoucherPage() {\r\n        voucherPage = new VoucherPage(driver);\r\n        return voucherPage;\r\n    }\r\n    public TicketPage getTicketPage() {\r\n        ticketPage = new TicketPage(driver);\r\n        return ticketPage;\r\n    }\r\n    public ApprovalTicket getApprovalTicket(){\r\n        approvalTicket = new ApprovalTicket(driver);\r\n        return approvalTicket;\r\n    }\r\n    public ApproveTicketOrder getApproveATicketOrder(){\r\n        approveATicketOrder =new ApproveTicketOrder(driver);\r\n        return approveATicketOrder;\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/org/skillbrain/page/PageObjectFactory.java b/src/test/java/org/skillbrain/page/PageObjectFactory.java
+--- a/src/test/java/org/skillbrain/page/PageObjectFactory.java	(revision 0ac09dd795e29a0923bbc030f8e47ef920a85173)
++++ b/src/test/java/org/skillbrain/page/PageObjectFactory.java	(date 1757588075425)
+@@ -12,6 +12,7 @@
+    private TicketPage ticketPage;
+    private ApprovalTicket approvalTicket;
+    private ApproveTicketOrder approveATicketOrder;
++   private TicketWithCalendar ticketWithCalendar;
+ //    dependency injection
+     public PageObjectFactory(WebDriver driver) {
+         this.driver = driver;
+@@ -48,5 +49,10 @@
+         approveATicketOrder =new ApproveTicketOrder(driver);
+         return approveATicketOrder;
+ 
++    }
++
++    public TicketWithCalendar getTicketWithCalendar() {
++        ticketWithCalendar = new TicketWithCalendar(driver);
++        return ticketWithCalendar;
+     }
+ }
