@@ -206,7 +206,7 @@ public class AttractionForm extends BasePage {
     @FindBy(xpath = "//button[.//span[normalize-space()='Next']]")
     private WebElement nextButton3;
 
-    @FindBy(xpath = "//input[@placeholder='Code']")
+        @FindBy(xpath = "//input[@placeholder='Code']")
     private WebElement insertTheString;
 
     @FindBy(xpath = "//button[normalize-space()='Apply']")
@@ -234,6 +234,15 @@ public class AttractionForm extends BasePage {
 
     @FindBy(xpath = "//div[contains(@class,'toggler-container') and .//span[text()='Advanced settings']]")
     private WebElement advancedSettings;
+
+    @FindBy(xpath = "//input[@name='features[customer_fields]']")
+    private WebElement enableCustomerForm;
+
+    @FindBy(xpath = "//span[normalize-space(text())='Next']")
+    private WebElement nextButtonOverview;
+
+    @FindBy(xpath = "//img[@src='https://web02.stg.oveit.com/public/images/seller/icons/rounded-plus.svg']")
+    private WebElement createTicket;
 
     public void clickTicketConfiguration() {
         waitForVisibility(ticketConfigurationButton, Duration.ofSeconds(10));
@@ -283,21 +292,16 @@ public class AttractionForm extends BasePage {
     public void insertTheString(String insertCode) {
         insertTheString.sendKeys("1234");
     }
-
     public void applyButton() {
         apply.click();
     }
-
     public void insertEmail(String email) {
         insertTheString.sendKeys("a@yahoo.com");
     }
-
-
     public void clickOnRegistredButton() {
         registred.click();
 
     }
-
     public void clickOnPublishAttraction() {
         publish.click();
     }
@@ -317,8 +321,15 @@ public class AttractionForm extends BasePage {
     public void expandAdvancedSettingsField(){
         advancedSettings.click();
     }
-
-
+    public void enableCustomerForm() {
+        enableCustomerForm.click();
+    }
+    public void clickOnNextButtonOverview() {
+        nextButtonOverview.click();
+    }
+    public void clickOncreateTicketButton() {
+        createTicket.click();
+    }
 }
 
 
