@@ -14,10 +14,10 @@ public class CustomerFormStepDefinition {
         customerForm = testContextSetup.pageObjectFactory.getAttractionForm();
         }
 
-    @Then("Fill the Attraction name field with {string}")
-    public void fill_the_attraction_name_field_with(String attractionName) {
-        customerForm.fillAttractionNameField(attractionName);
-    }
+//    @Then("Fill the Attraction name field with {string}")
+//    public void fill_the_attraction_name_field_with(String attractionName) {
+//        customerForm.fillAttractionNameField(attractionName);
+//    }
     @Then("Expand location Accordion")
     public void expandLocationAccordion() {
         customerForm.expandlocation();
