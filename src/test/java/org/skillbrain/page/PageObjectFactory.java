@@ -32,6 +32,7 @@ public class PageObjectFactory {
     private ApprovalTicket approvalTicket;
     private ApproveTicketOrder approveATicketOrder;
     private AttractionForm privateTicket;
+    private AttractionForm customerForm;
 
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;
@@ -152,5 +153,10 @@ public class PageObjectFactory {
         privateTicket = new AttractionForm(driver);
         return privateTicket;
 
+    }
+
+    public AttractionForm getCustomerForm() {
+        customerForm = new AttractionForm(driver);
+        return customerForm;
     }
 }

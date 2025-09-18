@@ -85,7 +85,6 @@ public class AttractionForm extends BasePage {
     public void fillLocationName(String locationName) {
         waitForVisibility(locationNameField, Duration.ofSeconds(10));
         scrollToElement(locationNameField);
-
         locationNameField.sendKeys("Cluj");
     }
 
@@ -110,19 +109,18 @@ public class AttractionForm extends BasePage {
 
     public void clickOnNext() {
         nextButton1.click();
-
         waitForVisibility(createTicketButton, Duration.ofSeconds(10));
     }
 
     public void clickOnCreateTicket() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(createTicketButton)).click();
-
+        createTicketButton.click();
         waitForVisibility(ticketNameField, Duration.ofSeconds(10));
     }
 
     public void fillTicketName(String ticketName) {
-        ticketNameField.sendKeys("Ramona_test");
+        ticketNameField.sendKeys("Ramona_test 2");
     }
 
     public void fillTicketPrice(String ticketPrice) {
@@ -145,7 +143,6 @@ public class AttractionForm extends BasePage {
 
     public void clickOnTicketSave() {
         ticketSaveButton.click();
-
         waitForVisibility(ticketsLabel, Duration.ofSeconds(10));
     }
 
@@ -156,22 +153,18 @@ public class AttractionForm extends BasePage {
     public void clickOnAddButton() {
         driver.switchTo().frame(iframe);
         waitForVisibility(addButton, Duration.ofSeconds(10));
-
         addButton.click();
     }
 
     public void clickOnContinueButton() {
         waitForVisibility(addButton, Duration.ofSeconds(10));
-
         continueButton.click();
-
         waitForVisibility(billingLabel, Duration.ofSeconds(20));
         driver.switchTo().defaultContent();
     }
 
     public void fillCustomerForm(String info) {
         driver.switchTo().frame(iframe);
-
         emailField.sendKeys("a@test.ro");
         nameField.sendKeys("Ramona_test");
         stateDropdown.sendKeys("Alabama");
@@ -194,14 +187,12 @@ public class AttractionForm extends BasePage {
 
     public void assertOrderCompleted() {
         driver.switchTo().frame(iframe);
-
         waitForText("✅ Order complete", Duration.ofSeconds(30));
         Assert.assertEquals(getOrderCompleteLabel().getText(), "✅ Order complete");
-
         driver.switchTo().defaultContent();
     }
 
-    // RAMONA
+    // RAMONA - test1
 //    @FindBy(xpath= "//span[contains(text(),'Ticket configuration')]")
     @FindBy(xpath = "//span[contains(text(),'Ticket configuration')] //parent::div")
     private WebElement ticketConfigurationButton;
@@ -218,6 +209,34 @@ public class AttractionForm extends BasePage {
     @FindBy(xpath = "//button[.//span[normalize-space()='Next']]")
     private WebElement nextButton3;
 
+    @FindBy(xpath = "//input[@placeholder='Code']")
+    private WebElement insertTheString;
+
+    @FindBy(xpath = "//button[normalize-space()='Apply']")
+    private WebElement apply;
+
+    @FindBy(xpath = "//input[@type='text' and @name='email']")
+    private WebElement email;
+
+    @FindBy(xpath = "//button[normalize-space()='Register']")
+    private WebElement registred;
+
+    //Ramona - test 2
+
+    @FindBy(css = "div.ripple")
+    private WebElement publish;
+
+    @FindBy(css = "input[name=\"name\"]")
+    private WebElement attractionNameField2;
+
+    @FindBy(xpath = "//div[@class='toggler-container toggle-options']//span[normalize-space()='Location']")
+    private WebElement expandlocation;
+
+    @FindBy(xpath = "//input[@type='text' and @name='location']")
+    private WebElement fillLocationName;
+
+    @FindBy(xpath = "//div[contains(@class,'toggler-container') and .//span[text()='Advanced settings']]")
+    private WebElement advancedSettings;
 
     public void clickTicketConfiguration() {
         waitForVisibility(ticketConfigurationButton, Duration.ofSeconds(10));
@@ -264,19 +283,49 @@ public class AttractionForm extends BasePage {
         //nextButton3.click();
     }
 
-    public void insertTheString() {
-
+    public void insertTheString(String insertCode) {
+        insertTheString.sendKeys("1234");
     }
 
-    public void insertTheEmailAdress() {
+    public void applyButton() {
+        apply.click();
     }
+
+    public void insertEmail(String email) {
+        insertTheString.sendKeys("a@yahoo.com");
+    }
+
 
     public void clickOnRegistredButton() {
+        registred.click();
+
     }
 
     public void clickOnPublishAttraction() {
+        publish.click();
     }
+
+    //Ramona - Test 2
+
+    public void fillAttractionNameField(String atractie) {
+        attractionNameField2.sendKeys("Attraction 2");
+    }
+
+    public void expandlocation() {
+        expandlocation.click();
+    }
+    public void fillLocationName2(String location){
+        fillLocationName.sendKeys("Milano");
+    }
+    public void expandAdvancedSettingsField(){
+        advancedSettings.click();
+    }
+
+
 }
+
+
+
 
 
 

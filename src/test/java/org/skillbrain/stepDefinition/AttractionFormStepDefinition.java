@@ -47,7 +47,6 @@ public class AttractionFormStepDefinition {
 
     @And("I fill the Price field with {string}")
     public void iFillThePriceFieldWith(String ticketPrice) {
-
         attractionForm.fillTicketPrice(ticketPrice);
     }
 

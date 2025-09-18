@@ -21,6 +21,7 @@ Feature: Create a private invitation ticket so that only invited users can purch
     And I click on Next button
     Then I click again on Next button
     And I insert the "Invitation code"
+    Then I click on "Apply button"
     Then I insert an e-mail address "E-mail address"
     And I click on Register button
     Then I click on Publish attraction
