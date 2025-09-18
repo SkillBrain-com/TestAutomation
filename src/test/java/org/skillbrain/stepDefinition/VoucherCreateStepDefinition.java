@@ -6,6 +6,8 @@ import io.cucumber.java.en.When;
 import org.skillbrain.page.VoucherPage;
 import org.skillbrain.utilities.TestContextSetup;
 
+import static org.bouncycastle.asn1.cms.CMSObjectIdentifiers.data;
+
 public class VoucherCreateStepDefinition {
     public VoucherPage voucherPage;
     private final TestContextSetup testContextSetup;
@@ -22,9 +24,6 @@ public class VoucherCreateStepDefinition {
     }
 
 
-
-
-
     @When("I click on Save button")
     public void iClickOnSaveButton() {
         voucherPage.ClickSaveButton();
@@ -34,7 +33,6 @@ public class VoucherCreateStepDefinition {
     public void iCheckIfTheVouchersAppearsInList(String text) {
         voucherPage.verifyTextPresent(text);
     }
-
 
 
     @Then("Delete the voucher")
@@ -62,6 +60,7 @@ public class VoucherCreateStepDefinition {
         voucherPage.ConfirmGenerateCodes();
     }
 
+
     @And("I generate a code with each posible combination settings")
     public void iGenerateACodeWithEachPosibleCombinationSettings() {
         voucherPage.GenerateCodeEveryCase();
@@ -78,6 +77,53 @@ public class VoucherCreateStepDefinition {
         voucherPage.InputaCode(code);
     }
 
+    //MARIA
+    @Then("I Enter the name of the voucher")
+    public void nameVoucher() {
+        voucherPage.NameVoucher();
+    }
+
+    @And("I input voucher discount")
+    public void discountVoucher() {
+        voucherPage.DiscountVoucher();
+    }
+
+    @Then("Select the attraction for which the voucher applies")
+    public void attractionVoucher() {
+        voucherPage.AttractionVoucher();
+    }
+
+    @And("Add a code")
+    public void voucherCode() {
+        voucherPage.VoucherCode();
+    }
+
+    @Then("Enter the code")
+    public void enterCode() {
+        voucherPage.EnterCode();
+    }
+    // scenariu 3
+    @And("Add a code with special characters")
+    public void specialCode() {
+        voucherPage.SpecialCode();
+    }
+
+    @And("Check if the error appears")
+    public void errorMessage() {
+        voucherPage.ErrorMessage();
+    }
+
+
+    @And("Verify if the code works")
+    public void codeWorks() {
+        voucherPage.CodeWorks("50% OFF");
+    }
+
+
+    @And("Check if the error with invalid code appears")
+    public void codeIncorrect() {
+        voucherPage.CodeIncorect("Invalid coupon code");
+    }
 
 
     @Then("I input voucher's discount of {string} \\(STRING)")
@@ -172,7 +218,6 @@ public class VoucherCreateStepDefinition {
     }
 
 
-
     @Then("I verify if the Active from date changed to today's date")
     public void iVerifyIfTheActiveFromDateChangedToTodaySDate() {
         voucherPage.ActiveFromdateVerify();
@@ -188,6 +233,7 @@ public class VoucherCreateStepDefinition {
     public void verifyIfTheCodeIsStillActive(String code) {
         voucherPage.verifyIfCodeisActive(code);
     }
+
 
     @And("I apply the voucher code {string}")
     public void iApplyTheVoucherCode(String code) {
@@ -208,4 +254,5 @@ public class VoucherCreateStepDefinition {
     public void iRefreshThePage() {
         voucherPage.RefreshPage();
     }
+
 }

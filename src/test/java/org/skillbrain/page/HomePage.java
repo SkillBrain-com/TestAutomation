@@ -1,5 +1,6 @@
 package org.skillbrain.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,6 +20,7 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//span[normalize-space()='Create attraction']")
     private WebElement createEventButton;
     @FindBy(xpath = "//p[normalize-space()='Attractions'] //parent::div")
+    // @FindBy(xpath = "//p[normalize-space()='Attractions']")
     private WebElement attractionsSidebar;
     @FindBy(xpath = "//a[normalize-space()='My attractions']")
     private WebElement myAttractions;
@@ -33,8 +35,10 @@ public class HomePage extends BasePage {
     }
 
     public void clickAttractionSidebar() {
-
-        attractionsSidebar.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement sideBar = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(By.xpath("//p[normalize-space()='Attractions']/parent::div"))));
+       sideBar.click();
+        // attractionsSidebar.click();
     }
 
     public void clickMyAttractions() {
@@ -58,12 +62,18 @@ public class HomePage extends BasePage {
         waitForText("My attractions", Duration.ofSeconds(10));
         Assert.assertTrue(createEventButton.isDisplayed());
     }
+
     public void clickVouchers() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // timeout 20s
         WebElement voucherBtn = wait.until(
                 ExpectedConditions.elementToBeClickable(voucherButton) // sau By.xpath("...") etc.
         );
         voucherButton.click();
+        //voucherButton.click();
+        WebElement vouchersTab = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(normalize-space(),'Vouchers')]")));
+        vouchersTab.click();
+
     }
 
+   
 }

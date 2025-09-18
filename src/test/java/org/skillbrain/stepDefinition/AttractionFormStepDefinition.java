@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.skillbrain.page.AttractionForm;
 import org.skillbrain.utilities.TestContextSetup;
+import org.w3c.dom.Text;
 
 public class AttractionFormStepDefinition {
 
@@ -24,7 +25,7 @@ public class AttractionFormStepDefinition {
     public void iExpandLocationTheAccordion() {
         attractionForm.clickOnLocationAccordion();
     }
-    
+
     @And("I fill the Location address field with {string}")
     public void iFillTheLocationAddressFieldWith(String locationName) {
         attractionForm.fillLocationName(locationName);
@@ -93,7 +94,59 @@ public class AttractionFormStepDefinition {
 
     @And("I input the mandatory field of a attractions with the name {string} and location {string}")
     public void iInputTheMandatoryFieldOfAAttractionsWithTheNameAndLocation(String name, String location) {
-        attractionForm.fillAttractionMandatory(name,location);
+        attractionForm.fillAttractionMandatory(name, location);
     }
 
+
+    //MARIA
+    @Then("Enter the name of the event with {string}")
+    public void enterTheNameOfTheEvent(String nameEvent) {
+        attractionForm.TheNameOfEvent(nameEvent);
+    }
+
+    @And("Enter the name of location address with {string}")
+    public void nameOfLocationAddress(String nameLocation) {
+        attractionForm.TheNameOfLocation(nameLocation);
+    }
+
+    @Then("Enter the name of ticket with {string}")
+    public void nameOfTicket(String nameTicket) {
+        attractionForm.NameOfTicket(nameTicket);
+    }
+
+    @And("I choose the price field with {double}")
+    public void priceOfTicket(Double priceTicket) {
+        attractionForm.PriceOfTicket(priceTicket);
+    }
+
+    @Then("I click the Publish Attraction button")
+    public void publishButton() {
+        attractionForm.PublishButton();
+    }
+
+    @And("I click on GoToHub button")
+    public void goToHubButton() {
+        attractionForm.GoToHubButton();
+    }
+
+    @Then("I click on the attraction")
+    public void clickAttraction() {
+        attractionForm.ClickAttraction();
+    }
+
+    @And("I click on the Buy Now button from the eveniment")
+    public void buyNowButton() {
+        attractionForm.BuyNowButton();
+    }
+
+    // scenariu 2
+    @Then("I click one attraction")
+    public void clickOneAttraction() {
+        attractionForm.ClickOneAttraction();
+    }
+
+    @And("I click on the Buy Now button")
+    public void cumparaTest2() {
+        attractionForm.CumparaTest2();
+    }
 }

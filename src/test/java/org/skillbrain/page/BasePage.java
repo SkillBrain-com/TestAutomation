@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
 
 public class BasePage {
 
@@ -30,8 +32,11 @@ public class BasePage {
         driverWait.until(ExpectedConditions.presenceOfElementLocated(xpath));
     }
 
-
-
+    public void setWait() {
+        if (driverWait == null) {
+            driverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        }
+    }
 
     public void waitForVisibility(WebElement element, Duration duration) {
         WebDriverWait wait = new WebDriverWait(driver, duration);
@@ -43,16 +48,18 @@ public class BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-
-    public void setWait() {
-        if (driverWait == null) {
-            driverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        }
-    }
-
-
     public WebDriverWait getDriverWait() {
         return driverWait;
     }
+
+    public void switchToSecondWindow() {
+        Set<String> windowHandles = driver.getWindowHandles();
+        Iterator<String> iterator = windowHandles.iterator();
+        String parentWindow = iterator.next();
+        String secondWindow = iterator.next();
+        driver.switchTo().window(secondWindow);
+    }
 }
+
+
 

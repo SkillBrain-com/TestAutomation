@@ -1,4 +1,6 @@
 package org.skillbrain.page;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,9 +9,15 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
 import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
+
+
 //TODO MERGE DUPLICATE SELECTORS
-public class AttractionForm extends BasePage{
+public class AttractionForm extends BasePage {
+
     private WebDriver driver;
 
     public AttractionForm(WebDriver driver) {
@@ -94,15 +102,16 @@ public class AttractionForm extends BasePage{
         return super.getDriverWait();
     }
 
+
     @FindBy(xpath = "//span[normalize-space()='Next'] //parent::button")
     private WebElement nextButton1;
-    @FindBy(css="input[name=\"name\"]")
+    @FindBy(css = "input[name=\"name\"]")
     private WebElement attractionNameField1;
-    @FindBy(xpath=("//*[normalize-space(text())='Location']"))
+    @FindBy(xpath = ("//*[normalize-space(text())='Location']"))
     private WebElement locationDropDown;
-    @FindBy(xpath=("//input[@name='location' and @type='text']"))
+    @FindBy(xpath = ("//input[@name='location' and @type='text']"))
     private WebElement attractionLocationField;
-    @FindBy(css="img[alt=\"Location pin\"]")
+    @FindBy(css = "img[alt=\"Location pin\"]")
     WebElement mapPin;
     @FindBy(css = "div[aria-label='Hartă'][role='region']")
     WebElement map;
@@ -129,18 +138,17 @@ public class AttractionForm extends BasePage{
         ticketPriceField.sendKeys("30");
     }
 
-   public void fillAttractionMandatory(String name,String location)
-   {
-       waitForText("Attraction name", Duration.ofSeconds(5));
-       attractionNameField1.sendKeys(name);
-       locationDropDown.click();
-       try {
-           Thread.sleep(3000);
-       } catch (InterruptedException e) {
-           e.printStackTrace();
-       }
-    attractionLocationField.sendKeys(location);
-   }
+    public void fillAttractionMandatory(String name, String location) {
+        waitForText("Attraction name", Duration.ofSeconds(5));
+        attractionNameField1.sendKeys(name);
+        locationDropDown.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        attractionLocationField.sendKeys(location);
+    }
 
 
     public void clickOnTicketSave() {
@@ -199,6 +207,96 @@ public class AttractionForm extends BasePage{
         Assert.assertEquals(getOrderCompleteLabel().getText(), "✅ Order complete");
 
         driver.switchTo().defaultContent();
+    }
+
+
+    //MARIA
+    @FindBy(xpath = "//input[@name=\"name\"]")
+    private WebElement eventName;
+    @FindBy(name = "location")
+    private WebElement locationName;
+    @FindBy(name = "name")
+    private WebElement ticketName;
+    @FindBy(name = "price[0]")
+    private WebElement ticketPrice;
+    @FindBy(xpath = "//div[@class='ripple']")
+    private WebElement buttonOfPublish;
+    @FindBy(xpath = "//span[normalize-space()='Go to Hub'] //parent::button")
+    private WebElement buttonHub;
+    @FindBy(xpath = "//h3[normalize-space()='Eveniment 1']")
+    private WebElement attractionClick;
+    @FindBy(xpath = "//h3[normalize-space()='Eveniment 1'] //parent::a //parent::div //following-sibling::div[@class='w-full flex justify-between items-center px-[16px] py-[12px] text-neutral-1000 font-semibold'] //a")
+    private WebElement cumparaAcum;
+    @FindBy(id = "voucherCode")
+    private WebElement codeVInput;
+    @FindBy(xpath = "//button[normalize-space()='Apply']")
+    private WebElement applyButton;
+    @FindBy(xpath = "//h3[normalize-space()='Test 2']")
+    private WebElement clickTest2;
+    @FindBy(xpath = "//h3[normalize-space()='Test 2'] //parent::a //parent::div //following-sibling::div[@class='w-full flex justify-between items-center px-[16px] py-[12px] text-neutral-1000 font-semibold'] //a")
+    private WebElement buyTest2;
+
+    public void TheNameOfEvent(String nameEvent) {
+        eventName.sendKeys("Eveniment 1");
+    }
+
+    public void TheNameOfLocation(String nameLocation) {
+        waitForVisibility(locationName, Duration.ofSeconds(10));
+        scrollToElement(locationName);
+        locationName.sendKeys("Iasi");
+    }
+
+    public void NameOfTicket(String nameTicket) {
+        ticketName.sendKeys("Eveniment");
+    }
+
+    public void PriceOfTicket(Double priceTicket) {
+        ticketPrice.sendKeys("50");
+    }
+
+    public void PublishButton() {
+        buttonOfPublish.click();
+    }
+
+    public void GoToHubButton() {
+        buttonHub.click();
+    }
+
+    public void ClickAttraction() {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(attractionClick));
+        attractionClick.click();
+        System.out.println("Click efectuat");
+    }
+
+    public void BuyNowButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        switchToSecondWindow();
+        wait.until(ExpectedConditions.visibilityOf(cumparaAcum));
+        cumparaAcum.click();
+        System.out.println("Buy apasat");
+    }
+
+    public void EnterCode() {
+        codeVInput.sendKeys("Testare1");
+        applyButton.click();
+    }
+
+    public void ClickOneAttraction() {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(clickTest2));
+        System.out.println("Click efectuat");
+        scrollToElement(clickTest2);
+        clickTest2.click();
+    }
+
+    public void CumparaTest2() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        switchToSecondWindow();
+        wait.until(ExpectedConditions.visibilityOf(buyTest2));
+        buyTest2.click();
     }
 
 }
