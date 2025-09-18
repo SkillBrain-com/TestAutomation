@@ -10,9 +10,9 @@ Feature: Create 2 tickets (one free and one 10 RON) that contains a mandatory cu
     Then Expand location Accordion
     And Fill "Location/address" Field
     Then Expand Advanced settings Field
-#    And Click "Enable Customer Form" Checkbox
-#    Then Click "Next Button" Button
-#    And Click "Create ticket" Button
+    And Click "Enable Customer Form" Checkbox
+    Then Click "Next Button" Button
+    And Click On Create Ticket Button
 #    Then Fill "Name" Field
 #    And Click "Create ticket" Button to create the second ticket
 #    Then Fill "Name" Field.

@@ -34,6 +34,21 @@ public class CustomerFormStepDefinition {
     public void expandAdvancedSettingsField() {
         customerForm.expandAdvancedSettingsField();
     }
+
+    @And("Click {string} Checkbox")
+    public void clickCheckbox(String enableCustomerForm) {
+        customerForm.enableCustomerForm();
+    }
+
+    @Then("Click {string} Button")
+    public void clickButton(String clickOnNextButton) {
+        customerForm.clickOnNextButtonOverview();
+    }
+
+    @And("Click On Create Ticket Button")
+    public void clickOnCreateTicketButton() {
+        customerForm.clickOncreateTicketButton();
+    }
 }
 
 
@@ -45,21 +60,16 @@ public class CustomerFormStepDefinition {
 //    And Click "Create ticket"Button
 //    Then Fill "Name"Field .
 //    And Clik "Create ticket"
-//    Button to
-//    create the
-//    second ticket
+//    Button to create the second ticket
 //    Then Fill "Name"Field .
-//    And Fill "Price"Field,
-//    with value "10".
+//    And Fill "Price"Field, with value "10".
 //    Then Click "Save"Button .
-//    And Click "Customer form"
-//    Tab Button.
+//    And Click "Customer form" Button.
 //    Then Click "Field Name"Field .
 //    And Click "Mandatory"Checkbox .
 //    Then Click "Next"Button .
 //    And Click "+"Button .
-//    Then Click "Continue"
-//    Button.
+//    Then Click "Continue" Button.
 //            And Check
 
 
