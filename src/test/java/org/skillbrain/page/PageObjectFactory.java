@@ -29,9 +29,9 @@ public class PageObjectFactory {
     private OveitHubGuestFormPage oveitHubGuestForm;
     private OveitHubPage oveitHub;
     private OveitHubTicketsPage oveitHubTickets;
-   private ApprovalTicket approvalTicket;
-   private ApproveTicketOrder approveATicketOrder;
-
+    private ApprovalTicket approvalTicket;
+    private ApproveTicketOrder approveATicketOrder;
+    private AttractionForm privateTicket;
 
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;
@@ -56,15 +56,18 @@ public class PageObjectFactory {
         voucherPage = new VoucherPage(driver);
         return voucherPage;
     }
+
     public TicketPage getTicketPage() {
         ticketPage = new TicketPage(driver);
         return ticketPage;
     }
 
-    public ApprovalTicket getApprovalTicket(){
+
+    public ApprovalTicket getApprovalTicket() {
         approvalTicket = new ApprovalTicket(driver);
         return approvalTicket;
     }
+
     public ApproveTicketOrder getApproveATicketOrder() {
         approveATicketOrder = new ApproveTicketOrder(driver);
         return approveATicketOrder;
@@ -143,5 +146,11 @@ public class PageObjectFactory {
     public OveitHubTicketsPage getOveitHubTickets() {
         oveitHubTickets = new OveitHubTicketsPage(driver);
         return oveitHubTickets;
+    }
+
+    public AttractionForm getPrivateTicket() {
+        privateTicket = new AttractionForm(driver);
+        return privateTicket;
+
     }
 }

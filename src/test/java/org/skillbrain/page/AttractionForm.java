@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import java.time.Duration;
@@ -17,8 +16,6 @@ public class AttractionForm extends BasePage{
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
     }
-
-
     @FindBy(xpath = "//span[normalize-space()='Next'] //parent::button")
     private WebElement nextButton;
     @FindBy(xpath = "//a[contains(normalize-space(.), 'Preview & Publish')]")
@@ -35,16 +32,12 @@ public class AttractionForm extends BasePage{
     private WebElement autoprocButton;
     @FindBy(xpath = "//button[normalize-space()='Pay']")
     private WebElement payButton;
-
     @FindBy(xpath = "//span[contains(text(), 'Location')]")
     private WebElement locationAccordion;
-
     @FindBy(xpath = "//iframe[@id='oveit-hub-iframe']")
     private WebElement iframe;
-
     @FindBy(css = "input#react-select-3-input")
     private WebElement stateDropdown;
-
     @FindBy(xpath = "//input[@name=\"name\"]")
     private WebElement attractionNameField;
     @FindBy(xpath = "//input[@name=\"location\"]")
@@ -61,7 +54,6 @@ public class AttractionForm extends BasePage{
     private WebElement cityField;
     @FindBy(css = "input[name=\"address\"]")
     private WebElement addressField;
-
     @FindBy(xpath = "//h2[normalize-space()=\"Tickets\"]")
     private WebElement ticketsLabel;
     @FindBy(xpath = "//h2[normalize-space()=\"My billing information\"]")
@@ -74,7 +66,7 @@ public class AttractionForm extends BasePage{
     }
 
     public void fillAttractionName(String attractionName) {
-        attractionNameField.sendKeys("IntelliJ Auto Test");
+        attractionNameField.sendKeys("Ramona_test");
     }
 
     public void clickOnLocationAccordion() {
@@ -85,7 +77,7 @@ public class AttractionForm extends BasePage{
         waitForVisibility(locationNameField, Duration.ofSeconds(10));
         scrollToElement(locationNameField);
 
-        locationNameField.sendKeys("SomeRandomPlace");
+        locationNameField.sendKeys("Cluj");
     }
 
 
@@ -121,12 +113,12 @@ public class AttractionForm extends BasePage{
     }
 
     public void fillTicketName(String ticketName) {
-        ticketNameField.sendKeys("Test123");
+        ticketNameField.sendKeys("Ramona_test");
     }
 
     public void fillTicketPrice(String ticketPrice) {
         ticketPriceField.clear();
-        ticketPriceField.sendKeys("30");
+        ticketPriceField.sendKeys("11");
     }
 
    public void fillAttractionMandatory(String name,String location)
@@ -172,12 +164,12 @@ public class AttractionForm extends BasePage{
     public void fillCustomerForm(String info) {
         driver.switchTo().frame(iframe);
 
-        emailField.sendKeys("test@example.com");
-        nameField.sendKeys("Popescu Ion");
+        emailField.sendKeys("a@test.ro");
+        nameField.sendKeys("Ramona_test");
         stateDropdown.sendKeys("Alabama");
         stateDropdown.sendKeys(Keys.ENTER);
         cityField.sendKeys("Pandora");
-        addressField.sendKeys("Calea Victoriei 199");
+        addressField.sendKeys("Aleea Astrei");
     }
 
     public void clickOnAutoProcButton() {
@@ -199,6 +191,43 @@ public class AttractionForm extends BasePage{
         Assert.assertEquals(getOrderCompleteLabel().getText(), "✅ Order complete");
 
         driver.switchTo().defaultContent();
+    }
+
+// RAMONA
+    @FindBy(xpath= "//span[contains(text(),'Ticket configuration')]/..")
+    private WebElement ticketConfigurationButton;
+
+    @FindBy(xpath = "//div[span[text()='Ticket visibility']]")
+    private WebElement ticketVisibilityButton;
+
+    public void clickTicketConfiguration() {
+        waitForVisibility(ticketConfigurationButton, Duration.ofSeconds(10));
+        scrollToElement(ticketConfigurationButton);
+        ticketConfigurationButton.click();
+    }
+    public void clickOnTicketVisibility() {
+        ticketVisibilityButton.click();
+    }
+
+    public void clickOnPrivateInvitation() {
+    }
+
+    public void fillTheInvitationCode() {
+    }
+
+    public void ClickOnNextButton() {
+    }
+
+    public void insertTheString() {
+    }
+
+    public void insertTheEmailAdress() {
+    }
+
+    public void clickOnRegistredButton() {
+    }
+
+    public void clickOnPublishAttraction() {
     }
 
 }
