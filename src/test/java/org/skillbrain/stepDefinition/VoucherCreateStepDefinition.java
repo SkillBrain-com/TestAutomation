@@ -77,8 +77,7 @@ public class VoucherCreateStepDefinition {
         voucherPage.InputaCode(code);
     }
 
-//MARIA
-
+    //MARIA
     @Then("I Enter the name of the voucher")
     public void nameVoucher() {
         voucherPage.NameVoucher();
@@ -97,6 +96,33 @@ public class VoucherCreateStepDefinition {
     @And("Add a code")
     public void voucherCode() {
         voucherPage.VoucherCode();
+    }
+
+    @Then("Enter the code")
+    public void enterCode() {
+        voucherPage.EnterCode();
+    }
+    // scenariu 3
+    @And("Add a code with special characters")
+    public void specialCode() {
+        voucherPage.SpecialCode();
+    }
+
+    @And("Check if the error appears")
+    public void errorMessage() {
+        voucherPage.ErrorMessage();
+    }
+
+
+    @And("Verify if the code works")
+    public void codeWorks() {
+        voucherPage.CodeWorks("50% OFF");
+    }
+
+
+    @And("Check if the error with invalid code appears")
+    public void codeIncorrect() {
+        voucherPage.CodeIncorect("Invalid coupon code");
     }
 
 

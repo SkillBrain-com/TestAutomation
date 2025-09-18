@@ -36,7 +36,7 @@ public class HomePage extends BasePage {
 
     public void clickAttractionSidebar() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement sideBar = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[normalize-space()='Attractions']/parent::div")));
+        WebElement sideBar = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(By.xpath("//p[normalize-space()='Attractions']/parent::div"))));
        sideBar.click();
         // attractionsSidebar.click();
     }
@@ -75,4 +75,5 @@ public class HomePage extends BasePage {
 
     }
 
+   
 }

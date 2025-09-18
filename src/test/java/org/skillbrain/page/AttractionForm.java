@@ -1,4 +1,6 @@
 package org.skillbrain.page;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
 import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
 
 
 //TODO MERGE DUPLICATE SELECTORS
@@ -96,6 +101,7 @@ public class AttractionForm extends BasePage {
     public WebDriverWait getDriverWait() {
         return super.getDriverWait();
     }
+
 
     @FindBy(xpath = "//span[normalize-space()='Next'] //parent::button")
     private WebElement nextButton1;
@@ -207,13 +213,32 @@ public class AttractionForm extends BasePage {
     //MARIA
     @FindBy(xpath = "//input[@name=\"name\"]")
     private WebElement eventName;
+    @FindBy(name = "location")
+    private WebElement locationName;
+    @FindBy(name = "name")
+    private WebElement ticketName;
+    @FindBy(name = "price[0]")
+    private WebElement ticketPrice;
+    @FindBy(xpath = "//div[@class='ripple']")
+    private WebElement buttonOfPublish;
+    @FindBy(xpath = "//span[normalize-space()='Go to Hub'] //parent::button")
+    private WebElement buttonHub;
+    @FindBy(xpath = "//h3[normalize-space()='Eveniment 1']")
+    private WebElement attractionClick;
+    @FindBy(xpath = "//h3[normalize-space()='Eveniment 1'] //parent::a //parent::div //following-sibling::div[@class='w-full flex justify-between items-center px-[16px] py-[12px] text-neutral-1000 font-semibold'] //a")
+    private WebElement cumparaAcum;
+    @FindBy(id = "voucherCode")
+    private WebElement codeVInput;
+    @FindBy(xpath = "//button[normalize-space()='Apply']")
+    private WebElement applyButton;
+    @FindBy(xpath = "//h3[normalize-space()='Test 2']")
+    private WebElement clickTest2;
+    @FindBy(xpath = "//h3[normalize-space()='Test 2'] //parent::a //parent::div //following-sibling::div[@class='w-full flex justify-between items-center px-[16px] py-[12px] text-neutral-1000 font-semibold'] //a")
+    private WebElement buyTest2;
 
     public void TheNameOfEvent(String nameEvent) {
         eventName.sendKeys("Eveniment 1");
     }
-
-    @FindBy(name = "location")
-    private WebElement locationName;
 
     public void TheNameOfLocation(String nameLocation) {
         waitForVisibility(locationName, Duration.ofSeconds(10));
@@ -221,30 +246,57 @@ public class AttractionForm extends BasePage {
         locationName.sendKeys("Iasi");
     }
 
-    @FindBy(name = "name")
-    private WebElement ticketName;
-
     public void NameOfTicket(String nameTicket) {
         ticketName.sendKeys("Eveniment");
     }
-
-    @FindBy(name = "price[0]")
-    private WebElement ticketPrice;
 
     public void PriceOfTicket(Double priceTicket) {
         ticketPrice.sendKeys("50");
     }
 
-    @FindBy(xpath = "//div[@class='ripple']")
-    private WebElement buttonOfPublish;
-
     public void PublishButton() {
         buttonOfPublish.click();
     }
 
-//    @FindBy(xpath = "//button[.//span[text()='Go to Hub']]")
-//    private WebElement buttonHub;
-//    public void GoToHubButton(){
-//        buttonHub.click();
-//    }
+    public void GoToHubButton() {
+        buttonHub.click();
+    }
+
+    public void ClickAttraction() {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.elementToBeClickable(attractionClick));
+        attractionClick.click();
+        System.out.println("Click efectuat");
+    }
+
+    public void BuyNowButton() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        switchToSecondWindow();
+        wait.until(ExpectedConditions.visibilityOf(cumparaAcum));
+        cumparaAcum.click();
+        System.out.println("Buy apasat");
+    }
+
+    public void EnterCode() {
+        codeVInput.sendKeys("Testare1");
+        applyButton.click();
+    }
+
+    public void ClickOneAttraction() {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(clickTest2));
+        System.out.println("Click efectuat");
+        scrollToElement(clickTest2);
+        clickTest2.click();
+    }
+
+    public void CumparaTest2() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        switchToSecondWindow();
+        wait.until(ExpectedConditions.visibilityOf(buyTest2));
+        buyTest2.click();
+    }
+
 }
