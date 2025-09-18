@@ -32,7 +32,6 @@ public class PageObjectFactory {
    private ApprovalTicket approvalTicket;
    private ApproveTicketOrder approveATicketOrder;
    private TicketWithCalendar ticketWithCalendar;
-
 //    dependency injection
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;

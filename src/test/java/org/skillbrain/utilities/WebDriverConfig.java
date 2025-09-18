@@ -16,13 +16,6 @@ import java.util.Map;
 public class WebDriverConfig {
 
     private WebDriver driver;
-//    public ChromeOptions getChromeOptions() {
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--start-maximized");
-//        options.addArguments("--disable-popup-blocking");
-////        options.addArguments("--headless");
-//        return options;
-//    }
 
 
     public ChromeOptions getChromeOptions() {

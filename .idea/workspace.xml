@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="voucher test case&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/test/java/org/skillbrain/feature/createVoucher.feature&#10;#&#9;src/test/java/org/skillbrain/page/HomePage.java&#10;#&#9;src/test/java/org/skillbrain/page/VoucherPage.java" />
+    <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,9 +42,6 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="32B55Uiz6k9miVgBZOsHkuxAFjp" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -53,26 +50,17 @@
   &quot;keyToString&quot;: {
     &quot;Cucumber Java.Feature: ApproveATicketOrder.executor&quot;: &quot;Run&quot;,
     &quot;Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.TestAutomation [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.TestAutomation [install].executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;TestNG.TestRunner.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Maria&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Mare&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
-  <component name="RunAnythingCache">
-    <option name="myCommands">
-      <command value="mvn clean" />
-      <command value="mvn install" />
-    </option>
-  </component>
   <component name="RunManager" selected="TestNG.TestRunner">
     <configuration name="Scenario: Create an attraction and place an order for a ticket with approval option on" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
@@ -199,6 +187,11 @@
           <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/HomePageStepDefinition.java</url>
           <line>40</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/HomePage.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
