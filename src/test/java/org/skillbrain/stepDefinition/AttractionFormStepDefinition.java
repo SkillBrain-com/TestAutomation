@@ -24,7 +24,7 @@ public class AttractionFormStepDefinition {
     public void iExpandLocationTheAccordion() {
         attractionForm.clickOnLocationAccordion();
     }
-    
+
     @And("I fill the Location address field with {string}")
     public void iFillTheLocationAddressFieldWith(String locationName) {
         attractionForm.fillLocationName(locationName);
@@ -93,7 +93,39 @@ public class AttractionFormStepDefinition {
 
     @And("I input the mandatory field of a attractions with the name {string} and location {string}")
     public void iInputTheMandatoryFieldOfAAttractionsWithTheNameAndLocation(String name, String location) {
-        attractionForm.fillAttractionMandatory(name,location);
+        attractionForm.fillAttractionMandatory(name, location);
     }
+
+
+    //MARIA
+    @Then("Enter the name of the event with {string}")
+    public void enterTheNameOfTheEvent(String nameEvent) {
+        attractionForm.TheNameOfEvent(nameEvent);
+    }
+
+    @And("Enter the name of location address with {string}")
+    public void nameOfLocationAddress(String nameLocation) {
+        attractionForm.TheNameOfLocation(nameLocation);
+    }
+
+    @Then("Enter the name of ticket with {string}")
+    public  void nameOfTicket(String nameTicket){
+        attractionForm.NameOfTicket(nameTicket);
+    }
+
+    @And("I choose the price field with {double}")
+    public void priceOfTicket (Double priceTicket){
+        attractionForm.PriceOfTicket(priceTicket);
+    }
+
+    @Then("I click the Publish Attraction button")
+    public void publishButton (){
+        attractionForm.PublishButton();
+    }
+
+//@Then(" I click on GoToHub button")
+//    public void goToHubButton(){
+//        attractionForm.GoToHubButton();
+//}
 
 }

@@ -8,8 +8,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import java.time.Duration;
+
+
 //TODO MERGE DUPLICATE SELECTORS
-public class AttractionForm extends BasePage{
+public class AttractionForm extends BasePage {
+
     private WebDriver driver;
 
     public AttractionForm(WebDriver driver) {
@@ -96,13 +99,13 @@ public class AttractionForm extends BasePage{
 
     @FindBy(xpath = "//span[normalize-space()='Next'] //parent::button")
     private WebElement nextButton1;
-    @FindBy(css="input[name=\"name\"]")
+    @FindBy(css = "input[name=\"name\"]")
     private WebElement attractionNameField1;
-    @FindBy(xpath=("//*[normalize-space(text())='Location']"))
+    @FindBy(xpath = ("//*[normalize-space(text())='Location']"))
     private WebElement locationDropDown;
-    @FindBy(xpath=("//input[@name='location' and @type='text']"))
+    @FindBy(xpath = ("//input[@name='location' and @type='text']"))
     private WebElement attractionLocationField;
-    @FindBy(css="img[alt=\"Location pin\"]")
+    @FindBy(css = "img[alt=\"Location pin\"]")
     WebElement mapPin;
     @FindBy(css = "div[aria-label='Hartă'][role='region']")
     WebElement map;
@@ -129,18 +132,17 @@ public class AttractionForm extends BasePage{
         ticketPriceField.sendKeys("30");
     }
 
-   public void fillAttractionMandatory(String name,String location)
-   {
-       waitForText("Attraction name", Duration.ofSeconds(5));
-       attractionNameField1.sendKeys(name);
-       locationDropDown.click();
-       try {
-           Thread.sleep(3000);
-       } catch (InterruptedException e) {
-           e.printStackTrace();
-       }
-    attractionLocationField.sendKeys(location);
-   }
+    public void fillAttractionMandatory(String name, String location) {
+        waitForText("Attraction name", Duration.ofSeconds(5));
+        attractionNameField1.sendKeys(name);
+        locationDropDown.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        attractionLocationField.sendKeys(location);
+    }
 
 
     public void clickOnTicketSave() {
@@ -201,4 +203,48 @@ public class AttractionForm extends BasePage{
         driver.switchTo().defaultContent();
     }
 
+
+    //MARIA
+    @FindBy(xpath = "//input[@name=\"name\"]")
+    private WebElement eventName;
+
+    public void TheNameOfEvent(String nameEvent) {
+        eventName.sendKeys("Eveniment 1");
+    }
+
+    @FindBy(name = "location")
+    private WebElement locationName;
+
+    public void TheNameOfLocation(String nameLocation) {
+        waitForVisibility(locationName, Duration.ofSeconds(10));
+        scrollToElement(locationName);
+        locationName.sendKeys("Iasi");
+    }
+
+    @FindBy(name = "name")
+    private WebElement ticketName;
+
+    public void NameOfTicket(String nameTicket) {
+        ticketName.sendKeys("Eveniment");
+    }
+
+    @FindBy(name = "price[0]")
+    private WebElement ticketPrice;
+
+    public void PriceOfTicket(Double priceTicket) {
+        ticketPrice.sendKeys("50");
+    }
+
+    @FindBy(xpath = "//div[@class='ripple']")
+    private WebElement buttonOfPublish;
+
+    public void PublishButton() {
+        buttonOfPublish.click();
+    }
+
+//    @FindBy(xpath = "//button[.//span[text()='Go to Hub']]")
+//    private WebElement buttonHub;
+//    public void GoToHubButton(){
+//        buttonHub.click();
+//    }
 }

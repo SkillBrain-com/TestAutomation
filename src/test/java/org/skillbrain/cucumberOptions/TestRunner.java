@@ -8,11 +8,10 @@ import org.testng.annotations.DataProvider;
         features = "src/test/java/org/skillbrain/feature",
         glue = "org.skillbrain.stepDefinition",
         monochrome = true,
-        tags = "@radu1",
+        tags = "@maria",
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "rerun:target/failed_scenarios.txt"},
         dryRun = false
-
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 

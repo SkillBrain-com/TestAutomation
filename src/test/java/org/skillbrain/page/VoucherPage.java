@@ -570,5 +570,42 @@ public void ApplyVoucherOnTicket(String code) {
     {
         driver.navigate().refresh();
     }
-}
 
+
+
+//MARIA
+
+    @FindBy(className = "form-control")
+    private WebElement nameOfVoucher;
+
+    public void NameVoucher() {
+        nameOfVoucher.sendKeys("Voucher_Automatizare3");
+    }
+
+    @FindBy(name = "discount")
+    private WebElement discountOfVoucher;
+
+    public void DiscountVoucher() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(discountOfVoucher));
+        discountOfVoucher.sendKeys("50");
+    }
+
+    @FindBy(css = "input[placeholder='Search attraction...']")
+    private WebElement voucherForSpecificAttraction;
+
+    public void AttractionVoucher() {
+        voucherForSpecificAttraction.sendKeys("Eveniment 1");
+    }
+
+    @FindBy(name = "code")
+    private WebElement codeForVoucher;
+
+    @FindBy(css = ("button[type=\"submit\"]"))
+    private WebElement addButton;
+
+    public void VoucherCode() {
+        codeForVoucher.sendKeys("Testare4");
+        addButton.click();
+    }
+}
