@@ -58,6 +58,7 @@ public class VoucherPageImport extends BasePage {
         }
 
         importCodes.sendKeys(filePath);
+        System.out.println("Uploading file from: " + filePath);
     }
 
     public void ImportTxtFile( String file){
@@ -76,4 +77,5 @@ public class VoucherPageImport extends BasePage {
         );
         return !vouchers.isEmpty();
     }
+
 }
