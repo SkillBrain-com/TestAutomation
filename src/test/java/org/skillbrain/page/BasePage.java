@@ -47,6 +47,21 @@ public class BasePage {
         WebDriverWait wait = new WebDriverWait(driver, duration);
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
+    public void switchToSecondWindow() {
+        Set<String> windowHandles = driver.getWindowHandles();
+        Iterator<String> iterator = windowHandles.iterator();
+        String parentWindow = iterator.next();
+        String secondWindow = iterator.next();
+        driver.switchTo().window(secondWindow);
+    }
+    public void switchToThirdWindow() {
+        Set<String> windowHandles = driver.getWindowHandles();
+        Iterator<String> iterator = windowHandles.iterator();
+        String parentWindow = iterator.next();
+        String secondWindow = iterator.next();
+        String thirdWindow = iterator.next();
+        driver.switchTo().window(secondWindow);
+    }
 
     public WebDriverWait getDriverWait() {
         return driverWait;

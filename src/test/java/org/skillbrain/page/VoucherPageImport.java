@@ -31,6 +31,10 @@ public class VoucherPageImport extends BasePage {
     private WebElement importResultMessage;
     @FindBy(xpath = ("//h2[normalize-space()='All discount vouchers']"))
     private WebElement allDiscountVouchers;
+    @FindBy(xpath = ("//input[@placeholder='Code']"))
+    private WebElement addCodeBox;
+    @FindBy(xpath = ("//button[normalize-space()='Add']"))
+    private WebElement addButton;
 
 
     public VoucherPageImport(WebDriver driver) {
@@ -78,4 +82,9 @@ public class VoucherPageImport extends BasePage {
         return !vouchers.isEmpty();
     }
 
+    public void FillAddCodeBox(String series) {
+        addCodeBox.sendKeys(series);
+        addButton.click();
+
+    }
 }
