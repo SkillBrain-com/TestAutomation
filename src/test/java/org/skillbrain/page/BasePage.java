@@ -12,12 +12,16 @@ import java.time.Duration;
 
 public class BasePage {
 
-    private WebDriver driver;
-    private WebDriverWait driverWait;
+    WebDriver driver;
+    WebDriverWait driverWait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(this.driver, driver);
+    }
+
+    public void scrollToElement(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     public void waitForText(String text, Duration duration) {
@@ -26,20 +30,26 @@ public class BasePage {
         driverWait.until(ExpectedConditions.presenceOfElementLocated(xpath));
     }
 
-    public void setWait() {
-        if (driverWait == null) {
-            driverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        }
-    }
+
+
 
     public void waitForVisibility(WebElement element, Duration duration) {
         WebDriverWait wait = new WebDriverWait(driver, duration);
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void scrollToElement(WebElement element) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    public void waitForClick(WebElement element, Duration duration) {
+        WebDriverWait wait = new WebDriverWait(driver, duration);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
+
+
+    public void setWait() {
+        if (driverWait == null) {
+            driverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        }
+    }
+
 
     public WebDriverWait getDriverWait() {
         return driverWait;

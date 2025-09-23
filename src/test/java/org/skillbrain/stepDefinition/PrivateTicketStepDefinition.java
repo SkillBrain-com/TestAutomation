@@ -40,16 +40,16 @@ public class PrivateTicketStepDefinition {
     }
 
     @And("I insert the {string}")
-    public void insertTheString() {
-        privateTicket.insertTheString("1234");
+    public void insertTheString(String string) {
+        privateTicket.insertTheString(string);
     }
 
     @Then("I insert an e-mail address {string}")
-    public void insertEmail() {
-        privateTicket.insertEmail("a@yahoo.com");
+    public void insertEmail(String email) {
+        privateTicket.insertEmail(email);
     }
-    @Then("I click on {string}")
-    public void iClickOnApplyButton(String string) {
+    @Then("I click on Apply button")
+    public void iClickOnApplyButton() {
         privateTicket.applyButton();
     }
 

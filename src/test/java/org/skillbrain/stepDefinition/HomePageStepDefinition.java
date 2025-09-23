@@ -4,7 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.skillbrain.page.HomePage;
-import org.skillbrain.page.LoginPage;
 import org.skillbrain.utilities.TestContextSetup;
 
 public class HomePageStepDefinition {
@@ -32,7 +31,7 @@ public class HomePageStepDefinition {
         homePage.clickMyAttractions();
     }
 
-    @And("I click on Create attraction button")
+    @And("Click the Create attraction button")
     public void iClickOnCreateAttractionButton() {
         homePage.createAttraction();
     }
@@ -41,4 +40,6 @@ public class HomePageStepDefinition {
     public void iClickOnVouchers() {
         homePage.clickVouchers();
     }
+
+
 }

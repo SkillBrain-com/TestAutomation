@@ -1,11 +1,12 @@
 Feature: Create a private invitation ticket so that only invited users can purchase it
 
-  @test-lsr
+# TODO - check E2E script
+  @ramona
   Scenario: Create a private invitation ticket and buy it
     Given User navigates to login page
     When User logs in with valid credentials
     Then Check user is logged in
-    And I click on Create attraction button
+    And Click the Create attraction button
     Then I fill the Attraction name field with "Attraction name"
     Then I expand the Location accordion
     And I fill the Location address field with "Location name"
@@ -19,9 +20,9 @@ Feature: Create a private invitation ticket so that only invited users can purch
     And I fill the Invitation code with "Invitation code"
     Then I click the Save button
     And I click on Next button
-    Then I click again on Next button
-    And I insert the "Invitation code"
-    Then I click on "Apply button"
-    Then I insert an e-mail address "E-mail address"
+    Then I click on Next button
+    And I insert the "12345"
+    Then I click on Apply button
+    Then I insert an e-mail address "a@yahoo.com"
     And I click on Register button
     Then I click on Publish attraction

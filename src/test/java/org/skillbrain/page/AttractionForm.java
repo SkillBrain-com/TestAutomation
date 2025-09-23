@@ -1,20 +1,21 @@
 package org.skillbrain.page;
-
-
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import java.time.Duration;
 
 //TODO MERGE DUPLICATE SELECTORS
+
 public class AttractionForm extends BasePage {
 
-    private WebDriver driver;
 
     public AttractionForm(WebDriver driver) {
         super(driver);
@@ -107,12 +108,20 @@ public class AttractionForm extends BasePage {
     WebElement map;
 
     public void clickOnNext() {
-        nextButton1.click();
-        waitForVisibility(createTicketButton, Duration.ofSeconds(10));
+        setWait();
+        WebDriverWait wait = getDriverWait();
+        try {
+            wait.until(ExpectedConditions.visibilityOf(nextButton1));
+            nextButton1.click();
+        } catch (Exception e) {
+            driver.findElement(By.xpath("//span[normalize-space()='Next'] //parent::button //parent::a")).click();
+        }
+
     }
 
     public void clickOnCreateTicket() {
-        createTicketButton.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(createTicketButton)).click();
         waitForVisibility(ticketNameField, Duration.ofSeconds(10));
     }
 
@@ -290,19 +299,23 @@ public class AttractionForm extends BasePage {
     }
 
     public void insertTheString(String insertCode) {
-        insertTheString.sendKeys("1234");
+        driver.switchTo().frame("oveit-hub-iframe");
+        setWait();
+        getDriverWait().until(ExpectedConditions.visibilityOf(insertTheString));
+        insertTheString.sendKeys(insertCode);
     }
     public void applyButton() {
         apply.click();
     }
     public void insertEmail(String email) {
-        insertTheString.sendKeys("a@yahoo.com");
+        insertTheString.sendKeys(email);
     }
     public void clickOnRegistredButton() {
         registred.click();
 
     }
     public void clickOnPublishAttraction() {
+        driver.switchTo().defaultContent();
         publish.click();
     }
 
