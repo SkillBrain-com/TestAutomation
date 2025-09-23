@@ -1,7 +1,7 @@
 
 Feature: Create ticket with approval option
 
-  @SM-TM-263d6
+
    Scenario: Create an attraction and place an order for a ticket with approval setting enable
     Given User navigates to login page
     When User logs in with valid credentials

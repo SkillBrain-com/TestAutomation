@@ -32,7 +32,7 @@ public class TicketFeeStepDefinition
         ticketPage.FillTicketNameAndPrice(price,name);
     }
 
-    @Then("I click on Preview & Publish of my aplication")
+    @Then("I click on Preview & Publish of my application")
     public void iClickOnPreviewPublishOfMyAplication() {
         ticketPage.PreviewPage();
     }
@@ -86,4 +86,29 @@ public class TicketFeeStepDefinition
         ticketPage.closeShareMenu();
     }
 
+
+    @Then("I create a ticket with the price {int} ron and with the name  {string} with tax  included")
+    public void iCreateATicketWithThePriceRonAndWithTheNameWithTaxIncluded(int price, String name) {
+        ticketPage.FillTicketNameAndPrice(price,name);
+        ticketPage.includefeeInPrice();
+
+    }
+
+    @Then("I check if the tax is included")
+    public void iCheckIfTheTaxIsIncluded() {
+        ticketPage.CheckIfTaxIsIncluded();
+
+    }
+
+    @Then("I create a ticket with the price {int} ron and with the name  {string} with tax  included v2")
+    public void iCreateATicketWithThePriceRonAndWithTheNameWithTaxIncludedAndNotSave(int price, String name) {
+        ticketPage.FillTicketNameAndPriceAndNotSave(price,name);
+        ticketPage.includefeeInPrice();
+        ticketPage.SaveTicket();
+    }
+
+    @Then("click save ticket")
+    public void clickSaveTicket() {
+        ticketPage.SaveTicket();
+    }
 }

@@ -71,7 +71,6 @@ public class VoucherPage extends BasePage {
     private WebElement activeFromField;
     @FindBy(css = "input[id=\"voucherCode\"]")
     WebElement VoucherCodeInputField;
-    @FindBy(css = "button[data-slot='button']")
     private WebElement ApplyButton;
     private String code1;
     private String code2;

@@ -414,7 +414,7 @@ Feature: Verifying generate codes feature
     And I click on my attractions
     And I delete the attraction
 
-  @radu
+
   Scenario: I create a voucher with the every way of adding a code and i check them
     Given User navigates to login page
     When User logs in with valid credentials
@@ -434,7 +434,7 @@ Feature: Verifying generate codes feature
     And I input the mandatory field of a attractions with the name "Test223" and location "Cluj"
     Then I click on my tickets of attraction
     Then I create a ticket with the price 150 ron and with the name  "name" with tax not included
-    Then I click on Preview & Publish of my aplication
+    Then I click on Preview & Publish of my application
     Then I publish my attraction
     Then I click share button
     And  I open AttractionPage
@@ -452,3 +452,4 @@ Feature: Verifying generate codes feature
     And Delete the voucher
     And I click on my attractions
     And I delete the attraction
+

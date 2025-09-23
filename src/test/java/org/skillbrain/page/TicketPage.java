@@ -1,5 +1,7 @@
 package org.skillbrain.page;
+import org.bouncycastle.pqc.crypto.newhope.NHOtherInfoGenerator;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -45,7 +47,8 @@ public class TicketPage extends BasePage {
     private WebElement AttractionPageFeeBrute;
     @FindBy(xpath = "//button[normalize-space()='Close']")
     private WebElement closeButtonShareMenu;
-
+    @FindBy(css="input[name=\"absorb_fees\"]")
+    private WebElement includefeeCheckbox;
     public TicketPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -79,6 +82,27 @@ public class TicketPage extends BasePage {
             TicketPriceField.sendKeys(String.valueOf(price));
             SaveTicketButton.click();}
 
+    public void FillTicketNameAndPriceAndNotSave ( int price, String name)
+    {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        CreateTicketButton.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        TicketNameField.sendKeys(name);
+        TicketPriceField.sendKeys(String.valueOf(price));
+        }
+
+    public void  SaveTicket()
+    {
+        SaveTicketButton.click();
+    }
 
 
     public void EditAttraction() {
@@ -165,8 +189,8 @@ public class TicketPage extends BasePage {
                 double taxFee = getTaxFeeAttraction();
                 double expectedTax = price * 0.03;
 
-                if (expectedTax < 4.34) {
-                    expectedTax = 4.34;
+                if (expectedTax < 4.31) {
+                    expectedTax = 4.31;
                 }
 
                 Assert.assertEquals(taxFee, expectedTax, 0.01, "Taxa  nu este corecta! Expected: " + expectedTax + ", Actual: " + taxFee);
@@ -240,8 +264,27 @@ public class TicketPage extends BasePage {
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", closeButton);
         }
     }
+    public void includefeeInPrice()
+    {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(includefeeCheckbox).click().perform();
+       // includefeeCheckbox.click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+    }
 
+    public void CheckIfTaxIsIncluded()
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        boolean elementAppeared = true;
+            try {
+                wait.until(ExpectedConditions.visibilityOf(AttractionPageFeeBrute));
+            } catch (TimeoutException e) {
+                elementAppeared = false;
+            }
 
+        Assert.assertFalse(elementAppeared,
+                "NU e ok");
+    }
 
 }
 
