@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
 
 public class BasePage {
 
@@ -39,6 +41,21 @@ public class BasePage {
 
     public void scrollToElement(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+    public void switchToSecondWindow() {
+        Set<String> windowHandles = driver.getWindowHandles();
+        Iterator<String> iterator = windowHandles.iterator();
+        String parentWindow = iterator.next();
+        String secondWindow = iterator.next();
+        driver.switchTo().window(secondWindow);
+    }
+    public void switchToThirdWindow() {
+        Set<String> windowHandles = driver.getWindowHandles();
+        Iterator<String> iterator = windowHandles.iterator();
+        String parentWindow = iterator.next();
+        String secondWindow = iterator.next();
+        String thirdWindow = iterator.next();
+        driver.switchTo().window(secondWindow);
     }
 
     public WebDriverWait getDriverWait() {

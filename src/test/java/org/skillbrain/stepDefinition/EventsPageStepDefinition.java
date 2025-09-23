@@ -1,6 +1,7 @@
 package org.skillbrain.stepDefinition;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.skillbrain.page.AttractionForm;
 import org.skillbrain.page.EventsPage;
@@ -40,6 +41,48 @@ public class EventsPageStepDefinition {
         eventsPage.clickCreateVoucherButton();
     }
 
+
+    @And("I click on My events")
+    public void iClickOnMyEvents() {
+        eventsPage.clickMyEvents();
+
+    }
+
+    @Then("I click on Go to Hub button")
+    public void iClickOnGoToHubButton() {
+
+        eventsPage.clickGoToHub();
+    }
+
+    @And("I click on testareBugFix event")
+    public void iClickOnTestareBugFixEvent() {
+        eventsPage.clickTestareBugFixEvent();
+    }
+
+    @And("I click on Buy Now button")
+    public void iClickOnBuyNowButton() {
+        eventsPage.clickBuyNowButton();
+    }
+
+    @Then("I fill in the code box with series from voucher created {string} and click on apply button")
+    public void iFillInTheCodeBoxWithSeriesFromVoucherCreatedAndClickOnApplyButton(String arg0) {
+        eventsPage.fillInTheCodeBox();
+        eventsPage.clickApplyButton();
+
+    }
+
+    @And("I increase the qty by pressing {string} button")
+    public void iIncreaseTheQtyByPressingButton(String arg0) {
+        eventsPage.increasingQtyBy1();
+
+    }
+
+
+    @Then("Check if the discount is applied and value is the same as created")
+    public void checkIfTheDiscountIsAppliedAndValueIsTheSameAsCreated() {
+        eventsPage.checkValueOfAppliedDiscount();
+
+    }
 
 
 }
