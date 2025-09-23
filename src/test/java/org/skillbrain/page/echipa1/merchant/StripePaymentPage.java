@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.skillbrain.page.BasePage;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -39,6 +40,22 @@ public class StripePaymentPage extends BasePage {
     @FindBy(id = "billingPostalCode")
     private WebElement billingPostalCodeField;
 
+    @FindBy(xpath = "//input[@id='one-time-code']")
+    private WebElement firstDigit;
+    @FindBy(xpath = "//input[@aria-label='one-time-code-input-1']")
+    private WebElement secondDigit;
+    @FindBy(xpath = "//input[@aria-label='one-time-code-input-2']")
+    private WebElement thirdDigit;
+    @FindBy(xpath = "//input[@aria-label='one-time-code-input-3']")
+    private WebElement fourthDigit;
+    @FindBy(xpath = "//input[@aria-label='one-time-code-input-4']")
+    private WebElement fifthDigit;
+    @FindBy(xpath = "//input[@aria-label='one-time-code-input-5']")
+    private WebElement sixthDigit;
+
+    @FindBy(xpath = "//h2[normalize-space()='✅ Order complete']")
+    private WebElement orderCompleteLabel;
+
     public void fillPaymentMethod(String email, String cardNr, String cardExpiry, String cardCvc, String cardholderName, String billingCountry, String zipCode) {
         waitForClick(emailPaymentField,Duration.ofSeconds(10));
         emailPaymentField.sendKeys(email);
@@ -56,4 +73,8 @@ public class StripePaymentPage extends BasePage {
         payPaymentButton.click();
     }
 
+    public void assertOveitOrderCompleted() {
+        waitForText("✅ Order complete", Duration.ofSeconds(30));
+        Assert.assertEquals(orderCompleteLabel.getText(), "✅ Order complete");
+    }
 }

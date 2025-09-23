@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="Small fix (annoyance)" />
+    <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/VoucherPage.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/VoucherPage.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/createVoucher.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/createVoucher.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/oveitHub.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/oveitHub.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormPreviewPublishPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormPreviewPublishPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormTicketsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormTicketsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/merchant/StripePaymentPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/merchant/StripePaymentPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubGuestFormPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubGuestFormPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubTicketsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubTicketsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/attractionformsteps/AttractionFormPreviewPublishStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/attractionformsteps/AttractionFormPreviewPublishStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/merchantsteps/StripePaymentStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/merchantsteps/StripePaymentStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubCustomerFormStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubCustomerFormStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubGuestFormStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubGuestFormStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubTicketsStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubTicketsStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,12 +51,12 @@
     &quot;assignee&quot;: &quot;RaduMarian&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:SkillBrain-com/TestAutomation.git&quot;,
-    &quot;accountId&quot;: &quot;10822f6e-3e39-4747-84c1-60875e0f927e&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:SkillBrain-com/TestAutomation.git",
+    "accountId": "a3d8a8c2-fffb-4898-9e96-a5af83177305"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
@@ -52,13 +72,24 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Cucumber Java.Feature: ApproveATicketOrder.executor": "Run",
+    "Cucumber Java.Scenario: Buy more than 20 tickets..executor": "Run",
     "Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option.executor": "Run",
+    "Cucumber Java.Scenario: Ordering without a ticket..executor": "Run",
+    "Cucumber Java.Scenario: Place an Order for an Attraction, using 2 tickets (1 free and 1 priced) and 1 bundle, meant for a company, using the Autoprocess method..executor": "Run",
+    "Cucumber Java.Scenario: Place an Order, for a company that buys 2 tickets (1 free + 1 priced) and 1 bundle of 10 priced tickets, using the Card method..executor": "Run",
+    "Cucumber Java.Scenario: Place an Order, for a person that buys 10 tickets, using the Autoprocess method..executor": "Run",
+    "Cucumber Java.Scenario: Place an Order, for a person, that is asked to fill 6 unique custom fields of different importance, using the Autoprocess method..executor": "Run",
+    "Cucumber Java.Scenario: Place an Order, using the Card method..executor": "Run",
+    "Cucumber Java.Scenario: Registering for a free Attraction..executor": "Run",
+    "Cucumber Java.Scenario: Total check, for an order of 20 tickets..executor": "Run",
     "Maven.TestAutomation [clean,compile].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "TestNG.TestRunner.executor": "Run",
-    "git-widget-placeholder": "Liviu__Sorin__Rusu",
+    "git-widget-placeholder": "LSR__20TCs",
+    "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0"
@@ -69,98 +100,28 @@
       <command value="mvn clean compile" />
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.TestRunner">
-    <configuration name="Scenario: Create an attraction and place an order for a ticket with approval option on" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/approvel.feature" />
-      <option name="GLUE" value="org.skillbrain.stepDefinition" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="TestAutomation" />
-      <option name="NAME_FILTER" value="^Create an attraction and place an order for a ticket with approval option on$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Create an attraction and place an order for a ticket with approval option on$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Create an attraction and place an order for a ticket with approval option on" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Scenario: Create an attraction and place an order for a ticket with approval option" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/approvel.feature" />
-      <option name="GLUE" value="org.skillbrain.stepDefinition" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="TestAutomation" />
-      <option name="NAME_FILTER" value="^Create an attraction and place an order for a ticket with approval option$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Create an attraction and place an order for a ticket with approval option$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Create an attraction and place an order for a ticket with approval option" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Scenario: Create an attraction and place an order for a ticket with approval setting enable" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/approvel.feature" />
-      <option name="GLUE" value="org.skillbrain.stepDefinition" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="TestAutomation" />
-      <option name="NAME_FILTER" value="^Create an attraction and place an order for a ticket with approval setting enable$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Create an attraction and place an order for a ticket with approval setting enable$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Create an attraction and place an order for a ticket with approval setting enable" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method." type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/attractions.feature" />
-      <option name="GLUE" value="org.skillbrain.stepDefinition" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="TestAutomation" />
-      <option name="NAME_FILTER" value="^Place an Order for an Attraction\, for a person\, using the Autoprocess payment method\.$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Place an Order for an Attraction\, for a person\, using the Autoprocess payment method\.$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method." />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="TestRunner" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="TestAutomation" />
+      <shortenClasspath name="NONE" />
+      <useClassPathOnly />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.skillbrain.cucumberOptions.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="SUITE_NAME" value="" />
       <option name="PACKAGE_NAME" value="org.skillbrain.cucumberOptions" />
       <option name="MAIN_CLASS_NAME" value="org.skillbrain.cucumberOptions.TestRunner" />
+      <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="CLASS" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="PROPERTIES_FILE" value="" />
       <properties />
       <listeners />
       <method v="2">
@@ -170,10 +131,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG.TestRunner" />
-        <item itemvalue="Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option" />
-        <item itemvalue="Cucumber Java.Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method." />
-        <item itemvalue="Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval setting enable" />
-        <item itemvalue="Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option on" />
       </list>
     </recent_temporary>
   </component>
@@ -203,6 +160,13 @@
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:io.cucumber:cucumber-java" />
+    <option featureType="dependencySupport" implementationName="java:io.reactivex.rxjava3:rxjava" />
+    <option featureType="dependencySupport" implementationName="java:org.testng:testng" />
+    <option featureType="dependencySupport" implementationName="java:org.seleniumhq.selenium:selenium-java" />
+    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="git ignore changes." />

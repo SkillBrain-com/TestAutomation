@@ -1,11 +1,9 @@
 package org.skillbrain.page.echipa1.attractionform;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.skillbrain.page.BasePage;
 import org.testng.Assert;
 
@@ -28,11 +26,11 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     @FindBy(xpath = "//li[@data-step=\"preview\"]")
     private WebElement papTabButton;
 
-    @FindBy(xpath = "(//button[@data-slot='button'])[2]")
+    @FindBy(xpath = "(//button[@data-slot='button'])[3]")
     private WebElement addButton;
-    @FindBy(xpath = "(//button[@data-slot='button'])[4]")
+    @FindBy(xpath = "(//button[@data-slot='button'])[5]")
     private WebElement addSecondButton;
-    @FindBy(xpath = "(//button[@data-slot='button'])[6]")
+    @FindBy(xpath = "(//button[@data-slot='button'])[7]")
     private WebElement addThirdButton;
 
     @FindBy(xpath = "//button[normalize-space()='Continue']")
@@ -43,6 +41,13 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     private WebElement payButton;
     @FindBy(xpath = "//p[contains(text(), 'A company')] //parent::div")
     private WebElement companyButton;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    private WebElement publishButton;
+    @FindBy(xpath = "//div[@class='ripple']")
+    private WebElement shareButton;
+    @FindBy(xpath = "//div[@id='hub-share']//a[@class='event-link-redirect']")
+    private WebElement redirectLink;
 
     @FindBy(xpath = "(//input[@type=\"text\"])[1]")
     private WebElement guestField;
@@ -92,6 +97,10 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     private WebElement errorMessage;
     @FindBy(xpath = "//h1[normalize-space()='Page not found']")
     private WebElement error404Message;
+
+    public String getRedirectHref() {
+        return redirectLink.getAttribute("href");
+    }
 
     public WebElement getCompanyNameField() {
         return companyNameField;
@@ -331,4 +340,42 @@ public class AttractionFormPreviewPublishPage extends BasePage {
 
         driver.switchTo().defaultContent();
     }
+
+    public void clickOnPublishAttractButton() {
+        waitForVisibility(publishButton, Duration.ofSeconds(10));
+        publishButton.click();
+    }
+
+    public void clickOnShareButton() {
+        setWait();
+        driver.navigate().refresh();
+        waitForClick(shareButton, Duration.ofSeconds(30));
+        shareButton.click();
+    }
+
+    public void handleRedirect() {
+        waitForVisibility(redirectLink, Duration.ofSeconds(10));
+
+        String dynamicHref = getRedirectHref();
+
+        String originalWindow = driver.getWindowHandle();
+
+        ((JavascriptExecutor) driver).executeScript("window.open(arguments[0], '_blank');", dynamicHref);
+
+        setWait();
+
+        String newWindowHandle = driver.getWindowHandles().stream()
+                .filter(handle -> !handle.equals(originalWindow))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("New window not found"));
+
+        driver.switchTo().window(newWindowHandle);
+        waitForText("Location", Duration.ofSeconds(10));
+
+        driver.switchTo().window(originalWindow);
+        driver.close();
+
+        driver.switchTo().window(newWindowHandle);
+    }
+
 }

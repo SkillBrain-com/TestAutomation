@@ -1,7 +1,6 @@
 package org.skillbrain.stepDefinition.echipa1.attractionformsteps;
 
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.skillbrain.page.echipa1.attractionform.AttractionFormPreviewPublishPage;
@@ -106,4 +105,18 @@ public class AttractionFormPreviewPublishStepDefinition {
         attractionFormPreviewPublish.checkErrorMessageForCustomerForm();
     }
 
+    @And("Click the Publish attraction button")
+    public void clickThePublishAttractionButton() {
+        attractionFormPreviewPublish.clickOnPublishAttractButton();
+    }
+
+    @And("Click the Share button")
+    public void clickTheShareButton() {
+        attractionFormPreviewPublish.clickOnShareButton();
+    }
+
+    @And("Click the Redirect button")
+    public void clickTheRedirectButton() {
+        attractionFormPreviewPublish.handleRedirect();
+    }
 }

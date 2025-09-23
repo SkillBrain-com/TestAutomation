@@ -32,7 +32,7 @@ public class WebDriverConfig {
 
         options.addArguments("--start-maximized");
         options.addArguments("--disable-popup-blocking");
-//        options.addArguments("--headless");
+        options.addArguments("--headless");
 
         return options;
     }

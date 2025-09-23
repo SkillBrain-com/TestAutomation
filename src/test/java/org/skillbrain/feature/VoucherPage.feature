@@ -152,7 +152,7 @@ Feature: Verifying generate codes feature
     Then I click on Save button
     And I delete the attraction
 
-@cris
+#@cris
   Scenario: I input into the until field a past date 2025-07-07                                         // e BUG , data se schimba doar daca apesi enter dupa, daca lasi textul si apesi pe altceva nu se schimba si poti face un voucher ce e valabil pana in trecut
     Given User navigates to login page
     When User logs in with valid credentials

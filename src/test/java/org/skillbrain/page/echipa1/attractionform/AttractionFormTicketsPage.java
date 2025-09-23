@@ -129,8 +129,9 @@ public class AttractionFormTicketsPage extends BasePage {
     }
 
     public void selectPricedTicketItem() {
+        waitForClick(ticketsDropdown, Duration.ofSeconds(10));
         ticketsDropdown.click();
-        waitForVisibility(ticketItem, Duration.ofSeconds(10));
+        waitForClick(ticketItem, Duration.ofSeconds(10));
         ticketItem.click();
     }
 }

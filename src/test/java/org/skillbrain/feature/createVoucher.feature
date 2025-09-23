@@ -1,7 +1,6 @@
 
 Feature: Create voucher feature
-  @cris
-Feature: Testing voucher page
+#  @cris
   Scenario: Create attraction without filling in mandatory fields
     Given User navigates to login page
     When User logs in with valid credentials

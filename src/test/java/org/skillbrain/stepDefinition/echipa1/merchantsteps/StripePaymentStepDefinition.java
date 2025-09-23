@@ -2,6 +2,7 @@ package org.skillbrain.stepDefinition.echipa1.merchantsteps;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import org.skillbrain.page.echipa1.merchant.StripePaymentPage;
 import org.skillbrain.utilities.TestContextSetup;
 
@@ -37,4 +38,8 @@ public class StripePaymentStepDefinition {
         stripePayment.clickPayPaymentButton();
     }
 
+    @Then("Check if the simple order is completed")
+    public void checkIfTheSimpleOrderIsCompleted() {
+        stripePayment.assertOveitOrderCompleted();
+    }
 }
