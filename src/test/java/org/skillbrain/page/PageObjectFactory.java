@@ -11,6 +11,7 @@ public class PageObjectFactory {
     private VoucherPage voucherPage;
    private TicketPage ticketPage;
     private EventsPage eventsPage;
+    private BundlesPages bundlesPages;
 //    dependency injection
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;
@@ -44,4 +45,11 @@ public class PageObjectFactory {
         eventsPage = new EventsPage(driver);
         return eventsPage;
     }
+    public BundlesPages getBundlesPages(){
+        bundlesPages = new BundlesPages(driver);
+        return bundlesPages;
+
+    }
+
+
 }
