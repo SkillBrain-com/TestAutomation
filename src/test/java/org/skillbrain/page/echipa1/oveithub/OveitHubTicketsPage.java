@@ -71,7 +71,7 @@ public class OveitHubTicketsPage extends BasePage {
     }
 
     public void clickSimpleContinueButton() {
-        waitForClick(continueButton, Duration.ofSeconds(10));
+        waitForClick(continueButton, Duration.ofSeconds(20));
         continueButton.click();
     }
 

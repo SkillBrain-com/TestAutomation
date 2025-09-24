@@ -188,8 +188,7 @@ Feature: Customer form feature
     And Fill the Ticket Name field with "Special Entry Ticket"
     And Fill the Ticket Price field with "12"
     And Click the Save ticket button
-    And Click on Next button
-    And Click on Next button
+    And Click the Customer form tab button
     And Fill the First Custom Name Field with "Phone Number"
     And Click the Mandatory checkbox
     And Click on Next button

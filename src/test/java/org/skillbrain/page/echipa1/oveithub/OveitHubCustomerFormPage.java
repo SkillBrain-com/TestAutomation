@@ -64,7 +64,7 @@ public class OveitHubCustomerFormPage extends BasePage {
     }
 
     public void fillSimpleCustomerForm(Map<String, String> data) {
-        waitForVisibility(payButton, Duration.ofSeconds(10));
+        waitForClick(emailField, Duration.ofSeconds(10));
 
         emailField.sendKeys(data.get("email"));
         nameField.sendKeys(data.get("name"));
@@ -75,55 +75,60 @@ public class OveitHubCustomerFormPage extends BasePage {
         cityField.sendKeys(data.get("city"));
         addressField.sendKeys(data.get("address"));
 
-        if (data.containsKey("phone number") && data.get("phone number") != null && !data.get("phone number").isBlank()) {
+        if (data.containsKey("phone number")
+                && data.get("phone number") != null
+                && !data.get("phone number").isBlank()) {
             try {
-                setWait();
-                waitForClick(firstCustomerCustomField, Duration.ofSeconds(3));
                 scrollToElement(firstCustomerCustomField);
-                firstCustomerCustomField.sendKeys(data.get("phone number"));
+                waitForClick(firstCustomerCustomField, Duration.ofSeconds(10));
+                fifthCustomerCustomField.sendKeys(data.get("phone number"));
             } catch (NoSuchElementException e) {
                 System.out.println("Campul nu a fost gasit!");
             }
         }
 
-        if (data.containsKey("observations") && data.get("observations") != null && !data.get("observations").isBlank()) {
+        if (data.containsKey("observations")
+                && data.get("observations") != null
+                && !data.get("observations").isBlank()) {
             try {
-                setWait();
-                waitForClick(secondCustomerCustomField, Duration.ofSeconds(3));
                 scrollToElement(secondCustomerCustomField);
+                waitForClick(secondCustomerCustomField, Duration.ofSeconds(10));
                 secondCustomerCustomField.sendKeys(data.get("observations"));
             } catch (NoSuchElementException e) {
                 System.out.println("Campul nu a fost gasit!");
             }
         }
 
-        if (data.containsKey("alt email") && data.get("alt email") != null && !data.get("alt email").isBlank()) {
+        if (data.containsKey("alt email")
+                && data.get("alt email") != null
+                && !data.get("alt email").isBlank()) {
             try {
-                setWait();
-                waitForClick(thirdCustomerCustomField, Duration.ofSeconds(3));
                 scrollToElement(thirdCustomerCustomField);
+                waitForClick(thirdCustomerCustomField, Duration.ofSeconds(10));
                 thirdCustomerCustomField.sendKeys(data.get("alt email"));
             } catch (NoSuchElementException e) {
                 System.out.println("Campul nu a fost gasit!");
             }
         }
 
-        if (data.containsKey("booking date") && data.get("booking date") != null && !data.get("booking date").isBlank()) {
+        if (data.containsKey("booking date")
+                && data.get("booking date") != null
+                && !data.get("booking date").isBlank()) {
             try {
-                setWait();
-                waitForClick(forthCustomerCustomField, Duration.ofSeconds(3));
                 scrollToElement(forthCustomerCustomField);
+                waitForClick(forthCustomerCustomField, Duration.ofSeconds(10));
                 forthCustomerCustomField.sendKeys(data.get("booking date"));
             } catch (NoSuchElementException e) {
                 System.out.println("Campul nu a fost gasit!");
             }
         }
 
-        if (data.containsKey("professions") && data.get("professions") != null && !data.get("professions").isBlank()) {
+        if (data.containsKey("professions")
+                && data.get("professions") != null
+                && !data.get("professions").isBlank()) {
             try {
-                setWait();
-                waitForClick(fifthCustomerCustomField, Duration.ofSeconds(3));
                 scrollToElement(fifthCustomerCustomField);
+                waitForClick(fifthCustomerCustomField, Duration.ofSeconds(10));
                 fifthCustomerCustomField.sendKeys(data.get("professions"));
                 fifthCustomerCustomField.sendKeys(Keys.ENTER);
             } catch (NoSuchElementException e) {
@@ -135,19 +140,17 @@ public class OveitHubCustomerFormPage extends BasePage {
             String smoking = data.get("smoking");
             if ("yes".equalsIgnoreCase(smoking)) {
                 try {
-                    setWait();
-                    waitForClick(sixthCustomerCustomField, Duration.ofSeconds(3));
                     scrollToElement(sixthCustomerCustomField);
+                    waitForClick(sixthCustomerCustomField, Duration.ofSeconds(10));
                     sixthCustomerCustomField.click();
                 } catch (NoSuchElementException e) {
-                    System.out.println("Eroare la bifa Smoking!");
+                    System.out.println("Bifa nu a fost plasata!");
                 }
             }
         }
     }
 
     public void clickSimplePayButton() {
-        setWait();
         Actions actions = new Actions(driver);
 
         waitForClick(payButton, Duration.ofSeconds(20));

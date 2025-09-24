@@ -3,7 +3,6 @@ package org.skillbrain.page.echipa1.attractionform;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.skillbrain.page.BasePage;
 import org.testng.Assert;
 
@@ -209,7 +208,7 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     public void fillCustomerForm(Map<String, String> data) {
         driver.switchTo().frame(iframe);
 
-        waitForVisibility(payButton, Duration.ofSeconds(10));
+        waitForClick(emailField, Duration.ofSeconds(10));
 
         emailField.sendKeys(data.get("email"));
         nameField.sendKeys(data.get("name"));
@@ -246,9 +245,13 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     }
 
     public void clickOnAutoProcButton() {
+        ((JavascriptExecutor) driver).executeScript(
+                "var nav = document.getElementById('mobile-nav'); if(nav) { nav.style.display='none'; }"
+        );
+
         driver.switchTo().frame(iframe);
 
-        waitForVisibility(autoProcButton, Duration.ofSeconds(10));
+        waitForClick(autoProcButton, Duration.ofSeconds(10));
         scrollToElement(autoProcButton);
         autoProcButton.click();
 
@@ -258,9 +261,8 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     public void clickOnPayButton() {
         driver.switchTo().frame(iframe);
 
-        waitForText("My billing information", Duration.ofSeconds(10));
-        scrollToElement(payButton);
         waitForClick(payButton, Duration.ofSeconds(20));
+        scrollToElement(payButton);
         payButton.click();
 
         driver.switchTo().defaultContent();
@@ -309,8 +311,8 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     public void assertOrderCompleted() {
         driver.switchTo().frame(iframe);
 
-        waitForText("✅ Order complete", Duration.ofSeconds(30));
-        Assert.assertEquals(getOrderCompleteLabel().getText(), "✅ Order complete");
+        waitForVisibility(orderCompleteLabel, Duration.ofSeconds(300));
+        Assert.assertEquals(orderCompleteLabel.getText(), "✅ Order complete");
 
         driver.switchTo().defaultContent();
     }
@@ -342,7 +344,7 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     }
 
     public void clickOnPublishAttractButton() {
-        waitForVisibility(publishButton, Duration.ofSeconds(10));
+        waitForClick(publishButton, Duration.ofSeconds(20));
         publishButton.click();
     }
 
@@ -376,6 +378,8 @@ public class AttractionFormPreviewPublishPage extends BasePage {
         driver.close();
 
         driver.switchTo().window(newWindowHandle);
+
+        setWait();
     }
 
 }

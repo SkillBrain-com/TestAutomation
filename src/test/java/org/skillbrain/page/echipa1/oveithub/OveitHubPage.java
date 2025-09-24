@@ -54,11 +54,13 @@ public class OveitHubPage extends BasePage {
     }
 
     public void clickOnMoreButton() {
-        waitForText("Powered by ", Duration.ofSeconds(10));
+        waitForClick(moreButton, Duration.ofSeconds(10));
         moreButton.click();
     }
 
     public void clickOnLanguageDropdown() {
+        smoothScrollToBottom(driver);
+
         Actions actions = new Actions(driver);
 
         scrollToElement(languageSwitcher);

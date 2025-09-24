@@ -2,6 +2,7 @@ package org.skillbrain.page.echipa1.merchant;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -25,19 +26,19 @@ public class StripePaymentPage extends BasePage {
     @FindBy(xpath = "//button[@data-testid=\"hosted-payment-submit-button\"]")
     private WebElement payPaymentButton;
 
-    @FindBy(id = "email")
+    @FindBy(xpath = "//input[@id='email']")
     private WebElement emailPaymentField;
-    @FindBy(id = "cardNumber")
+    @FindBy(xpath = "//input[@id='cardNumber']")
     private WebElement cardNrField;
-    @FindBy(id = "cardExpiry")
+    @FindBy(xpath = "//input[@id='cardExpiry']")
     private WebElement cardExpiryField;
-    @FindBy(id = "cardCvc")
+    @FindBy(xpath = "//input[@id='cardCvc']")
     private WebElement cardCvcField;
-    @FindBy(id = "billingName")
+    @FindBy(xpath = "//input[@id='billingName']")
     private WebElement billingNameField;
-    @FindBy(id = "billingCountry")
+    @FindBy(xpath = "//select[@id='billingCountry']")
     private WebElement billingCountryDropdown;
-    @FindBy(id = "billingPostalCode")
+    @FindBy(xpath = "//input[@id='billingPostalCode']")
     private WebElement billingPostalCodeField;
 
     @FindBy(xpath = "//input[@id='one-time-code']")
@@ -57,7 +58,9 @@ public class StripePaymentPage extends BasePage {
     private WebElement orderCompleteLabel;
 
     public void fillPaymentMethod(String email, String cardNr, String cardExpiry, String cardCvc, String cardholderName, String billingCountry, String zipCode) {
+        setWait();
         waitForClick(emailPaymentField,Duration.ofSeconds(10));
+
         emailPaymentField.sendKeys(email);
         cardNrField.sendKeys(cardNr);
         cardExpiryField.sendKeys(cardExpiry);
@@ -69,12 +72,15 @@ public class StripePaymentPage extends BasePage {
     }
 
     public void clickPayPaymentButton() {
-        waitForClick(payPaymentButton, Duration.ofSeconds(10));
-        payPaymentButton.click();
+        waitForClick(payPaymentButton, Duration.ofSeconds(20));
+        scrollToElement(payPaymentButton);
+
+        Actions actions = new Actions(driver);
+        actions.moveToElement(payPaymentButton).click().perform();
     }
 
     public void assertOveitOrderCompleted() {
-        waitForText("✅ Order complete", Duration.ofSeconds(30));
+        waitForVisibility(orderCompleteLabel, Duration.ofSeconds(50));
         Assert.assertEquals(orderCompleteLabel.getText(), "✅ Order complete");
     }
 }

@@ -43,8 +43,7 @@ public class AttractionFormOverviewPage extends BasePage {
     private WebElement attractionNameField;
     @FindBy(xpath = "//input[@name=\"location\"]")
     private WebElement locationNameField;
-
-
+    
 
     public void fillAttractionName(String name) {
         attractionNameField.sendKeys(name);
@@ -92,7 +91,9 @@ public class AttractionFormOverviewPage extends BasePage {
     }
 
     public void clickNextButton() {
+        setWait();
         waitForClick(nextButton, Duration.ofSeconds(10));
+        scrollToElement(nextButton);
         nextButton.click();
     }
 }

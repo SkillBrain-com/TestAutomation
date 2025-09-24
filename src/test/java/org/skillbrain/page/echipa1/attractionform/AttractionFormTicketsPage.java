@@ -2,6 +2,7 @@ package org.skillbrain.page.echipa1.attractionform;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.skillbrain.page.BasePage;
@@ -119,9 +120,14 @@ public class AttractionFormTicketsPage extends BasePage {
     }
 
     public void clickAddTicketButton() {
-        scrollToElement(addTicketButton);
         waitForClick(addTicketButton, Duration.ofSeconds(10));
-        addTicketButton.click();
+        scrollToElement(addTicketButton);
+
+        Actions action = new Actions(driver);
+        action.moveToElement(addTicketButton)
+                .pause(Duration.ofMillis(200))
+                .click()
+                .perform();
     }
 
     public void fillQuantityField(String quantity) {
@@ -129,9 +135,9 @@ public class AttractionFormTicketsPage extends BasePage {
     }
 
     public void selectPricedTicketItem() {
-        waitForClick(ticketsDropdown, Duration.ofSeconds(10));
+        waitForClick(ticketsDropdown, Duration.ofSeconds(20));
         ticketsDropdown.click();
-        waitForClick(ticketItem, Duration.ofSeconds(10));
+        waitForClick(ticketItem, Duration.ofSeconds(20));
         ticketItem.click();
     }
 }

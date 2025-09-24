@@ -32,7 +32,8 @@ public class WebDriverConfig {
 
         options.addArguments("--start-maximized");
         options.addArguments("--disable-popup-blocking");
-        options.addArguments("--headless");
+        options.addArguments("--headless=new");
+        options.addArguments("--window-size=1920,1080");
 
         return options;
     }

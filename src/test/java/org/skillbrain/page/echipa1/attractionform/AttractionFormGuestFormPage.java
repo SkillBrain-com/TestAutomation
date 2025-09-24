@@ -18,6 +18,9 @@ public class AttractionFormGuestFormPage extends BasePage {
         PageFactory.initElements(this.driver, this);
     }
 
+    @FindBy(xpath = "//li[@data-step=\"fields\"]")
+    private WebElement guestFormTabButton;
+
     @FindBy(xpath = "(//input[@type=\"text\"])[1]")
     private WebElement guestCustomTextField;
 

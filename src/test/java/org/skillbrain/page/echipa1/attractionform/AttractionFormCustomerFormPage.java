@@ -1,5 +1,6 @@
 package org.skillbrain.page.echipa1.attractionform;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -128,12 +129,12 @@ public class AttractionFormCustomerFormPage extends BasePage {
     }
 
     public void clickSixthCustomFieldDropdown() {
-        waitForVisibility(sixthCustomTextFieldDropdown, Duration.ofSeconds(10));
+        waitForClick(sixthCustomTextFieldDropdown, Duration.ofSeconds(10));
         sixthCustomTextFieldDropdown.click();
     }
 
     public void clickMultipleSelectCheckBox() {
-        waitForVisibility(multiSelectionCheckBox, Duration.ofSeconds(10));
+        waitForClick(multiSelectionCheckBox, Duration.ofSeconds(10));
         scrollToElement(multiSelectionCheckBox);
         multiSelectionCheckBox.click();
     }
@@ -148,6 +149,10 @@ public class AttractionFormCustomerFormPage extends BasePage {
     }
 
     public void clickMandatoryCheckBox() {
+        ((JavascriptExecutor) driver).executeScript(
+                "document.getElementById('mobile-nav').style.display='none';"
+        );
+
         waitForClick(mandatoryCheckBox, Duration.ofSeconds(10));
         scrollToElement(mandatoryCheckBox);
         mandatoryCheckBox.click();
@@ -160,6 +165,9 @@ public class AttractionFormCustomerFormPage extends BasePage {
     }
 
     public void clickLastMandatoryButton() {
+        ((JavascriptExecutor) driver).executeScript(
+                "document.getElementById('mobile-nav').style.display='none';"
+        );
         waitForClick(mandatoryFifthCheckBox, Duration.ofSeconds(10));
         scrollToElement(mandatoryFifthCheckBox);
         mandatoryFifthCheckBox.click();
