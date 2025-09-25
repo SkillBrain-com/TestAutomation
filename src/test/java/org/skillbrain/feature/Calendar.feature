@@ -1,11 +1,10 @@
-Feature: Create a ticket use calendar
+Feature: Create Tickets use calendar feature
 
-@radu1
   Scenario: Create a ticket use calendar
     Given User navigates to login page
     When User logs in with valid credentials
     Then Check user is logged in
-    And I click on Create attraction button
+    And Click the Create attraction button
     Then I fill the Attraction name field with "Attraction name"
     Then I click on date interval
     And I fill "Date and Time"
@@ -32,7 +31,7 @@ Feature: Create a ticket use calendar
     Given User navigates to login page
     When User logs in with valid credentials
     Then Check user is logged in
-    And I click on Create attraction button
+    And Click the Create attraction button
     Then I fill the Attraction name field with "Attraction name"
     Then I expand the Location accordion
     And I fill the Location address field with "Location name"
@@ -54,4 +53,38 @@ Feature: Create a ticket use calendar
     And I click the Autoprocess radio button
     Then I click the Pay button
     Then I check if the order is completed
+
+
+  Scenario: Create a Private Ticket on an Attraction with Calendar
+    Given User navigates to login page
+    When User logs in with valid credentials
+    Then Check user is logged in
+    Then I click on edit an attraction
+    Then I click on Next
+    Then I click on New Ticket
+    Then I put a name for New Ticket "Season Pass"
+    And I fill the Price field with "Price"
+    Then I expand the Ticket Configuration
+    Then I click on Ticket Visibility
+    Then I click on Private Invitation
+    Then I put a Private Code "123rm"
+    And I click the Save
+    Then I click on Preview & Publish of my aplication
+    Then I fill the Private Code Field "123rm"
+    Then I click on apply button
+    Then Click the Add button From Private Ticket
+    And I click the Continue
+    Then I fill with Email "george0@gmail.com"
+    Then I fill with Name "George"
+    Then I fill with State "Alaska"
+    Then I fill with City "Kenay"
+    And I fill with Address "Aleea Floriror"
+    And I click the Autoprocess radio button
+    Then I click the Pay button
+    Then I check if the order is completed
+
+
+
+
+
 

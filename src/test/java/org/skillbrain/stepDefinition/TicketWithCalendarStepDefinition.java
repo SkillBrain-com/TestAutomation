@@ -57,4 +57,86 @@ public class TicketWithCalendarStepDefinition {
     public void clickOnFriday() {
         ticketWithCalendar.getTicketFriday();
     }
+
+    @Then("I click on Next")
+    public void iClickOnNext() {
+        ticketWithCalendar.getClickOnNext();
+    }
+
+    @Then("I click on New Ticket")
+    public void iClickOnNewTicket() {
+        ticketWithCalendar.clickOnNewTicket();
+    }
+
+    @Then("I put a name for New Ticket {string}")
+    public void iPutANameForNewTicket(String Name) {
+        ticketWithCalendar.putAName(Name);
+    }
+
+    @Then("I click on Ticket Visibility")
+    public void iClickOnTicketVisibility() {
+        ticketWithCalendar.clickOnTicketVisibility();
+    }
+
+    @Then("I click on Private Invitation")
+    public void iClickOnPrivateInvitation() {
+        ticketWithCalendar.clickOnPrivateInvitation();
+    }
+
+    @Then("I put a Private Code {string}")
+    public void iPutAPrivateCode(String PrivateCode) {
+        ticketWithCalendar.getPrivateCode(PrivateCode);
+    }
+
+    @And("I click the Save")
+    public void iClickTheSave() {
+        ticketWithCalendar.clickOnSaveButton();
+    }
+
+
+    @Then("I fill the Private Code Field {string}")
+    public void iFillThePrivateCodeField(String Code) {
+        ticketWithCalendar.privateCodeGetUsed(Code);
+    }
+
+
+    @Then("Click the Add button From Private Ticket")
+    public void clickTheAddButtonFromPrivateTicket() {
+        ticketWithCalendar.getPrivateTicket();
+    }
+
+    @And("I click the Continue")
+    public void iClickTheContinue() {
+        ticketWithCalendar.clickOnContinue();
+    }
+
+
+    @Then("I fill with Email {string}")
+    public void iFillWithEmail(String Email) {
+        ticketWithCalendar.setEmail(Email);
+    }
+
+
+    @Then("I fill with Name {string}")
+    public void iFillWithName(String Name) {
+        ticketWithCalendar.setName(Name);
+    }
+
+    @Then("I fill with State {string}")
+    public void iFillWithState(String State) {
+        ticketWithCalendar.setState(State);
+    }
+
+    @Then("I fill with City {string}")
+    public void iFillWithCity(String City) {
+        ticketWithCalendar.setCity(City);
+    }
+
+    @And("I fill with Address {string}")
+    public void iFillWithAddress(String Address) {
+        ticketWithCalendar.setAddress(Address);
+    }
+
 }
+
+
