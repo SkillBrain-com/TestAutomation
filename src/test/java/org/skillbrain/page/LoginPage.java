@@ -46,7 +46,7 @@ public class LoginPage extends BasePage {
         Properties prop = new Properties();
         try {
             prop.load(Files.newInputStream(
-                    Paths.get(System.getProperty("user.dir") + "/src/test/resources/credentials.properties")));
+                    Paths.get(System.getProperty("user.dir") + "/src/test/resources/env/credentials.properties")));
             String emailProp = prop.getProperty("email");
             String passProp = prop.getProperty("pass");
             email.sendKeys(emailProp);

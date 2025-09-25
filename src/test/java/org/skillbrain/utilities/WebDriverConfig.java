@@ -66,7 +66,7 @@ public class WebDriverConfig {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Failed to load configuration file: " + fileLocation, e);
         }
         return driver;
     }

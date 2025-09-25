@@ -24,7 +24,7 @@ Feature: Create attractions feature
     Then Check if the order is completed
     And I click on Create attraction button
     Then I fill the Attraction name field with "Attraction name"
-    Then I expand the Location accordion
+    And I expand the Location accordion
     And I fill the Location address field with "Location name"
     Then I click on Next button
     And I click the Create ticket button
@@ -38,3 +38,31 @@ Feature: Create attractions feature
     And I click the Autoprocess radio button
     Then I click the Pay button
     Then I check if the order is completed
+
+
+  @boundary
+    Scenario Outline: Boundary tests with valid ticket mandatory fields
+      Given User navigates to login page
+      When User logs in with valid credentials
+      Then Check user is logged in
+      And I click on Create attraction button
+      Then I fill the Attraction name field with <attractionName>
+      And I expand the Location accordion
+      And I fill the Location address field with <locationName>
+      Then I click on Next button
+      And I click the Create ticket button
+      Then I fill the Name field with "Ticket1"
+      And I fill the Price field with "10"
+      Then I click the Save button
+      Then I click on Preview & Publish tab button
+
+      Examples:
+      | attractionName   | locationName|
+      | "A"              | "Bucuresti" |
+      | "Attraction1"    | "Bucuresti" |
+      | "Attraction2"    | "$%^&*()_(" |
+      | "vds1fbsndxnhfxbfdbfdzbfdbdgbnfsnxfnbfndfndghndghnfghmdhgmghfnhndttyntyntedtynthzbzsfcghfgjfgfgfjgfjhgfvzdbfzsvbszdbgxfgbsbszvfadvfvfdvfdvafbtrbt xSxXX Czxx  tagts"   | "Bucuresti" |
+      | "@#$%^&*()_(*&^)"| "Bucuresti" |
+
+
+
