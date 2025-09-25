@@ -64,7 +64,7 @@ public class EventsPage extends BasePage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        startDateInput.sendKeys("2025-10-10");
+        startDateInput.sendKeys("2025-09-24");
         startDateInput.sendKeys(Keys.RETURN);
     }
     public void enterStartTime() {

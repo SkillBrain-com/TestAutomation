@@ -77,14 +77,13 @@ public class BundlesStepDefinition {
     public void iEnterNormalTicket(String Name1) {
         bundlesPages.enterTicketName(Name1);}
 
-    @And("I enter the price for single ticket {string}")
-    public void iEnterSinglePrice(String Price1) {
-        bundlesPages.enterPrice(Price1);}
-
+    @And("I enter the price for single ticket {double}")
+    public void iEnterSinglePrice(double Price1){
+        bundlesPages.enterPrice(Price1);
+    }
     @And("I uncheck to include fees")
     public void doNotIncludeFees() {
         bundlesPages.excludeFees();}
-
 
     @Then("I open Ticket configuration")
     public void iOpenTicketConfiguration() {
@@ -94,17 +93,25 @@ public class BundlesStepDefinition {
     public void iOpenNumbering() {
         bundlesPages.openNumbering();}
 
-    @And("I enter total available tickets {string}")
-    public void iEnterTotalTickets(String Number1) {
+    @And("I enter total available tickets {int}")
+    public void iEnterTotalTickets(int Number1) {
         bundlesPages.totalAvailableTickets(Number1);}
 
-    @And("I enter maximum tickets per order {string}")
-    public void iEnterTicketPerOrder(String Number2) {
+    @And("I enter maximum tickets per order {int}")
+    public void iEnterTicketPerOrder(int Number2) {
         bundlesPages.orderLimit(Number2);}
 
     @And("I save the ticket")
     public void iClickOnSave() throws AWTException {
         bundlesPages.iSaveTicket();}
+    @Then ("I click to create a new single ticket")
+    public void newSingle(){bundlesPages.createAnotherSingle();
+    }
+    @And ("I enter the name {string}")
+    public void iCreateNewSingle(String Name3){bundlesPages.enterTicketName3(Name3);
+    }
+    @And ("I enter another price of {double}")
+    public void anotherPrice (double Price3){bundlesPages.enterPrice3(Price3);}
 
     @Then("I click to create a new bundle")
     public void iCreateBundleForTwo() {
@@ -114,17 +121,26 @@ public class BundlesStepDefinition {
     public void bundleForTwo(String Name2) {
         bundlesPages.enterTicketNameBundle(Name2);}
 
-    @And("I enter a bundle for two ticket price {string}")
-    public void enterPriceBundleTwo(String Price2) {
+    @And("I enter a bundle for two ticket price {double}")
+    public void enterPriceBundleTwo(double Price2) {
         bundlesPages.enterTicketPriceBundle(Price2);}
 
     @And("I enter included tickets")
-    public void includedTickets() throws AWTException {
+    public void includedTickets(){
         bundlesPages.includedTicketsBundle();}
 
-    @And("I enter the bundle for two quantity {string}")
-    public void includeQty(String Qty1) {
+    @And("I enter the bundle for two quantity {int}")
+    public void includeQty(int Qty1) {
         bundlesPages.includedQuantity(Qty1);}
+
+    @And ("I enter another included ticket")
+    public void includeTheOther(){
+        bundlesPages.includeMore();
+    }
+    @And ("I enter the bundle quantity {int}")
+    public void qtyOther(int Qty2){
+        bundlesPages.includedQuantity2(Qty2);
+    }
 
     @And("I save the bundle")
     public void iSaveBundle() throws AWTException {
@@ -145,10 +161,21 @@ public class BundlesStepDefinition {
     @Then("I go to Preview")
     public void goPreview(){bundlesPages.nextPreview();}
 
-    //@And ("I check if the single ticket name is in the Preview")
-    //public void ticket1InPreview(){bundlesPages.assertTicket1name();}
+    @And ("I check if {string} is in the Preview")
+    public void ticket1InPreview(String Name1){bundlesPages.assertTicket1name(Name1);}
+    @And("I check if ticket limit {string} is in the Preview")
+    public void iAssertLimit(String Number1){bundlesPages.assertLimit(Number1);}
 
-    //@Then("Then I add {string} tickets from {string})
-    //public void
+    @And ("I check if the single ticket has a price of {double}")
+    public void checkSinglePrice(double Price1){bundlesPages.assertPriceSingle(Price1);}
+
+    @And ("I check fee if the fee is correct for {double}")
+    public void iAssertFirstFee(double Price1){bundlesPages.assertFirstFee(Price1);}
+
+    @And ("I check if bundle {string} is in the Preview")
+    public void iCheckName2(String Name2){bundlesPages.assertTicket2(Name2);}
 
 }
+
+
+
