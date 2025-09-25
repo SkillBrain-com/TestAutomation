@@ -16,7 +16,7 @@ public class LoginPage extends BasePage {
 
     private WebDriver driver;
 
-    private static final String URL = "https://web02.stg.oveit.com/seller/vouchers/add";
+    private static final String URL = "https://web02.stg.oveit.com/seller/login";
 
     @FindBy(id = "email")
     private WebElement email;
