@@ -1,5 +1,5 @@
 package org.skillbrain.page;
-
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -48,6 +48,39 @@ public class TicketWithCalendar extends BasePage {
     private WebElement addTicketsMonday;
     @FindBy(css = "input[value=\"friday\"]")
     private WebElement addTicketsFriday;
+    @FindBy(xpath = "//span[normalize-space()='Next'] //parent::button")
+    private WebElement clickOnNext;
+    @FindBy(xpath = "//button[@data-role=\"ticket-type-add\"]//div[@class=\"ripple\"]")
+    private WebElement newTicket;
+    @FindBy(xpath = "//input[@placeholder=\"e.g. VIP Area, Entry ticket, etc.\"]")
+    private WebElement name;
+    @FindBy(xpath = "(//div[@data-role=\"toggle-options-section\"])[7]")
+    private WebElement ticketVisibility;
+    @FindBy(xpath = "//label[normalize-space()=\"Private invitation\"]")
+    private WebElement privateInvitation;
+    @FindBy(xpath = "//input[@placeholder=\"e.g. CNBvXh7d\"]")
+    private WebElement privateCode;
+    @FindBy(xpath = "//div[@aria-hidden=\"false\"]//div//form//div//span[contains(text(),\"Save\")]")
+    private WebElement saveButton;
+    @FindBy(xpath = "//iframe[@id='oveit-hub-iframe']")
+    private WebElement iframe;
+    @FindBy(xpath = "//input[@id=\"voucherCode\"]")
+    private WebElement usePrivateCode;
+    @FindBy(xpath = "(//button[contains(@data-slot,'button')])[5]")
+    private WebElement addPrivateTicket;
+    @FindBy(xpath = "(//button[normalize-space()='Continue'])[1]")
+    private WebElement continueBuyTheTicket;
+    @FindBy(xpath = "//input[@name=\"email\"]")
+    private WebElement email;
+    @FindBy(xpath = "//input[@name=\"name\"]")
+    private WebElement completeName;
+    @FindBy(css = "input#react-select-3-input")
+    private WebElement stateList;
+    @FindBy(xpath = "//input[@name=\"city\"]")
+    private WebElement completeCity;
+    @FindBy(xpath = "//input[@name=\"address\"]")
+    private WebElement completeAddress;
+
 
     public void clickOnTimeStart() {
         timeStart.click();
@@ -59,13 +92,10 @@ public class TicketWithCalendar extends BasePage {
 
     public void clickOnEndData() {
         endData.click();
-
-
     }
 
     public void clickOnEndTime() {
         endTime.click();
-
     }
 
     public void clickOnStartDateWhenTicketCanBeBuy() {
@@ -103,7 +133,6 @@ public class TicketWithCalendar extends BasePage {
         endTime.sendKeys("8:00");
         dateStart.sendKeys("2025-07-01");
         timeStart.sendKeys("08:00");
-
     }
 
     public void clickOnAvailabilitySchedule() {
@@ -128,7 +157,6 @@ public class TicketWithCalendar extends BasePage {
     public void getSpecificWeekend(String Date) {
         addStartSpecificWeekend.sendKeys("2025-11-01");
         addEndSpecificWeekend.sendKeys("2025-12-20");
-
     }
 
     public void getTicketMonday() {
@@ -140,5 +168,81 @@ public class TicketWithCalendar extends BasePage {
         addTicketsFriday.click();
     }
 
+    public void getClickOnNext() {
+        scrollToElement(clickOnNext);
+        clickOnNext.click();
+    }
 
+    public void clickOnNewTicket() {
+        waitForVisibility(newTicket, Duration.ofSeconds(10));
+        newTicket.click();
+    }
+
+    public void putAName(String Name) {
+        waitForVisibility(name, Duration.ofSeconds(10));
+        name.sendKeys(Name);
+    }
+
+    public void clickOnTicketVisibility() {
+        waitForVisibility(ticketVisibility, Duration.ofSeconds(10));
+        scrollToElement(ticketVisibility);
+        ticketVisibility.click();
+    }
+
+    public void clickOnPrivateInvitation() {
+        waitForVisibility(privateInvitation, Duration.ofSeconds(10));
+        scrollToElement(privateInvitation);
+        privateInvitation.click();
+    }
+
+    public void getPrivateCode(String PrivateCode) {
+        scrollToElement(privateCode);
+        privateCode.sendKeys(PrivateCode);
+    }
+
+    public void clickOnSaveButton() {
+        scrollToElement(saveButton);
+        saveButton.click();
+    }
+
+
+    public void privateCodeGetUsed(String Code) {
+        driver.switchTo().frame(iframe);
+        waitForVisibility(usePrivateCode, Duration.ofSeconds(5));
+        usePrivateCode.sendKeys(Code);
+    }
+
+    public void getPrivateTicket() {
+        waitForVisibility(addPrivateTicket, Duration.ofSeconds(10));
+        addPrivateTicket.click();
+    }
+
+    public void clickOnContinue() {
+        scrollToElement(continueBuyTheTicket);
+        continueBuyTheTicket.click();
+    }
+
+    public void setEmail(String Email) {
+        waitForVisibility(email, Duration.ofSeconds(10));
+        email.sendKeys(Email);
+    }
+
+    public void setName(String Name) {
+        completeName.sendKeys(Name);
+    }
+
+    public void setState(String State) {
+        stateList.sendKeys(State);
+        stateList.sendKeys(Keys.ENTER);
+    }
+
+    public void setCity(String City) {
+        completeCity.sendKeys(City);
+    }
+
+    public void setAddress(String Address) {
+        completeAddress.sendKeys(Address);
+    }
 }
+
+

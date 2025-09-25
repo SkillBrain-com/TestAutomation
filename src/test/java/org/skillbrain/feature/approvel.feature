@@ -6,7 +6,7 @@ Feature: Create ticket with approval option
     Given User navigates to login page
     When User logs in with valid credentials
     Then Check user is logged in
-    And I click on Create attraction button
+    And Click the Create attraction button
     Then I fill the Attraction name field with "Attraction name"
     Then I expand the Location accordion
     And I fill the Location address field with "Location name"

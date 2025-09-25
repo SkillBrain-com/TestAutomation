@@ -29,12 +29,14 @@ public class PageObjectFactory {
     private OveitHubGuestFormPage oveitHubGuestForm;
     private OveitHubPage oveitHub;
     private OveitHubTicketsPage oveitHubTickets;
-   private ApprovalTicket approvalTicket;
-   private ApproveTicketOrder approveATicketOrder;
-   private TicketWithCalendar ticketWithCalendar;
+    private ApprovalTicket approvalTicket;
+    private ApproveTicketOrder approveATicketOrder;
+    private TicketWithCalendar ticketWithCalendar;
+    private DeleteAttractionAndTicket deleteAttractionAndTicket;
 
-//    dependency injection
+    //    dependency injection
     private GroupingTickets groupingTickets;
+
     //    dependency injection
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;
@@ -59,15 +61,17 @@ public class PageObjectFactory {
         voucherPage = new VoucherPage(driver);
         return voucherPage;
     }
+
     public TicketPage getTicketPage() {
         ticketPage = new TicketPage(driver);
         return ticketPage;
     }
 
-    public ApprovalTicket getApprovalTicket(){
+    public ApprovalTicket getApprovalTicket() {
         approvalTicket = new ApprovalTicket(driver);
         return approvalTicket;
     }
+
     public ApproveTicketOrder getApproveATicketOrder() {
         approveATicketOrder = new ApproveTicketOrder(driver);
         return approveATicketOrder;
@@ -154,9 +158,16 @@ public class PageObjectFactory {
 
     }
 
+
     public GroupingTickets getGroupingTickets() {
         groupingTickets = new GroupingTickets(driver);
         return groupingTickets;
+    }
+
+    public DeleteAttractionAndTicket getDeleteAttractionAndTicket() {
+        deleteAttractionAndTicket = new DeleteAttractionAndTicket(driver);
+        return deleteAttractionAndTicket;
+
     }
 
 }
