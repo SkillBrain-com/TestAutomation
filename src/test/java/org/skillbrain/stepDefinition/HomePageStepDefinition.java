@@ -41,5 +41,9 @@ public class HomePageStepDefinition {
         homePage.clickVouchers();
     }
 
+    @Then("Click the Create attraction button")
+    public void click_the_create_attraction_button() {
+        homePage.createAttraction();
+    }
 
 }

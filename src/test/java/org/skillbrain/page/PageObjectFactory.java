@@ -34,6 +34,8 @@ public class PageObjectFactory {
    private TicketWithCalendar ticketWithCalendar;
 
 //    dependency injection
+    private GroupingTickets groupingTickets;
+    //    dependency injection
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;
     }
@@ -151,4 +153,10 @@ public class PageObjectFactory {
         return ticketWithCalendar;
 
     }
+
+    public GroupingTickets getGroupingTickets() {
+        groupingTickets = new GroupingTickets(driver);
+        return groupingTickets;
+    }
+
 }

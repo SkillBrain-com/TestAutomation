@@ -8,11 +8,9 @@ import org.skillbrain.utilities.TestContextSetup;
 
 public class LoginStepDefinition {
 
-    private TestContextSetup testContextSetup;
     private LoginPage loginPage;
 
     public LoginStepDefinition(TestContextSetup testContextSetup) {
-        this.testContextSetup = testContextSetup;
         loginPage = testContextSetup.pageObjectFactory.getLoginPage();
     }
 

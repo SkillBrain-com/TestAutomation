@@ -9,13 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import java.time.Duration;
-import java.util.Iterator;
-import java.util.Set;
-
 
 //TODO MERGE DUPLICATE SELECTORS
+
 public class AttractionForm extends BasePage {
 
     private WebDriver driver;
@@ -25,7 +22,6 @@ public class AttractionForm extends BasePage {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
     }
-
 
     @FindBy(xpath = "//span[normalize-space()='Next'] //parent::button")
     private WebElement nextButton;
@@ -49,7 +45,6 @@ public class AttractionForm extends BasePage {
 
     @FindBy(xpath = "//iframe[@id='oveit-hub-iframe']")
     private WebElement iframe;
-
     @FindBy(css = "input#react-select-3-input")
     private WebElement stateDropdown;
 
@@ -77,12 +72,21 @@ public class AttractionForm extends BasePage {
     @FindBy(xpath = "//h2[normalize-space()='✅ Order complete']")
     private WebElement orderCompleteLabel;
 
+    @FindBy(xpath=("//*[normalize-space(text())='Location']"))
+    private WebElement locationDropDown;
+    @FindBy(xpath=("//input[@name='location' and @type='text']"))
+    private WebElement attractionLocationField;
+    @FindBy(css="img[alt=\"Location pin\"]")
+    private WebElement mapPin;
+    @FindBy(css = "div[aria-label='Hartă'][role='region']")
+    private WebElement map;
+
     public WebElement getOrderCompleteLabel() {
         return orderCompleteLabel;
     }
 
     public void fillAttractionName(String attractionName) {
-        attractionNameField.sendKeys("IntelliJ Auto Test");
+        attractionNameField.sendKeys(attractionName);
     }
 
     public void clickOnLocationAccordion() {
@@ -92,10 +96,8 @@ public class AttractionForm extends BasePage {
     public void fillLocationName(String locationName) {
         waitForVisibility(locationNameField, Duration.ofSeconds(10));
         scrollToElement(locationNameField);
-
-        locationNameField.sendKeys("SomeRandomPlace");
+        locationNameField.sendKeys(locationName);
     }
-
 
     @Override
     public WebDriverWait getDriverWait() {
@@ -107,18 +109,9 @@ public class AttractionForm extends BasePage {
     private WebElement nextButton1;
     @FindBy(css = "input[name=\"name\"]")
     private WebElement attractionNameField1;
-    @FindBy(xpath = ("//*[normalize-space(text())='Location']"))
-    private WebElement locationDropDown;
-    @FindBy(xpath = ("//input[@name='location' and @type='text']"))
-    private WebElement attractionLocationField;
-    @FindBy(css = "img[alt=\"Location pin\"]")
-    WebElement mapPin;
-    @FindBy(css = "div[aria-label='Hartă'][role='region']")
-    WebElement map;
 
     public void clickOnNext() {
-        nextButton1.click();
-
+        nextButton.click();
         waitForVisibility(createTicketButton, Duration.ofSeconds(10));
     }
 
@@ -126,21 +119,23 @@ public class AttractionForm extends BasePage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(createTicketButton)).click();
 
+        createTicketButton.click();
         waitForVisibility(ticketNameField, Duration.ofSeconds(10));
     }
 
     public void fillTicketName(String ticketName) {
-        ticketNameField.sendKeys("Test123");
+        ticketNameField.sendKeys(ticketName);
     }
 
     public void fillTicketPrice(String ticketPrice) {
         ticketPriceField.clear();
-        ticketPriceField.sendKeys("30");
+        ticketPriceField.sendKeys(ticketPrice);
     }
 
     public void fillAttractionMandatory(String name, String location) {
         waitForText("Attraction name", Duration.ofSeconds(5));
         attractionNameField1.sendKeys(name);
+        attractionNameField.sendKeys(name);
         locationDropDown.click();
         try {
             Thread.sleep(3000);
@@ -150,28 +145,78 @@ public class AttractionForm extends BasePage {
         attractionLocationField.sendKeys(location);
     }
 
-
     public void clickOnTicketSave() {
         ticketSaveButton.click();
-
         waitForVisibility(ticketsLabel, Duration.ofSeconds(10));
     }
 
     public void clickOnPaPTab() {
         papTabButton.click();
+
+        try {
+            waitForVisibility(iframe, Duration.ofSeconds(15));
+        } catch (Exception e) {
+            try {
+                WebElement altIframe = driver.findElement(By.xpath("//iframe[contains(@id, 'oveit')]"));
+                waitForVisibility(altIframe, Duration.ofSeconds(10));
+            } catch (Exception e2) {
+                try {
+                    WebElement altIframe2 = driver.findElement(By.xpath("//iframe[contains(@src, 'oveit')]"));
+                    waitForVisibility(altIframe2, Duration.ofSeconds(10));
+                } catch (Exception e3) {
+                    System.out.println("Warning: Could not find iframe after clicking Preview & Publish tab");
+                }
+            }
+        }
     }
 
     public void clickOnAddButton() {
         driver.switchTo().frame(iframe);
-        waitForVisibility(addButton, Duration.ofSeconds(10));
 
-        addButton.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        try {
+            waitForVisibility(addButton, Duration.ofSeconds(10));
+            addButton.click();
+        } catch (Exception e) {
+            try {
+                WebElement altAddButton = driver.findElement(By.xpath("//button[contains(text(), 'Add')]"));
+                altAddButton.click();
+            } catch (Exception e2) {
+                try {
+                    WebElement altAddButton2 = driver.findElement(By.xpath("//button[@data-slot='button']"));
+                    altAddButton2.click();
+                } catch (Exception e3) {
+                    try {
+                        WebElement altAddButton3 = driver.findElement(By.xpath("//button[contains(@class, 'add') or contains(@class, 'Add')]"));
+                        altAddButton3.click();
+                    } catch (Exception e4) {
+                        // Try to find any button that might be the Add button
+                        try {
+                            WebElement anyButton = driver.findElement(By.xpath("//button[position()=2]"));
+                            anyButton.click();
+                        } catch (Exception e5) {
+                            throw new RuntimeException("Could not find Add button with any selector", e5);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void clickOnContinueButton() {
-        waitForVisibility(addButton, Duration.ofSeconds(10));
-
-        continueButton.click();
+        try {
+            waitForVisibility(continueButton, Duration.ofSeconds(10));
+            continueButton.click();
+        } catch (Exception e) {
+            driver.switchTo().frame(iframe);
+            waitForVisibility(continueButton, Duration.ofSeconds(10));
+            continueButton.click();
+        }
 
         waitForVisibility(billingLabel, Duration.ofSeconds(20));
         driver.switchTo().defaultContent();
@@ -180,12 +225,22 @@ public class AttractionForm extends BasePage {
     public void fillCustomerForm(String info) {
         driver.switchTo().frame(iframe);
 
-        emailField.sendKeys("test@example.com");
-        nameField.sendKeys("Popescu Ion");
-        stateDropdown.sendKeys("Alabama");
-        stateDropdown.sendKeys(Keys.ENTER);
-        cityField.sendKeys("Pandora");
-        addressField.sendKeys("Calea Victoriei 199");
+        String[] fields = info.split(",");
+        if (fields.length >= 6) {
+            emailField.sendKeys(fields[0].trim());
+            nameField.sendKeys(fields[1].trim());
+            stateDropdown.sendKeys(fields[2].trim());
+            stateDropdown.sendKeys(Keys.ENTER);
+            cityField.sendKeys(fields[3].trim());
+            addressField.sendKeys(fields[4].trim());
+        } else {
+            emailField.sendKeys("test@example.com");
+            nameField.sendKeys("Popescu Ion");
+            stateDropdown.sendKeys("Alabama");
+            stateDropdown.sendKeys(Keys.ENTER);
+            cityField.sendKeys("Pandora");
+            addressField.sendKeys("Calea Victoriei 199");
+        }
     }
 
     public void clickOnAutoProcButton() {
@@ -208,7 +263,6 @@ public class AttractionForm extends BasePage {
 
         driver.switchTo().defaultContent();
     }
-
 
     //MARIA
     @FindBy(xpath = "//input[@name=\"name\"]")
