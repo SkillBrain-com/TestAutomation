@@ -2,7 +2,6 @@ package org.skillbrain.stepDefinition.echipa1.attractionformsteps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import org.skillbrain.page.AttractionForm;
 import org.skillbrain.page.echipa1.attractionform.AttractionFormTicketsPage;
 import org.skillbrain.utilities.TestContextSetup;
 
@@ -10,7 +9,6 @@ public class AttractionFormTicketsStepDefinition {
 
     private TestContextSetup testContextSetup;
     private AttractionFormTicketsPage attractionFormTickets;
-    private AttractionForm attractionForm;
 
     public AttractionFormTicketsStepDefinition(TestContextSetup testContextSetup) {
         this.testContextSetup = testContextSetup;
@@ -27,8 +25,8 @@ public class AttractionFormTicketsStepDefinition {
         attractionFormTickets.fillTicketName(ticketName);
     }
 
-    @And("Fill the Ticket Price field with {string}")
-    public void iFillThePriceFieldWith(String ticketPrice) {
+    @And("Fill the Ticket Price field with {float}")
+    public void iFillThePriceFieldWith(Float ticketPrice) {
         attractionFormTickets.fillTicketPrice(ticketPrice);
     }
 
@@ -62,8 +60,8 @@ public class AttractionFormTicketsStepDefinition {
         attractionFormTickets.fillBundleNameField(name);
     }
 
-    @And("Fill the Bundle Price field with {string}")
-    public void fillTheBundlePriceFieldWith(String price) {
+    @And("Fill the Bundle Price field with {float}")
+    public void fillTheBundlePriceFieldWith(Float price) {
         attractionFormTickets.fillBundlePriceField(price);
     }
 
@@ -72,8 +70,8 @@ public class AttractionFormTicketsStepDefinition {
         attractionFormTickets.clickAddTicketButton();
     }
 
-    @And("Fill the Quantity field with {string}")
-    public void fillTheQuantityFieldWith(String quantity) {
+    @And("Fill the Quantity field with {int}")
+    public void fillTheQuantityFieldWith(int quantity) {
         attractionFormTickets.fillQuantityField(quantity);
     }
 
@@ -87,5 +85,23 @@ public class AttractionFormTicketsStepDefinition {
         attractionFormTickets.clickOnBundleSave();
     }
 
+    @And("Expand the Ticket configuration accordion")
+    public void expandTheTicketConfigurationAccordion() {
+        attractionFormTickets.clickTicketConfigButton();
+    }
 
+    @And("Expand the Ticket visibility accordion")
+    public void expandTheTicketVisibilityAccordion() {
+        attractionFormTickets.clickTicketVisibilityButton();
+    }
+
+    @And("Click the Private Invitation radio button")
+    public void clickThePrivateInvitationRadioButton() {
+        attractionFormTickets.clickPrivateInviteButton();
+    }
+
+    @And("Fill the Invitation code field with {string}")
+    public void fillTheInvitationCodeFieldWith(String code) {
+        attractionFormTickets.fillPrivateInviteCodeField(code);
+    }
 }

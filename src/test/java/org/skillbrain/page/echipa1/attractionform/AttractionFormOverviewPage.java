@@ -92,7 +92,9 @@ public class AttractionFormOverviewPage extends BasePage {
     }
 
     public void clickNextButton() {
+        setWait();
         waitForClick(nextButton, Duration.ofSeconds(10));
+        scrollToElement(nextButton);
         nextButton.click();
     }
 }

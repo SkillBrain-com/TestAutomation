@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,16 +27,29 @@ public class BasePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
+    public void smoothScrollToBottom(WebDriver driver) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        long lastHeight = (long) js.executeScript("return document.body.scrollHeight");
+
+        for (int i = 0; i < lastHeight; i += 500) {
+            js.executeScript("window.scrollBy(0, 500);");
+
+            long finalLastHeight = lastHeight;
+            new WebDriverWait(driver, Duration.ofSeconds(2))
+                    .until((ExpectedCondition<Boolean>) d -> {
+                        long newHeight = (long) js.executeScript("return document.body.scrollHeight");
+                        return newHeight > finalLastHeight || ((JavascriptExecutor) d).executeScript("return window.scrollY + window.innerHeight;").equals(newHeight);
+                    });
+
+            lastHeight = (long) js.executeScript("return document.body.scrollHeight");
+        }
+    }
+
     public void waitForText(String text, Duration duration) {
         By xpath = By.xpath(String.format("//*[contains(text(), '%s')]", text));
         driverWait = new WebDriverWait(driver, duration);
         driverWait.until(ExpectedConditions.presenceOfElementLocated(xpath));
-    }
-
-    public void setWait() {
-        if (driverWait == null) {
-            driverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        }
     }
 
     public void waitForVisibility(WebElement element, Duration duration) {
@@ -46,6 +60,12 @@ public class BasePage {
     public void waitForClick(WebElement element, Duration duration) {
         WebDriverWait wait = new WebDriverWait(driver, duration);
         wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public void setWait() {
+        if (driverWait == null) {
+            driverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        }
     }
 
     public WebDriverWait getDriverWait() {
