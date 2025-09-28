@@ -1,5 +1,6 @@
 package org.skillbrain.page.echipa1.merchant;
 
+import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -10,6 +11,7 @@ import org.skillbrain.page.BasePage;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.Map;
 
 public class StripePaymentPage extends BasePage {
 
@@ -57,18 +59,18 @@ public class StripePaymentPage extends BasePage {
     @FindBy(xpath = "//h2[normalize-space()='✅ Order complete']")
     private WebElement orderCompleteLabel;
 
-    public void fillPaymentMethod(String email, String cardNr, String cardExpiry, String cardCvc, String cardholderName, String billingCountry, String zipCode) {
+    public void fillPaymentMethod(Map<String, String> data) {
         setWait();
         waitForClick(emailPaymentField,Duration.ofSeconds(10));
 
-        emailPaymentField.sendKeys(email);
-        cardNrField.sendKeys(cardNr);
-        cardExpiryField.sendKeys(cardExpiry);
-        cardCvcField.sendKeys(cardCvc);
-        billingNameField.sendKeys(cardholderName);
+        emailPaymentField.sendKeys(data.get("email"));
+        cardNrField.sendKeys(data.get("card nr"));
+        cardExpiryField.sendKeys(data.get("card expiry"));
+        cardCvcField.sendKeys(data.get("card cvc"));
+        billingNameField.sendKeys(data.get("cardholder name"));
         Select country = new Select(billingCountryDropdown);
-        country.selectByValue(billingCountry);
-        billingPostalCodeField.sendKeys(zipCode);
+        country.selectByValue(data.get("country"));
+        billingPostalCodeField.sendKeys(data.get("zip"));
     }
 
     public void clickPayPaymentButton() {

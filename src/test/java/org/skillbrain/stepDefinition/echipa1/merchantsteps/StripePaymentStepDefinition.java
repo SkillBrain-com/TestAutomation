@@ -22,15 +22,7 @@ public class StripePaymentStepDefinition {
     public void fillAllPaymentFieldsWith(DataTable table) {
         Map<String, String> data = table.asMaps(String.class, String.class).getFirst();
 
-        stripePayment.fillPaymentMethod(
-                data.get("email"),
-                data.get("card nr"),
-                data.get("card expiry"),
-                data.get("card cvc"),
-                data.get("cardholder name"),
-                data.get("country"),
-                data.get("zip")
-        );
+        stripePayment.fillPaymentMethod(data);
     }
 
     @And("Click the Pay Payment button")

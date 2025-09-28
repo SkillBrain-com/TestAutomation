@@ -1,6 +1,5 @@
 package org.skillbrain.stepDefinition.echipa1.oveithubsteps;
 
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.skillbrain.page.echipa1.oveithub.OveitHubTicketsPage;
@@ -54,5 +53,35 @@ public class OveitHubTicketsStepDefinition {
     @And("Click the simple Third Add button")
     public void clickTheSimpleThirdAddButton() {
         oveitHubTickets.clickSimpleThirdAddButton();
+    }
+
+    @And("Click the Register now button")
+    public void clickTheRegisterNowButton() {
+        oveitHubTickets.clickOnRegisterNowButton();
+    }
+
+    @And("Fill the simple Code field, meant for customers, with the previously entered invitation {string}")
+    public void fillTheSimpleCodeFieldMeantForCustomersWithThePreviouslyEnteredInvitation(String code) {
+        oveitHubTickets.fillSimpleCustomerInviteCodeField(code);
+    }
+
+    @And("Fill the simple Code field, meant for guests, with the previously entered invitation {string}")
+    public void fillTheSimpleCodeFieldMeantForGuestsWithThePreviouslyEnteredInvitation(String code) {
+        oveitHubTickets.fillSimpleGuestInviteCodeField(code);
+    }
+
+    @And("Click the simple Apply button")
+    public void clickTheSimpleApplyButton() {
+        oveitHubTickets.clickSimpleApplyButton();
+    }
+
+    @Then("Check if the simple ticket has the {string} tag")
+    public void checkIfTheSimpleTicketHasTheTag(String tag) {
+        oveitHubTickets.checkSimplePrivateLabel(tag);
+    }
+
+    @Then("Check the toast for the simple {string} message")
+    public void checkTheToastForTheSimpleMessage(String toast) {
+        oveitHubTickets.checkSimpleToastMessage(toast);
     }
 }

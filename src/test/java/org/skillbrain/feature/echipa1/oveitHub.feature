@@ -9,11 +9,11 @@ Feature: Oveit hub feature
     And Click the Create attraction button
     Then Fill the Attraction name field with "TC_OH_001"
     And Expand the Location accordion
-    Then Fill the Location address field with "Calea Eroilor Victoriei 127"
+    Then Fill the Location address field with "Calea Eroilor nr. 127"
     Then Click on Next button
     And Click the Create ticket button
-    Then Fill the Ticket Name field with "Test Ticket"
-    And Fill the Ticket Price field with "35"
+    Then Fill the Ticket Name field with "Skyline Adventure Pass"
+    And Fill the Ticket Price field with 35
     Then Click the Save ticket button
     And Click on Preview & Publish tab button
     Then Click the Publish attraction button
@@ -31,10 +31,10 @@ Feature: Oveit hub feature
     And Click the Create attraction button
     Then Fill the Attraction name field with "TC_OH_002"
     And Expand the Location accordion
-    Then Fill the Location address field with "123 Random Street"
+    Then Fill the Location address field with "Str. Orzari nr. 123"
     Then Click on Next button
     And Click the Create ticket button
-    Then Fill the Ticket Name field with "General Entry Ticket"
+    Then Fill the Ticket Name field with "Quantum Realm Experience Pass"
     And Click the Save ticket button
     Then Click on Preview & Publish tab button
     And Click the Publish attraction button
@@ -52,11 +52,11 @@ Feature: Oveit hub feature
     And Click the Create attraction button
     Then Fill the Attraction name field with "TC_OH_003"
     And Expand the Location accordion
-    Then Fill the Location address field with "123 Random Street"
+    Then Fill the Location address field with "Str. Vânători nr. 1A"
     And Click on Next button
     Then Click the Create ticket button
-    And Fill the Ticket Name field with "General Entry Ticket"
-    Then Fill the Ticket Price field with "35"
+    And Fill the Ticket Name field with "General Entry Pass"
+    Then Fill the Ticket Price field with 35
     And Click the Save ticket button
     Then Click on Preview & Publish tab button
     And Click the Publish attraction button
@@ -74,11 +74,11 @@ Feature: Oveit hub feature
     And Click the Create attraction button
     Then Fill the Attraction name field with "TC_OH_004"
     And Expand the Location accordion
-    Then Fill the Location address field with "45 Another Street"
+    Then Fill the Location address field with "Str. Nuvelei nr. 45"
     And Click on Next button
     Then Click the Create ticket button
-    And Fill the Ticket Name field with "Standard Entry"
-    Then Fill the Ticket Price field with "23"
+    And Fill the Ticket Name field with "Special Entry Pass"
+    Then Fill the Ticket Price field with 23
     And Click the Save ticket button
     Then Click on Preview & Publish tab button
     And Click the Publish attraction button
@@ -95,11 +95,11 @@ Feature: Oveit hub feature
     And Click the Create attraction button
     Then Fill the Attraction name field with "TC_OH_005"
     And Expand the Location accordion
-    Then Fill the Location address field with "Strada Matei Corvin 123"
+    Then Fill the Location address field with "Str. Matei Corvin nr. 123"
     And Click on Next button
     Then Click the Create ticket button
-    And Fill the Ticket Name field with "Simple Ticket"
-    Then Fill the Ticket Price field with "12"
+    And Fill the Ticket Name field with "Main Entry"
+    Then Fill the Ticket Price field with 12
     And Click the Save ticket button
     Then Click on Preview & Publish tab button
     And Click the Publish attraction button
@@ -118,11 +118,11 @@ Feature: Oveit hub feature
     And Click the Create attraction button
     Then Fill the Attraction name field with "TC_OH_006"
     And Expand the Location accordion
-    Then Fill the Location address field with "Blv. Basarabiei 112"
+    Then Fill the Location address field with "Bd. Basarabiei nr. 112"
     And Click on Next button
     Then Click the Create ticket button
     And Fill the Ticket Name field with "VIP Entry"
-    Then Fill the Ticket Price field with "59"
+    Then Fill the Ticket Price field with 59
     And Click the Save ticket button
     Then Click on Preview & Publish tab button
     And Click the Publish attraction button
@@ -133,7 +133,7 @@ Feature: Oveit hub feature
     Then Click the simple Continue button
     And Fill the simple Mandatory fields with:
       | email                           | name                      | country           | state              | city                | address                            |
-      | dan.diaconescu121@gmail.com     | Dan Diaconescu            | Romania           | Timis              | Timișoara           | Bulevardul Revoluției 23, Ap. 5    |
+      | dan.diaconescu121@gmail.com     | Dan Diaconescu            | Romania           | Timis              | Timisoara           | Bulevardul Revolutiei 23, Ap. 5    |
     Then Click the simple Pay button
     And Fill all Payment fields with:
       | email                         | card nr                   | card expiry     | card cvc  | cardholder name            | country                   | zip      |
@@ -149,11 +149,11 @@ Feature: Oveit hub feature
     And Click the Create attraction button
     Then Fill the Attraction name field with "TC_OH_007"
     And Expand the Location accordion
-    Then Fill the Location address field with "Calea Victoriei 134"
+    Then Fill the Location address field with "Calea Victoriei nr. 134"
     And Click on Next button
     Then Click the Create ticket button
     And Fill the Ticket Name field with "Special Entry"
-    Then Fill the Ticket Price field with "45"
+    Then Fill the Ticket Price field with 45
     And Click the Save ticket button
     Then Click on Preview & Publish tab button
     And Click the Publish attraction button
@@ -163,8 +163,8 @@ Feature: Oveit hub feature
     And Click the Add button for 10 times
     Then Click the simple Continue button
     And Fill the simple Mandatory fields with:
-      | email                           | name                      | country           | state              | city                | address                            |
-      | dan.diaconescu121@gmail.com     | Dan Diaconescu            | Romania           | Timis              | Timișoara           | Bulevardul Revoluției 23, Ap. 5    |
+      | email                           | name                        | country           | state              | city                | address                              |
+      | parvulescu.ema105@gmail.com     | Ema  Parvulescu             | Romania           | Timis              | Timisoara           | Bulevardul Revolutiei 35, Ap. 3      |
     Then Click the simple Autoprocess radio button
     And Click the simple Pay button
     Then Check if the simple order is completed
@@ -177,21 +177,21 @@ Feature: Oveit hub feature
     And Click the Create attraction button
     Then Fill the Attraction name field with "TC_OH_008"
     And Expand the Location accordion
-    Then Fill the Location address field with "Strada Revolutiei 221"
+    Then Fill the Location address field with "Str. Revolutiei nr. 221"
     And Click on Next button
     Then Click the Create ticket button
     And Fill the Ticket Name field with "Priced Entry"
-    Then Fill the Ticket Price field with "23"
+    Then Fill the Ticket Price field with 23
     And Click the Save ticket button
     Then Click the New Ticket button
     And Fill the Ticket Name field with "Free Entry"
     And Click the Save ticket button
     Then Click the New bundle button
     And Fill the Bundle Name field with "Bundle of Tickets"
-    Then Fill the Bundle Price field with "47"
+    Then Fill the Bundle Price field with 47
     And Click the Add ticket button
     Then Pick the priced ticket item, within the Name dropdown
-    And Fill the Quantity field with "10"
+    And Fill the Quantity field with 10
     Then Click the Save bundle button
     Then Click on Preview & Publish tab button
     And Click the Publish attraction button
@@ -204,7 +204,7 @@ Feature: Oveit hub feature
     Then Click the simple Continue button
     And Fill the simple Mandatory fields with:
       | email                           | name                      | country           | state              | city                | address                            |
-      | dan.diaconescu121@gmail.com     | Dan Diaconescu            | Romania           | Timis              | Timișoara           | Bulevardul Revoluției 23, Ap. 5    |
+      | dan.diaconescu121@gmail.com     | Dan Diaconescu            | Romania           | Timis              | Timisoara           | Bulevardul Revolutiei 23, Ap. 5    |
     Then Click the simple Pay button
     And Fill all Payment fields with:
       | email                         | card nr                   | card expiry     | card cvc  | cardholder name            | country                   | zip      |
@@ -220,13 +220,13 @@ Feature: Oveit hub feature
     And Click the Create attraction button
     Then Fill the Attraction name field with "TC_OH_009"
     And Expand the Location accordion
-    Then Fill the Location address field with "Strada Crizantemei 151"
+    Then Fill the Location address field with "Str. Crizantemei nr. 151"
     And Expand the Advanced settings accordion
     Then Click the Enable Customer Form checkbox
     And Click on Next button
     Then Click the Create ticket button
-    And Fill the Ticket Name field with "Special VIP Super Secret Entry"
-    Then Fill the Ticket Price field with "55"
+    And Fill the Ticket Name field with "Special VIP Secret Entry"
+    Then Fill the Ticket Price field with 55
     And Click the Save ticket button
     Then Click the Customer form tab button
     And Fill the First Custom Name Field with "Phone Number"
@@ -254,7 +254,7 @@ Feature: Oveit hub feature
       """
     Then Click the New field button
     And Click the Sixth Field Type dropdown, pick the Checkbox item
-    Then Fill the Sixth Custom Name Field with "Smoker?"
+    Then Fill the Sixth Custom Name Field with "Smoking?"
     And Click on Next button
     And Click the Publish attraction button
     Then Click the Share button
@@ -267,8 +267,8 @@ Feature: Oveit hub feature
       | maria.ionescu@gmail.com     | Maria Ionescu       | Romania     | Botosani  | Botosani    | Str. Victoriei 24     | +40 723 456 789   | Prefer phone call     | maria.ionescu.work@gmail.com        | 10122025      | Engineer    | Yes     |
     Then Click the simple Pay button
     And Fill all Payment fields with:
-      | email                         | card nr                   | card expiry     | card cvc  | cardholder name            | country                   | zip      |
-      | dan.diaconescu121@gmail.com   | 4242424242424242          | 0130            | 235       | Dan Diaconescu             | US                        | 432112   |
+      | email                         | card nr                   | card expiry     | card cvc  | cardholder name             | country                   | zip      |
+      | maria.ionescu@gmail.com       | 4242424242424242          | 0130            | 235       | Maria Ionescu               | US                        | 432112   |
     And Click the Pay Payment button
     Then Check if the simple order is completed
 
@@ -280,10 +280,10 @@ Feature: Oveit hub feature
     And Click the Create attraction button
     Then Fill the Attraction name field with "TC_OH_010"
     And Expand the Location accordion
-    Then Fill the Location address field with "Blv. Dreptatii 551"
+    Then Fill the Location address field with "Bd. Dreptatii nr. 551"
     And Click on Next button
     Then Click the Create ticket button
-    And Fill the Ticket Name field with "Free Entry Ticket"
+    And Fill the Ticket Name field with "Free Entry Pass"
     Then Click the Save ticket button
     Then Click on Preview & Publish tab button
     And Click the Publish attraction button

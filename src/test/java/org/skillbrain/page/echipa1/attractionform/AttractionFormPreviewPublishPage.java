@@ -1,6 +1,10 @@
 package org.skillbrain.page.echipa1.attractionform;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.skillbrain.page.BasePage;
@@ -8,6 +12,7 @@ import org.testng.Assert;
 
 import java.time.Duration;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class AttractionFormPreviewPublishPage extends BasePage {
 
@@ -32,8 +37,11 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     @FindBy(xpath = "(//button[@data-slot='button'])[7]")
     private WebElement addThirdButton;
 
+    @FindBy(xpath = "//button[@data-slot='button' and normalize-space()=\"Apply\"]")
+    private WebElement applyButton;
     @FindBy(xpath = "//button[normalize-space()='Continue']")
     private WebElement continueButton;
+
     @FindBy(xpath = "//p[contains(text(), 'Autoprocess')] //parent::div")
     private WebElement autoProcButton;
     @FindBy(xpath = "//button[normalize-space()='Pay']")
@@ -45,8 +53,17 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     private WebElement publishButton;
     @FindBy(xpath = "//div[@class='ripple']")
     private WebElement shareButton;
+    @FindBy(xpath = "//label[@id=\"toggle-default-share\"]")
+    private WebElement defaultHubButton;
     @FindBy(xpath = "//div[@id='hub-share']//a[@class='event-link-redirect']")
     private WebElement redirectLink;
+    @FindBy(xpath = "//div[@id='default-share']//a[@class='event-link-redirect']")
+    private WebElement oldRedirectLink;
+
+    @FindBy(xpath = "//input[@id=\"voucherCode\"]")
+    private WebElement privateCustomerInviteCodeField;
+    @FindBy(xpath = "//input[@name=\"code\"]")
+    private WebElement privateGuestInviteCodeField;
 
     @FindBy(xpath = "(//input[@type=\"text\"])[1]")
     private WebElement guestField;
@@ -82,7 +99,7 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     private WebElement forthCustomTextLabel;
     @FindBy(xpath = "//label[normalize-space()=\"Professions\"]")
     private WebElement fifthCustomTextLabel;
-    @FindBy(xpath = "//label[normalize-space()=\"Smoker?\"]")
+    @FindBy(xpath = "//label[normalize-space()=\"Smoking?\"]")
     private WebElement sixthCustomTextLabel;
 
     @FindBy(xpath = "//p[normalize-space()=\"Total\"]")
@@ -92,13 +109,25 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     @FindBy(xpath = "//label[normalize-space()='Phone Number']")
     private WebElement customerFormCustomTextLabel;
 
+    @FindBy(xpath = "//p[normalize-space()=\"Private\"]")
+    private WebElement privateLabel;
+
+    @FindBy(xpath = "//div[@role=\"alert\"]/div[2]")
+    private WebElement toastMessage;
+    @FindBy(xpath = "//p[normalize-space()=\"Invalid invitation code\"]")
+    private WebElement errorTagMessage;
+
     @FindBy(xpath = "//strong[@class='alert-heading']")
     private WebElement errorMessage;
     @FindBy(xpath = "//h1[normalize-space()='Page not found']")
     private WebElement error404Message;
 
-    public String getRedirectHref() {
+    public String getRedirectLink() {
         return redirectLink.getAttribute("href");
+    }
+
+    public String getOldRedirectLink() {
+        return oldRedirectLink.getAttribute("href");
     }
 
     public WebElement getCompanyNameField() {
@@ -245,9 +274,9 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     }
 
     public void clickOnAutoProcButton() {
-        ((JavascriptExecutor) driver).executeScript(
-                "var nav = document.getElementById('mobile-nav'); if(nav) { nav.style.display='none'; }"
-        );
+//        ((JavascriptExecutor) driver).executeScript(
+//                "var nav = document.getElementById('mobile-nav'); if(nav) { nav.style.display='none'; }"
+//        );
 
         driver.switchTo().frame(iframe);
 
@@ -287,7 +316,7 @@ public class AttractionFormPreviewPublishPage extends BasePage {
         String expectedThirdLabel = "Email address";
         String expectedForthLabel = "Booking Date";
         String expectedFifthLabel = "Professions";
-        String expectedSixthLabel = "Smoker?";
+        String expectedSixthLabel = "Smoking?";
         Assert.assertEquals(getFirstCustomTextLabel().getText(), expectedFirstLabel, "First label does not match!");
         Assert.assertEquals(getSecondCustomTextLabel().getText(), expectedSecondLabel, "Second label does not match!");
         Assert.assertEquals(getThirdCustomTextLabel().getText(), expectedThirdLabel, "Third label does not match!");
@@ -311,8 +340,9 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     public void assertOrderCompleted() {
         driver.switchTo().frame(iframe);
 
-        waitForVisibility(orderCompleteLabel, Duration.ofSeconds(300));
-        Assert.assertEquals(orderCompleteLabel.getText(), "✅ Order complete");
+        waitForVisibility(orderCompleteLabel, Duration.ofSeconds(30));
+        String expectedLabel = "✅ Order complete";
+        Assert.assertEquals(orderCompleteLabel.getText(), expectedLabel, "Order failed!");
 
         driver.switchTo().defaultContent();
     }
@@ -344,25 +374,32 @@ public class AttractionFormPreviewPublishPage extends BasePage {
     }
 
     public void clickOnPublishAttractButton() {
+        driver.navigate().refresh();
+        setWait();
         waitForClick(publishButton, Duration.ofSeconds(20));
-        publishButton.click();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(publishButton)
+                .pause(Duration.ofMillis(500))
+                .click()
+                .build()
+                .perform();
     }
 
     public void clickOnShareButton() {
-        setWait();
         driver.navigate().refresh();
+        setWait();
         waitForClick(shareButton, Duration.ofSeconds(30));
         shareButton.click();
     }
 
     public void handleRedirect() {
-        waitForVisibility(redirectLink, Duration.ofSeconds(10));
+        waitForClick(redirectLink, Duration.ofSeconds(20));
 
-        String dynamicHref = getRedirectHref();
+        String oveitHubLink = getRedirectLink();
 
         String originalWindow = driver.getWindowHandle();
 
-        ((JavascriptExecutor) driver).executeScript("window.open(arguments[0], '_blank');", dynamicHref);
+        ((JavascriptExecutor) driver).executeScript("window.open(arguments[0], '_blank');", oveitHubLink);
 
         setWait();
 
@@ -382,4 +419,88 @@ public class AttractionFormPreviewPublishPage extends BasePage {
         setWait();
     }
 
+    public void handleOldRedirect() {
+//        waitForClick(oldRedirectLink, Duration.ofSeconds(10));
+
+        String defaultHubLink = getOldRedirectLink();
+
+        String originalWindow = driver.getWindowHandle();
+
+        ((JavascriptExecutor) driver).executeScript("window.open(arguments[0], '_blank');", defaultHubLink);
+
+        setWait();
+
+        String newWindowHandle = driver.getWindowHandles().stream()
+                .filter(handle -> !handle.equals(originalWindow))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("New window not found"));
+
+        driver.switchTo().window(newWindowHandle);
+        waitForText("Powered by", Duration.ofSeconds(10));
+
+        driver.switchTo().window(originalWindow);
+        driver.close();
+
+        driver.switchTo().window(newWindowHandle);
+    }
+
+    public void fillCustomerInviteCodeField(String code) {
+        driver.switchTo().frame(iframe);
+
+        waitForClick(privateCustomerInviteCodeField, Duration.ofSeconds(30));
+        privateCustomerInviteCodeField.sendKeys(code);
+
+        driver.switchTo().defaultContent();
+    }
+
+    public void fillGuestInviteCodeField(String code) {
+        driver.switchTo().frame(iframe);
+
+        waitForClick(privateGuestInviteCodeField, Duration.ofSeconds(30));
+        privateGuestInviteCodeField.sendKeys(code);
+
+        driver.switchTo().defaultContent();
+    }
+
+    public void clickApplyButton() {
+        driver.switchTo().frame(iframe);
+
+        waitForClick(applyButton, Duration.ofSeconds(10));
+        applyButton.click();
+
+        driver.switchTo().defaultContent();
+    }
+
+    public void checkPrivateLabel(String tag) {
+        driver.switchTo().frame(iframe);
+
+        waitForVisibility(privateLabel, Duration.ofSeconds(3));
+        Assert.assertEquals(privateLabel.getText(), tag, "The tag does not match!");
+
+        driver.switchTo().defaultContent();
+    }
+
+    public void checkToastMessage(String toast) {
+        driver.switchTo().frame(iframe);
+
+        waitForVisibility(toastMessage, Duration.ofSeconds(3));
+        Assert.assertEquals(toastMessage.getText(), toast, "The invite code was not applied!");
+
+        driver.switchTo().defaultContent();
+    }
+
+    public void clickDefaultHubRadioButton() {
+        setWait();
+        waitForClick(defaultHubButton, Duration.ofSeconds(10));
+        defaultHubButton.click();
+    }
+
+    public void checkCodeValidity(String result) {
+        driver.switchTo().frame(iframe);
+
+        waitForVisibility(errorTagMessage, Duration.ofSeconds(10));
+        Assert.assertEquals(errorTagMessage.getText(), result, "The code with the invalid characters has passed!");
+
+        driver.switchTo().defaultContent();
+    }
 }

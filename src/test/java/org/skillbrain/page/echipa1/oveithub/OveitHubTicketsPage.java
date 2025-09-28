@@ -5,10 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.skillbrain.page.BasePage;
+import org.testng.Assert;
 
 import java.time.Duration;
-
-import static org.testng.Assert.assertFalse;
 
 public class OveitHubTicketsPage extends BasePage {
 
@@ -22,6 +21,16 @@ public class OveitHubTicketsPage extends BasePage {
 
     @FindBy(xpath = "//button[normalize-space()='Buy now']")
     private WebElement buyNowButton;
+    @FindBy(xpath = "//button[normalize-space()='Register now']")
+    private WebElement registerNowButton;
+
+    @FindBy(xpath = "//input[@id=\"voucherCode\"]")
+    private WebElement privateCustomerInviteCodeField;
+    @FindBy(xpath = "//input[@name=\"code\"]")
+    private WebElement privateGuestInviteCodeField;
+
+    @FindBy(xpath = "//button[@data-slot='button' and normalize-space()=\"Apply\"]")
+    private WebElement applyButton;
 
     @FindBy(xpath = "(//button[@data-slot='button'])[3]")
     private WebElement addButton;
@@ -36,9 +45,19 @@ public class OveitHubTicketsPage extends BasePage {
     @FindBy(xpath = "//button[normalize-space()='Continue']")
     private WebElement continueButton;
 
+    @FindBy(xpath = "//p[normalize-space()=\"Private\"]")
+    private WebElement privateLabel;
+    @FindBy(xpath = "//div[@role=\"alert\"]/div[2]")
+    private WebElement toastMessage;
+
     public void clickOnBuyNowButton() {
         waitForClick(buyNowButton, Duration.ofSeconds(10));
         buyNowButton.click();
+    }
+
+    public void clickOnRegisterNowButton() {
+        waitForClick(registerNowButton, Duration.ofSeconds(10));
+        registerNowButton.click();
     }
 
     public void clickMultipleOnAddButton(int nr) {
@@ -49,7 +68,7 @@ public class OveitHubTicketsPage extends BasePage {
     }
 
     public void checkTicketPlus() {
-        assertFalse(addButton.isEnabled(), "Add button should be disabled");
+        Assert.assertFalse(addButton.isEnabled(), "Add button should be disabled");
 
         String disabledAdd = addButton.getAttribute("disabled");
         assert disabledAdd != null : "Add button does not have disabled attribute";
@@ -59,12 +78,12 @@ public class OveitHubTicketsPage extends BasePage {
         waitForVisibility(subtractButton, Duration.ofSeconds(10));
         waitForVisibility(continueButton, Duration.ofSeconds(10));
 
-        assertFalse(subtractButton.isEnabled(), "Minus button should be disabled");
+        Assert.assertFalse(subtractButton.isEnabled(), "Minus button should be disabled");;
 
         String disabledMinus = subtractButton.getAttribute("disabled");
         assert disabledMinus != null : "Minus button does not have disabled attribute";
 
-        assertFalse(continueButton.isEnabled(), "Continue button should be disabled");
+        Assert.assertFalse(continueButton.isEnabled(), "Continue button should be disabled");
 
         String disabledContinue = continueButton.getAttribute("disabled");
         assert disabledContinue != null : "Continue button does not have disabled attribute";
@@ -84,8 +103,34 @@ public class OveitHubTicketsPage extends BasePage {
         waitForClick(addSecondButton, Duration.ofSeconds(10));
         addSecondButton.click();
     }
+
     public void clickSimpleThirdAddButton() {
         waitForClick(addThirdButton, Duration.ofSeconds(10));
         addThirdButton.click();
+    }
+
+    public void fillSimpleCustomerInviteCodeField(String code) {
+        waitForClick(privateCustomerInviteCodeField, Duration.ofSeconds(30));
+        privateCustomerInviteCodeField.sendKeys(code);
+    }
+
+    public void fillSimpleGuestInviteCodeField(String code) {
+        waitForClick(privateGuestInviteCodeField, Duration.ofSeconds(30));
+        privateGuestInviteCodeField.sendKeys(code);
+    }
+
+    public void clickSimpleApplyButton() {
+        waitForClick(applyButton, Duration.ofSeconds(10));
+        applyButton.click();
+    }
+
+    public void checkSimplePrivateLabel(String tag) {
+        waitForVisibility(privateLabel, Duration.ofSeconds(3));
+        Assert.assertEquals(privateLabel.getText(), tag, "The tag does not match!");
+    }
+
+    public void checkSimpleToastMessage(String toast) {
+        waitForVisibility(toastMessage, Duration.ofSeconds(3));
+        Assert.assertEquals(toastMessage.getText(), toast, "The invite code was not applied!");
     }
 }

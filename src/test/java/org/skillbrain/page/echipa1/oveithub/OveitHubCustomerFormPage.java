@@ -12,7 +12,7 @@ import org.skillbrain.page.BasePage;
 import java.time.Duration;
 import java.util.Map;
 
-import static org.testng.Assert.assertTrue;
+import org.testng.Assert;
 
 public class OveitHubCustomerFormPage extends BasePage {
 
@@ -24,7 +24,7 @@ public class OveitHubCustomerFormPage extends BasePage {
         PageFactory.initElements(this.driver, this);
     }
 
-    @FindBy(xpath = "//p[normalize-space()='20 x Simple Ticket']")
+    @FindBy(xpath = "//p[normalize-space()='20 x Main Entry']")
     private WebElement orderQuantityLabel;
 
     @FindBy(css = "input[name=\"email\"]")
@@ -60,7 +60,7 @@ public class OveitHubCustomerFormPage extends BasePage {
 
     public void checkTwentyTickets() {
         waitForVisibility(orderQuantityLabel, Duration.ofSeconds(10));
-        assertTrue(orderQuantityLabel.getText().contains("20"), "Order summary should contain '20'");
+        Assert.assertTrue(orderQuantityLabel.getText().contains("20"), "Order summary should contain '20'");
     }
 
     public void fillSimpleCustomerForm(Map<String, String> data) {
@@ -79,9 +79,13 @@ public class OveitHubCustomerFormPage extends BasePage {
                 && data.get("phone number") != null
                 && !data.get("phone number").isBlank()) {
             try {
-                scrollToElement(firstCustomerCustomField);
-                waitForClick(firstCustomerCustomField, Duration.ofSeconds(10));
-                fifthCustomerCustomField.sendKeys(data.get("phone number"));
+                Actions firstCustom = new Actions(driver);
+                firstCustom.moveToElement(firstCustomerCustomField)
+                            .pause(Duration.ofMillis(200))
+                            .click()
+                            .sendKeys(data.get("phone number"))
+                            .build()
+                            .perform();
             } catch (NoSuchElementException e) {
                 System.out.println("Campul nu a fost gasit!");
             }
@@ -91,9 +95,13 @@ public class OveitHubCustomerFormPage extends BasePage {
                 && data.get("observations") != null
                 && !data.get("observations").isBlank()) {
             try {
-                scrollToElement(secondCustomerCustomField);
-                waitForClick(secondCustomerCustomField, Duration.ofSeconds(10));
-                secondCustomerCustomField.sendKeys(data.get("observations"));
+                Actions secondCustom = new Actions(driver);
+                secondCustom.moveToElement(secondCustomerCustomField)
+                        .pause(Duration.ofMillis(200))
+                        .click()
+                        .sendKeys(data.get("observations"))
+                        .build()
+                        .perform();
             } catch (NoSuchElementException e) {
                 System.out.println("Campul nu a fost gasit!");
             }
@@ -103,9 +111,13 @@ public class OveitHubCustomerFormPage extends BasePage {
                 && data.get("alt email") != null
                 && !data.get("alt email").isBlank()) {
             try {
-                scrollToElement(thirdCustomerCustomField);
-                waitForClick(thirdCustomerCustomField, Duration.ofSeconds(10));
-                thirdCustomerCustomField.sendKeys(data.get("alt email"));
+                Actions thirdCustom = new Actions(driver);
+                thirdCustom.moveToElement(thirdCustomerCustomField)
+                        .pause(Duration.ofMillis(200))
+                        .click()
+                        .sendKeys(data.get("alt email"))
+                        .build()
+                        .perform();
             } catch (NoSuchElementException e) {
                 System.out.println("Campul nu a fost gasit!");
             }
@@ -115,9 +127,13 @@ public class OveitHubCustomerFormPage extends BasePage {
                 && data.get("booking date") != null
                 && !data.get("booking date").isBlank()) {
             try {
-                scrollToElement(forthCustomerCustomField);
-                waitForClick(forthCustomerCustomField, Duration.ofSeconds(10));
-                forthCustomerCustomField.sendKeys(data.get("booking date"));
+                Actions forthCustom = new Actions(driver);
+                forthCustom.moveToElement(forthCustomerCustomField)
+                        .pause(Duration.ofMillis(200))
+                        .click()
+                        .sendKeys(data.get("booking date"))
+                        .build()
+                        .perform();
             } catch (NoSuchElementException e) {
                 System.out.println("Campul nu a fost gasit!");
             }
@@ -127,10 +143,14 @@ public class OveitHubCustomerFormPage extends BasePage {
                 && data.get("professions") != null
                 && !data.get("professions").isBlank()) {
             try {
-                scrollToElement(fifthCustomerCustomField);
-                waitForClick(fifthCustomerCustomField, Duration.ofSeconds(10));
-                fifthCustomerCustomField.sendKeys(data.get("professions"));
-                fifthCustomerCustomField.sendKeys(Keys.ENTER);
+                Actions fifthCustom = new Actions(driver);
+                fifthCustom.moveToElement(fifthCustomerCustomField)
+                        .pause(Duration.ofMillis(200))
+                        .click()
+                        .sendKeys(data.get("professions"))
+                        .sendKeys(Keys.ENTER)
+                        .build()
+                        .perform();
             } catch (NoSuchElementException e) {
                 System.out.println("Campul nu a fost gasit!");
             }
@@ -140,9 +160,12 @@ public class OveitHubCustomerFormPage extends BasePage {
             String smoking = data.get("smoking");
             if ("yes".equalsIgnoreCase(smoking)) {
                 try {
-                    scrollToElement(sixthCustomerCustomField);
-                    waitForClick(sixthCustomerCustomField, Duration.ofSeconds(10));
-                    sixthCustomerCustomField.click();
+                    Actions sixthCustom = new Actions(driver);
+                    sixthCustom.moveToElement(sixthCustomerCustomField)
+                            .pause(Duration.ofMillis(200))
+                            .click()
+                            .build()
+                            .perform();
                 } catch (NoSuchElementException e) {
                     System.out.println("Bifa nu a fost plasata!");
                 }
@@ -151,9 +174,10 @@ public class OveitHubCustomerFormPage extends BasePage {
     }
 
     public void clickSimplePayButton() {
-        Actions actions = new Actions(driver);
-
         waitForClick(payButton, Duration.ofSeconds(20));
+        scrollToElement(payButton);
+
+        Actions actions = new Actions(driver);
         scrollToElement(payButton);
         actions.moveToElement(payButton)
                 .pause(Duration.ofMillis(200))

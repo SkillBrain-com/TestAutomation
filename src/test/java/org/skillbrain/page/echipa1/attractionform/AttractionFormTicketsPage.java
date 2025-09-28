@@ -31,6 +31,12 @@ public class AttractionFormTicketsPage extends BasePage {
     private WebElement ticketSaveButton;
     @FindBy(xpath = "(//span[contains(text(),'Save')])[4]/parent::button")
     private WebElement bundleSaveButton;
+    @FindBy(xpath = "//span[normalize-space()=\"Ticket configuration\"] //parent::div")
+    private WebElement ticketConfigButton;
+    @FindBy(xpath = "//span[normalize-space()='Ticket visibility'] //parent::div")
+    private WebElement ticketVisibleButton;
+    @FindBy(xpath = "//input[@name=\"visibility\" and @value=\"private\"] //parent::label")
+    private WebElement privateInviteButton;
 
     @FindBy(xpath = "//input[@placeholder=\"e.g. VIP Area, Entry ticket, etc.\"]")
     private WebElement ticketNameField;
@@ -42,6 +48,8 @@ public class AttractionFormTicketsPage extends BasePage {
     private WebElement bundlePriceField;
     @FindBy(xpath = "(//input[@name='fields[0][quantity]'])[1]")
     private WebElement ticketQuantityField;
+    @FindBy(xpath = "//input[@name=\"visibility_code\"]")
+    private WebElement invitationCodeField;
 
     @FindBy(xpath = "(//div[@data-value='EUR'] //parent::div)[1]")
     private WebElement currencyDropdown;
@@ -72,9 +80,9 @@ public class AttractionFormTicketsPage extends BasePage {
         ticketNameField.sendKeys(ticketName);
     }
 
-    public void fillTicketPrice(String ticketPrice) {
+    public void fillTicketPrice(Float ticketPrice) {
         ticketPriceField.clear();
-        ticketPriceField.sendKeys(ticketPrice);
+        ticketPriceField.sendKeys(String.valueOf(ticketPrice));
     }
 
     public void clickCurrencyDropdown() {
@@ -114,9 +122,9 @@ public class AttractionFormTicketsPage extends BasePage {
         bundleNameField.sendKeys(name);
     }
 
-    public void fillBundlePriceField(String price) {
+    public void fillBundlePriceField(Float price) {
         bundlePriceField.clear();
-        bundlePriceField.sendKeys(price);
+        bundlePriceField.sendKeys(String.valueOf(price));
     }
 
     public void clickAddTicketButton() {
@@ -130,8 +138,8 @@ public class AttractionFormTicketsPage extends BasePage {
                 .perform();
     }
 
-    public void fillQuantityField(String quantity) {
-        ticketQuantityField.sendKeys(quantity);
+    public void fillQuantityField(int quantity) {
+        ticketQuantityField.sendKeys(String.valueOf(quantity));
     }
 
     public void selectPricedTicketItem() {
@@ -139,5 +147,35 @@ public class AttractionFormTicketsPage extends BasePage {
         ticketsDropdown.click();
         waitForClick(ticketItem, Duration.ofSeconds(20));
         ticketItem.click();
+    }
+
+    public void clickTicketConfigButton() {
+        waitForClick(ticketConfigButton, Duration.ofSeconds(10));
+        scrollToElement(ticketConfigButton);
+
+        Actions actions = new Actions(driver);
+        actions.pause(Duration.ofMillis(500))
+                .moveToElement(ticketConfigButton)
+                .click()
+                .build()
+                .perform();
+    }
+
+    public void clickTicketVisibilityButton() {
+        waitForClick(ticketVisibleButton, Duration.ofSeconds(10));
+        scrollToElement(ticketVisibleButton);
+        ticketVisibleButton.click();
+    }
+
+    public void clickPrivateInviteButton() {
+        waitForClick(privateInviteButton, Duration.ofSeconds(10));
+        scrollToElement(privateInviteButton);
+        privateInviteButton.click();
+    }
+
+    public void fillPrivateInviteCodeField(String code) {
+        waitForClick(invitationCodeField, Duration.ofSeconds(10));
+        scrollToElement(invitationCodeField);
+        invitationCodeField.sendKeys(code);
     }
 }

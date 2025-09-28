@@ -4,20 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="">
+    <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="Small Tweaks, might need more fixing.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/customerForm.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/customerForm.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/BasePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/oveitHub.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/oveitHub.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/privateInvitation.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/echipa1/privateInvitation.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/LoginPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormCustomerFormPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormCustomerFormPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormGuestFormPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormGuestFormPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormOverviewPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormOverviewPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormPreviewPublishPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormPreviewPublishPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormTicketsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/attractionform/AttractionFormTicketsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/defaulthub/DefaultHubCustomerFormPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/defaulthub/DefaultHubCustomerFormPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/defaulthub/DefaultHubTicketsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/defaulthub/DefaultHubTicketsPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/merchant/StripePaymentPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/merchant/StripePaymentPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubTicketsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubTicketsPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/attractionformsteps/AttractionFormPreviewPublishStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/attractionformsteps/AttractionFormPreviewPublishStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/attractionformsteps/AttractionFormTicketsStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/attractionformsteps/AttractionFormTicketsStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/defaulthubsteps/DefaultHubCustomerFormStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/defaulthubsteps/DefaultHubCustomerFormStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/defaulthubsteps/DefaultHubTicketsStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/defaulthubsteps/DefaultHubTicketsStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/merchantsteps/StripePaymentStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/merchantsteps/StripePaymentStepDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubTicketsStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/echipa1/oveithubsteps/OveitHubTicketsStepDefinition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,19 +75,34 @@
     "Cucumber Java.Feature: ApproveATicketOrder.executor": "Run",
     "Cucumber Java.Scenario: Buy more than 20 tickets..executor": "Run",
     "Cucumber Java.Scenario: Create a Customer Form with 6 different Custom fields, with alternating mandatory checks..executor": "Run",
+    "Cucumber Java.Scenario: Create a Customer Form, that displays the correct price total, of 2 tickets, of different currencies..executor": "Run",
     "Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option.executor": "Run",
     "Cucumber Java.Scenario: Generate a Customer Form, that contains a mandatory custom text field of \"Phone Number\"..executor": "Run",
+    "Cucumber Java.Scenario: Generate a Customer Form, with no custom fields, meant for a Company..executor": "Run",
+    "Cucumber Java.Scenario: Invitation code with special characters only..executor": "Run",
+    "Cucumber Java.Scenario: Invite code validity, for customers, on the Default Hub..executor": "Run",
+    "Cucumber Java.Scenario: Invite code validity, for customers, on the Oveit Hub..executor": "Run",
+    "Cucumber Java.Scenario: Invite code validity, for customers..executor": "Run",
+    "Cucumber Java.Scenario: Invite code validity, for guests, on the Default Hub..executor": "Run",
+    "Cucumber Java.Scenario: Invite code validity, for guests, on the Oveit Hub..executor": "Run",
+    "Cucumber Java.Scenario: Invite code validity, for guests..executor": "Run",
     "Cucumber Java.Scenario: Language switch to Korean, with priced Attractions available..executor": "Run",
     "Cucumber Java.Scenario: Ordering without a ticket..executor": "Run",
+    "Cucumber Java.Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method..executor": "Run",
     "Cucumber Java.Scenario: Place an Order for an Attraction, that contains 1 of each mandatory custom text fields, meant for customers and guests..executor": "Run",
+    "Cucumber Java.Scenario: Place an Order for an Attraction, that has expired..executor": "Run",
     "Cucumber Java.Scenario: Place an Order for an Attraction, that is scheduled at a future date..executor": "Run",
     "Cucumber Java.Scenario: Place an Order for an Attraction, using 2 tickets (1 free and 1 priced) and 1 bundle, meant for a company, using the Autoprocess method..executor": "Run",
     "Cucumber Java.Scenario: Place an Order for an Attraction, using the Card method..executor": "Run",
     "Cucumber Java.Scenario: Place an Order, for a company that buys 2 tickets (1 free + 1 priced) and 1 bundle of 10 priced tickets, using the Card method..executor": "Run",
     "Cucumber Java.Scenario: Place an Order, for a person that buys 10 tickets, using the Autoprocess method..executor": "Run",
-    "Cucumber Java.Scenario: Place an Order, for a person, that is asked to fill 6 unique custom fields of different importance, using the Autoprocess method..executor": "Debug",
+    "Cucumber Java.Scenario: Place an Order, for a person, that is asked to fill 6 unique custom fields of different importance, using the Autoprocess method..executor": "Run",
     "Cucumber Java.Scenario: Place an Order, using the Card method..executor": "Run",
+    "Cucumber Java.Scenario: Place an order, with a private invitation ticket, via the Default Hub..executor": "Run",
+    "Cucumber Java.Scenario: Place an order, with a private invitation ticket, via the Oveit Hub..executor": "Run",
+    "Cucumber Java.Scenario: Place an order, with a private invitation ticket..executor": "Run",
     "Cucumber Java.Scenario: Registering for a free Attraction..executor": "Run",
+    "Cucumber Java.Scenario: Sharing an Attraction..executor": "Run",
     "Cucumber Java.Scenario: Total check, for an order of 20 tickets..executor": "Run",
     "Maven.TestAutomation [clean,compile].executor": "Run",
     "Maven.TestAutomation [clean,install].executor": "Run",
@@ -91,6 +112,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "TestNG.TestRunner.executor": "Run",
     "TestNG.TestRunner.runScenario.executor": "Run",
+    "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "LSR__20TCs",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Project",
@@ -100,32 +122,22 @@
 }]]></component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="mvn clean compile" />
       <command value="mvn clean install" />
+      <command value="mvn clean compile" />
     </option>
   </component>
   <component name="RunManager">
     <configuration name="TestRunner" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="TestAutomation" />
-      <shortenClasspath name="NONE" />
-      <useClassPathOnly />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.skillbrain.cucumberOptions.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SUITE_NAME" value="" />
       <option name="PACKAGE_NAME" value="org.skillbrain.cucumberOptions" />
       <option name="MAIN_CLASS_NAME" value="org.skillbrain.cucumberOptions.TestRunner" />
-      <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="CLASS" />
-      <option name="PARAMETERS" value="" />
-      <option name="OUTPUT_DIRECTORY" value="" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <option name="PROPERTIES_FILE" value="" />
       <properties />
       <listeners />
       <method v="2">
@@ -162,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757437940204</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Small Tweaks, might need more fixing.">
+      <option name="closed" value="true" />
+      <created>1758743539391</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758743539391</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -175,77 +195,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="git ignore changes." />
     <MESSAGE value="Small fix (annoyance)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small fix (annoyance)" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java</url>
-          <line>71</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java</url>
-          <line>89</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java</url>
-          <line>101</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java</url>
-          <line>113</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/page/echipa1/oveithub/OveitHubCustomerFormPage.java</url>
-          <line>125</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Small Tweaks, might need more fixing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Small Tweaks, might need more fixing." />
   </component>
 </project>

@@ -142,7 +142,7 @@ public class AttractionFormCustomerFormPage extends BasePage {
     public void fillMultiLineValuesField(String multiLineText) {
         waitForClick(textAreaMultiField, Duration.ofSeconds(10));
         scrollToElement(textAreaMultiField);
-        for (String line : multiLineText.split("\\R")) { // split on any line break
+        for (String line : multiLineText.split("\\R")) {
             textAreaMultiField.sendKeys(line);
             textAreaMultiField.sendKeys(Keys.ENTER);
         }
