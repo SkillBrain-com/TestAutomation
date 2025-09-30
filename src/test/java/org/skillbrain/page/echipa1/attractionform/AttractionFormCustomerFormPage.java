@@ -128,12 +128,12 @@ public class AttractionFormCustomerFormPage extends BasePage {
     }
 
     public void clickSixthCustomFieldDropdown() {
-        waitForVisibility(sixthCustomTextFieldDropdown, Duration.ofSeconds(10));
+        waitForClick(sixthCustomTextFieldDropdown, Duration.ofSeconds(10));
         sixthCustomTextFieldDropdown.click();
     }
 
     public void clickMultipleSelectCheckBox() {
-        waitForVisibility(multiSelectionCheckBox, Duration.ofSeconds(10));
+        waitForClick(multiSelectionCheckBox, Duration.ofSeconds(10));
         scrollToElement(multiSelectionCheckBox);
         multiSelectionCheckBox.click();
     }
@@ -141,7 +141,7 @@ public class AttractionFormCustomerFormPage extends BasePage {
     public void fillMultiLineValuesField(String multiLineText) {
         waitForClick(textAreaMultiField, Duration.ofSeconds(10));
         scrollToElement(textAreaMultiField);
-        for (String line : multiLineText.split("\\R")) { // split on any line break
+        for (String line : multiLineText.split("\\R")) {
             textAreaMultiField.sendKeys(line);
             textAreaMultiField.sendKeys(Keys.ENTER);
         }

@@ -6,8 +6,6 @@ import io.cucumber.java.en.When;
 import org.skillbrain.page.VoucherPage;
 import org.skillbrain.utilities.TestContextSetup;
 
-import static org.bouncycastle.asn1.cms.CMSObjectIdentifiers.data;
-
 public class VoucherCreateStepDefinition {
     public VoucherPage voucherPage;
     private final TestContextSetup testContextSetup;

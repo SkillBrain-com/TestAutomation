@@ -92,11 +92,11 @@ public class GroupingTicketsStepDefinition {
     public void click_on_grouping_preview_publish_tab_button() {
         groupingTickets.navigateToPreviewPublish();
     }
-
-    @Then("Click the Publish attraction button")
-    public void click_the_publish_attraction_button() {
-        groupingTickets.publishAttraction();
-    }
+/// TODO Duplicate Step Definition
+//    @Then("Click the Publish attraction button")
+//    public void click_the_publish_attraction_button() {
+//        groupingTickets.publishAttraction();
+//    }
 
     @Then("Check if the attraction is published successfully")
     public void check_if_the_attraction_is_published_successfully() {
