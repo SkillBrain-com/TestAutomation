@@ -32,23 +32,9 @@ public class VoucherCreateStepDefinitionByImport {
     }
 
 
-    @Then("The result is {string}")
-    public void theResultIsString(String voucherName) {
-
-        boolean exists = voucherPageImport.isVoucherPresent(voucherName);
-
-        if (exists) {
-            System.out.println("Import reușit: voucherul \"" + voucherName + "\" a fost găsit în tabel.");
-        } else {
-            System.out.println("Import eșuat: voucherul \"" + voucherName + "\" NU a fost găsit în tabel.");
-        }
-
-        Assert.assertTrue(exists, "Voucherul " + voucherName + " nu a fost găsit în tabel!");
-    }
-
     @And("I fill the Name box test with {string}")
     public void iFillTheNameBoxTestWith(String arg0) {
-        voucherPageImport.FillVoucherBoxName("VoucherTest1");
+        voucherPageImport.FillVoucherBoxName("VTest1");
 
     }
 
@@ -59,15 +45,53 @@ public class VoucherCreateStepDefinitionByImport {
 
     @Then("I fill the box Add code with series {string} and press Add button")
     public void iFillTheBoxWithSeriesSeriesAndPressAddButton(String arg0) {
-        voucherPageImport.FillAddCodeBox("123gh");
+        voucherPageImport.FillAddCodeBox("124gt");
     }
     @And("I click Save button")
     public void iClickSaveButton() {
-
         voucherPageImport.ClickSaveButton();
     }
 
 
 
+    @Then("I check if the voucher {string} appears in list")
+    public void iCheckIfTheVoucherAppearsInList(String voucher ) {
+        voucherPageImport.verifyVoucherPresence(voucher);
+    }
 
+    @Then("Delete the voucher {string}")
+    public void deleteTheVoucher(String arg0) {
+        voucherPageImport.deleteVoucher();
+    }
+    @And("Press on Continue button")
+    public void pressOnContinueButton() {
+        voucherPageImport.pressContinueButton();
+    }
+
+    @Then("Fill in mandatory fields with First name, Last name, email, company and position")
+    public void fillInMandatoryFieldsWithFirstNameLastNameEmailCompanyAndPosition() {
+
+        voucherPageImport.fillInMandatoryFields();
+    }
+
+    @And("Press on Continue2 button")
+    public void pressOnContinue2Button() {
+        voucherPageImport.pressContinue2Button();
+    }
+
+
+    @Then("The result is <voucherName>")
+    public void theResultIsVoucherName() {
+    }
+
+    @Then("Fill in mandatory fields with email, name, country, state and adress")
+    public void fillInMandatoryFieldsWithEmailNameCountryStateAndAdress() {
+        voucherPageImport.fillInMandatoryFieldsForPayment();
+
+    }
+
+    @And("Choose autoprocess method for payment and click Pay button")
+    public void chooseAutoprocessMethodForPaymentAndClickPayButton() {
+        voucherPageImport.selectPaymentAndPay();
+    }
 }

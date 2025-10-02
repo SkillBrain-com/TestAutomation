@@ -32,6 +32,9 @@ public class PageObjectFactory {
    private ApprovalTicket approvalTicket;
    private ApproveTicketOrder approveATicketOrder;
    private TicketWithCalendar ticketWithCalendar;
+   private EventsPage eventsPage;
+   private VoucherPageImport voucherPageImport;
+
 
 //    dependency injection
     public PageObjectFactory(WebDriver driver) {
@@ -150,5 +153,15 @@ public class PageObjectFactory {
         ticketWithCalendar = new TicketWithCalendar(driver);
         return ticketWithCalendar;
 
+    }
+
+    public EventsPage getEventsPage() {
+        eventsPage = new EventsPage(driver);
+        return eventsPage;
+    }
+
+    public VoucherPageImport getVoucherPageImport() {
+        voucherPageImport = new VoucherPageImport(driver);
+        return voucherPageImport;
     }
 }

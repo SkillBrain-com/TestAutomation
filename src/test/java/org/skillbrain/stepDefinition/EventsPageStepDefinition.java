@@ -45,7 +45,6 @@ public class EventsPageStepDefinition {
     @And("I click on My events")
     public void iClickOnMyEvents() {
         eventsPage.clickMyEvents();
-
     }
 
     @Then("I click on Go to Hub button")

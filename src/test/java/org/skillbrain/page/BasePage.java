@@ -67,13 +67,6 @@ public class BasePage {
         return driverWait;
     }
 
-    public void switchToSecondWindow() {
-        Set<String> windowHandles = driver.getWindowHandles();
-        Iterator<String> iterator = windowHandles.iterator();
-        String parentWindow = iterator.next();
-        String secondWindow = iterator.next();
-        driver.switchTo().window(secondWindow);
-    }
 }
 
 

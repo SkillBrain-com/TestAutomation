@@ -201,7 +201,7 @@ public class AttractionForm extends BasePage {
     }
 
     public void assertOrderCompleted() {
-        driver.switchTo().frame(iframe);
+       // driver.switchTo().frame(iframe);
 
         waitForText("✅ Order complete", Duration.ofSeconds(30));
         Assert.assertEquals(getOrderCompleteLabel().getText(), "✅ Order complete");

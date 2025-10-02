@@ -22,9 +22,9 @@ public class EventsPage extends BasePage {
     private WebElement myEvents;
     @FindBy(xpath = "//span[normalize-space()='Go to Hub'] //parent::button")
     private  WebElement goToHub;
-    @FindBy(xpath = "//h3[text()='testareBugFix'] //parent::a")
-    private WebElement testareBuxFixEvent;
-    @FindBy(xpath ="//button[normalize-space()='Buy now']")
+    @FindBy(xpath = "//h3[normalize-space()='testareBugFix']")
+    private WebElement testareBugFixEvent;
+    @FindBy(xpath = "//button[normalize-space()='Buy now']")
     private WebElement buyNowButton;
     @FindBy(xpath = "//input[@id='voucherCode']")
     private WebElement codeBox;
@@ -58,7 +58,7 @@ public class EventsPage extends BasePage {
     }
 
     public void clickMyEvents() {
-        waitForText("My events", Duration.ofSeconds(5));
+       // waitForText("My events", Duration.ofSeconds(5));
         myEvents.click();
     }
 
@@ -69,17 +69,20 @@ public class EventsPage extends BasePage {
 
     public void clickTestareBugFixEvent() {
         switchToSecondWindow();
-        testareBuxFixEvent.click();
+        waitForVisibility(testareBugFixEvent, Duration.ofSeconds(20));
+        testareBugFixEvent.click();
     }
 
     public void clickBuyNowButton() {
+        waitForVisibility(buyNowButton, Duration.ofSeconds(10));
         buyNowButton.click();
     }
 
     public void fillInTheCodeBox() {
-        setWait();
-        WebDriverWait driverWait = getDriverWait();
-        driverWait.until(ExpectedConditions.visibilityOf(codeBox));
+       // setWait();
+        //WebDriverWait driverWait = getDriverWait();
+        //driverWait.until(ExpectedConditions.visibilityOf(codeBox));
+        waitForVisibility(codeBox, Duration.ofSeconds(10));
         codeBox.sendKeys("123gh");
     }
 
@@ -100,7 +103,6 @@ public class EventsPage extends BasePage {
         waitForText("22.5", Duration.ofSeconds(5));
         Assert.assertEquals(getDiscountValue().getText(), "22.5% OFF");
     }
-
 
 
 }
