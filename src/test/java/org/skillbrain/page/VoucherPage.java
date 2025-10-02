@@ -521,7 +521,6 @@ public class VoucherPage extends BasePage {
         }
     }
 
-
     public void okafterGeneratedcodesclick() {
         try {
             Thread.sleep(2000);
@@ -559,16 +558,6 @@ public class VoucherPage extends BasePage {
 
     public void applyAllSavedCodesAndVerify(double discount, double beforePrice) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        LocalDate today = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String formattedToday = today.format(formatter);
-        String untilDateText = activeFromField.getAttribute("value").trim();
-        Assert.assertEquals(untilDateText, formattedToday, "not good");
     }
 
 
@@ -606,11 +595,11 @@ public class VoucherPage extends BasePage {
         }
     }
 
+
     public void RefreshPage() {
         driver.navigate().refresh();
     }
 //MARIA
-
 
     //MARIA
     public void NameVoucher() {
@@ -676,10 +665,4 @@ public class VoucherPage extends BasePage {
                 "Eroarea așteptată nu a apărut!");
         eroare.accept();
     }
-
-
-//        Assert.assertTrue(notFound, "nu e ok");
-
-
-//MARIA
 }

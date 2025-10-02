@@ -9,7 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
 import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
 
 //TODO MERGE DUPLICATE SELECTORS
 public class AttractionForm extends BasePage {
@@ -71,11 +74,11 @@ public class AttractionForm extends BasePage {
     @FindBy(xpath = "//h2[normalize-space()='✅ Order complete']")
     private WebElement orderCompleteLabel;
 
-    @FindBy(xpath=("//*[normalize-space(text())='Location']"))
+    @FindBy(xpath = ("//*[normalize-space(text())='Location']"))
     private WebElement locationDropDown;
-    @FindBy(xpath=("//input[@name='location' and @type='text']"))
+    @FindBy(xpath = ("//input[@name='location' and @type='text']"))
     private WebElement attractionLocationField;
-    @FindBy(css="img[alt=\"Location pin\"]")
+    @FindBy(css = "img[alt=\"Location pin\"]")
     private WebElement mapPin;
     @FindBy(css = "div[aria-label='Hartă'][role='region']")
     private WebElement map;
@@ -300,16 +303,13 @@ public class AttractionForm extends BasePage {
         locationName.sendKeys("Iasi");
     }
 
-
     public void NameOfTicket(String nameTicket) {
         ticketName.sendKeys("Eveniment");
     }
 
-
     public void PriceOfTicket(Double priceTicket) {
         ticketPrice.sendKeys("50");
     }
-
 
     public void PublishButton() {
         buttonOfPublish.click();
@@ -357,11 +357,3 @@ public class AttractionForm extends BasePage {
     }
 
 }
-
-//    @FindBy(xpath = "//button[.//span[text()='Go to Hub']]")
-//    private WebElement buttonHub;
-//    public void GoToHubButton(){
-//        buttonHub.click();
-//    }
-//}
-

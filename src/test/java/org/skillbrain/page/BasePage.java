@@ -79,7 +79,6 @@ public class BasePage {
         String secondWindow = iterator.next();
         driver.switchTo().window(secondWindow);
     }
-
 }
 
 

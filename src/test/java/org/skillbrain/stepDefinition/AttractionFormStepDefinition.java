@@ -110,7 +110,6 @@ public class AttractionFormStepDefinition {
     }
 
     @Then("Enter the name of ticket with {string}")
-
     public void nameOfTicket(String nameTicket) {
         attractionForm.NameOfTicket(nameTicket);
     }
@@ -151,13 +150,10 @@ public class AttractionFormStepDefinition {
         attractionForm.CumparaTest2();
     }
 
+    @Then("I click the Publish Attraction button")
     public void publishButton() {
         attractionForm.PublishButton();
     }
 
-//@Then(" I click on GoToHub button")
-//    public void goToHubButton(){
-//        attractionForm.GoToHubButton();
-//}
 
 }
