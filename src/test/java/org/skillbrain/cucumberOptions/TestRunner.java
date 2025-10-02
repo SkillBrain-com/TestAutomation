@@ -8,7 +8,7 @@ import org.testng.annotations.DataProvider;
         features = "src/test/java/org/skillbrain/feature",
         glue = "org.skillbrain.stepDefinition",
         monochrome = true,
-        tags = "@test-lsr",
+        tags = "@oti",
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "rerun:target/failed_scenarios.txt"},
         dryRun = false
@@ -17,7 +17,7 @@ import org.testng.annotations.DataProvider;
 public class TestRunner extends AbstractTestNGCucumberTests {
 
     @Override
-    @DataProvider(parallel = true)
+    @DataProvider(parallel = false)
     public Object[][] scenarios() {
         return super.scenarios();
     }

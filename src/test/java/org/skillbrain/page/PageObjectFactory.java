@@ -10,6 +10,7 @@ public class PageObjectFactory {
     private AttractionForm attractionForm;
     private VoucherPage voucherPage;
    private TicketPage ticketPage;
+   private OveitHub oveitHub;
 //    dependency injection
     public PageObjectFactory(WebDriver driver) {
         this.driver = driver;
@@ -37,6 +38,10 @@ public class PageObjectFactory {
     public TicketPage getTicketPage() {
         ticketPage = new TicketPage(driver);
         return ticketPage;
+    }
+    public OveitHub getOveitHub(){
+        oveitHub = new OveitHub(driver);
+        return oveitHub;
     }
 
 }
