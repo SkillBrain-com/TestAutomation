@@ -64,6 +64,7 @@ public class HomePage extends BasePage {
     }
 
     public void clickVouchers() {
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // timeout 20s
         WebElement voucherBtn = wait.until(
                 ExpectedConditions.elementToBeClickable(voucherButton) // sau By.xpath("...") etc.
@@ -72,7 +73,7 @@ public class HomePage extends BasePage {
         //voucherButton.click();
         WebElement vouchersTab = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(normalize-space(),'Vouchers')]")));
         vouchersTab.click();
-
+        vouchersTab.click();
     }
 
    

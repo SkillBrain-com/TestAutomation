@@ -119,10 +119,10 @@ public class AttractionFormStepDefinition {
         attractionForm.PriceOfTicket(priceTicket);
     }
 
-    @Then("I click the Publish Attraction button")
-    public void publishButton() {
-        attractionForm.PublishButton();
-    }
+//    @Then("I click the Publish Attraction button")
+//    public void publishButton() {
+//        attractionForm.PublishButton();
+//    }
 
     @And("I click on GoToHub button")
     public void goToHubButton() {
@@ -139,7 +139,6 @@ public class AttractionFormStepDefinition {
         attractionForm.BuyNowButton();
     }
 
-    // scenariu 2
     @Then("I click one attraction")
     public void clickOneAttraction() {
         attractionForm.ClickOneAttraction();
@@ -149,4 +148,30 @@ public class AttractionFormStepDefinition {
     public void cumparaTest2() {
         attractionForm.CumparaTest2();
     }
+
+    @Then("I click the Publish Attraction button")
+    public void publishButton() {
+        attractionForm.PublishButton();
+    }
+
+    @Then("I click on the attractionTestPrice")
+    public void testPrice() {
+        attractionForm.TestPrice();
+    }
+
+    @And("I click on the Buy Now button from the attraction")
+    public void buyTestPrice() {
+        attractionForm.BuyTestPrice();
+    }
+
+    @Then("Put the generated code")
+    public void putCodeGenerated() {
+        attractionForm.PutCodeGenerated();
+    }
+
+    @And("Verify if the price is free")
+    public void freePrice() {
+        attractionForm.FreePrice("50 lei OFF");
+    }
+
 }

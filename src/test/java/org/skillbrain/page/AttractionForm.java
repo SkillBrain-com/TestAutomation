@@ -9,10 +9,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
 import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
 
 //TODO MERGE DUPLICATE SELECTORS
-
 public class AttractionForm extends BasePage {
 
     private WebDriver driver;
@@ -71,12 +73,11 @@ public class AttractionForm extends BasePage {
     private WebElement billingLabel;
     @FindBy(xpath = "//h2[normalize-space()='✅ Order complete']")
     private WebElement orderCompleteLabel;
-
-    @FindBy(xpath=("//*[normalize-space(text())='Location']"))
+    @FindBy(xpath = ("//*[normalize-space(text())='Location']"))
     private WebElement locationDropDown;
-    @FindBy(xpath=("//input[@name='location' and @type='text']"))
+    @FindBy(xpath = ("//input[@name='location' and @type='text']"))
     private WebElement attractionLocationField;
-    @FindBy(css="img[alt=\"Location pin\"]")
+    @FindBy(css = "img[alt=\"Location pin\"]")
     private WebElement mapPin;
     @FindBy(css = "div[aria-label='Hartă'][role='region']")
     private WebElement map;
@@ -289,7 +290,18 @@ public class AttractionForm extends BasePage {
     private WebElement clickTest2;
     @FindBy(xpath = "//h3[normalize-space()='Test 2'] //parent::a //parent::div //following-sibling::div[@class='w-full flex justify-between items-center px-[16px] py-[12px] text-neutral-1000 font-semibold'] //a")
     private WebElement buyTest2;
+    @FindBy(xpath = "//h3[normalize-space()='Test Price'] //parent::a")
+    private WebElement clickTestPrice;
+    @FindBy(xpath = "//button[normalize-space()='Buy now']")
+    private WebElement cumparaTest;
+    @FindBy(id = "voucherCode")
+    private WebElement codulGenerat;
+    @FindBy(xpath = "//button[normalize-space()='Apply']")
+    private WebElement buttonApply;
+    @FindBy(css = "p.green-label")
+    private WebElement discount;
 
+    //MARIA
     public void TheNameOfEvent(String nameEvent) {
         eventName.sendKeys("Eveniment 1");
     }
@@ -353,4 +365,34 @@ public class AttractionForm extends BasePage {
         buyTest2.click();
     }
 
+
+    public void TestPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        switchToSecondWindow();
+        wait.until(ExpectedConditions.elementToBeClickable(clickTestPrice));
+        scrollToElement(clickTestPrice);
+        clickTestPrice.click();
+    }
+
+    public void BuyTestPrice() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.visibilityOf(cumparaTest));
+        cumparaTest.click();
+    }
+
+    public void PutCodeGenerated() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.visibilityOf(codulGenerat));
+        codulGenerat.sendKeys("AKC2u");
+        buttonApply.click();
+    }
+
+    public void FreePrice(String expectedMessage) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.visibilityOf(discount));
+        String actualMessage = discount.getText();
+        Assert.assertEquals(actualMessage, expectedMessage,
+                "Voucherul nu a fost aplicat corect!");
+    }
 }
+

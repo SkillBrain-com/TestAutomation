@@ -6,6 +6,8 @@ import io.cucumber.java.en.When;
 import org.skillbrain.page.VoucherPage;
 import org.skillbrain.utilities.TestContextSetup;
 
+import static org.bouncycastle.asn1.cms.CMSObjectIdentifiers.data;
+
 public class VoucherCreateStepDefinition {
     public VoucherPage voucherPage;
     private final TestContextSetup testContextSetup;
@@ -31,7 +33,6 @@ public class VoucherCreateStepDefinition {
     public void iCheckIfTheVouchersAppearsInList(String text) {
         voucherPage.verifyTextPresent(text);
     }
-
 
     @Then("Delete the voucher")
     public void deleteTheVoucher() {
@@ -75,7 +76,6 @@ public class VoucherCreateStepDefinition {
         voucherPage.InputaCode(code);
     }
 
-    //MARIA
     @Then("I Enter the name of the voucher")
     public void nameVoucher() {
         voucherPage.NameVoucher();
@@ -100,6 +100,7 @@ public class VoucherCreateStepDefinition {
     public void enterCode() {
         voucherPage.EnterCode();
     }
+
     // scenariu 3
     @And("Add a code with special characters")
     public void specialCode() {
@@ -122,7 +123,6 @@ public class VoucherCreateStepDefinition {
     public void codeIncorrect() {
         voucherPage.CodeIncorect("Invalid coupon code");
     }
-
 
     @Then("I input voucher's discount of {string} \\(STRING)")
     public void iInputVoucherSDiscountOfSTRING(String discount) {
@@ -232,7 +232,6 @@ public class VoucherCreateStepDefinition {
         voucherPage.verifyIfCodeisActive(code);
     }
 
-
     @And("I apply the voucher code {string}")
     public void iApplyTheVoucherCode(String code) {
         voucherPage.ApplyVoucherOnTicket(code);
@@ -240,17 +239,42 @@ public class VoucherCreateStepDefinition {
 
     @And("I check if the discount of {double} applied to the price of {double}")
     public void iCheckIfTheDiscountOfAppliedToThePriceOf(double discount, double price) {
-        voucherPage.checkFeeAfterVoucher(discount,price);
+        voucherPage.checkFeeAfterVoucher(discount, price);
     }
 
     @And("i input every code generated and check if the prices is discount by {double} from {double} lei")
     public void iInputEveryCodeGeneratedAndCheckIfThePricesIsDiscountByFromLei(double discount, double price) {
-        voucherPage.applyAllSavedCodesAndVerify(discount,price);
+        voucherPage.applyAllSavedCodesAndVerify(discount, price);
     }
 
     @And("I refresh the page")
     public void iRefreshThePage() {
         voucherPage.RefreshPage();
+    }
+
+    @And("I choose the RON currency")
+    public void currencySelect() {
+        voucherPage.CurrencySelect();
+    }
+
+    @And("I click on the Generate codes")
+    public void generator() {
+        voucherPage.Generator();
+    }
+
+    @And("I enter the number of codes to {string}")
+    public void numberOfCodes(String codes) {
+        voucherPage.NumberOfCodes(codes);
+    }
+
+    @And("I enter the Generate button")
+    public void generateButton() {
+        voucherPage.GenerateButton();
+    }
+
+    @Then("I enter Save button")
+    public void saveButton() {
+        voucherPage.SaveButton();
     }
 
 }
