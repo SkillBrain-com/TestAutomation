@@ -22,8 +22,7 @@ Feature: Create a bundle tickets feature
   And I uncheck to include fees
   Then I open Ticket configuration
   And I open Numbering
-  And I enter total available tickets 100
-  And I enter maximum tickets per order 20
+  And I enter total available tickets 9
   And I save the ticket
   Then I click to create a new single ticket
   And I enter the name "Fun for Little One"
@@ -35,7 +34,7 @@ Feature: Create a bundle tickets feature
   And I enter included tickets
   And I enter the bundle for two quantity 2
   And I enter another included ticket
-  And I enter the bundle quantity 1
+  And I enter the bundle2 quantity 1
   And I save the bundle
   Then I go to Advanced
   And I open Checkout
@@ -43,26 +42,33 @@ Feature: Create a bundle tickets feature
   And I save the options
   Then I go to Preview
   And I check if "Fun for One" is in the Preview
-  And I check if ticket limit "100" is in the Preview
+  And I check if ticket limit "9" is in the Preview
   And I check if the single ticket has a price of 300
   And I check fee if the fee is correct for 300
-  And I check if bundle "Fun for Two" is in the Preview
-  #And I check if the amount saved is displayed in the Preview
-  #And I check if if the ticket "Fun for Two" has the price 150
-  #And I check the fee "Fee2" is for "2"
+  Then I check if the reduced "Fun for Little One" is in the Preview
+  And I check if the Reduced quantity is unlimited in the Preview
+  And I check if the reduced ticket has a price of 200
+  And I check if the fee is correct for 200
+  And I check if the bundle "Fun for Family" is in the Preview
+  And I check if bundle price is 700
+  And I check if the bundle fee is correct for 700
+  And I extract the savings 300.0, 200.0, 700.0
+  #Then I add 8 single tickets
+  #And I check if "Sold out" appears
+  #And I add 9 single tickets
+  #And I check if the add button is inactive
+   #And I check if if the bundle ticket "Fun for Family" has the price 700
+  #And I check the fee for 700 is correct
+  Then I publish the event
+  #And I share the event
+  #And I go to Oveit Hub
+  #Then I switch to Oveit Hub
   #Then I add "10" tickets from "Fun for One"
   #And  I add "20" tickets from "Fun for Two"
   #And I check if "100" and "9" are observed
   #And I check if "Sold Out" appears when the limits were reached
-  #And I publish the event
-  #Then I share the event
-  #And I go to Default Hub
-  #And I check if the tickets with names... are displayed
-  #Then I go to Oveit Hub and I check if the tickets are displayed
-  #And I buy ...
-  #Then I go to Events main page and check is the number of guests is displayed for the event
-  #Then I go to Invoices, Ticket sales to check the amounts paid
-  #And I say Goodbye!
+
+
 
 
 

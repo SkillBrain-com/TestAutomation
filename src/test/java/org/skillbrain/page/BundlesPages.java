@@ -8,12 +8,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.time.Duration;
 
 public class BundlesPages extends BasePage {
@@ -56,13 +54,17 @@ public class BundlesPages extends BasePage {
     private WebElement includeAnother;
     @FindBy(xpath = "//div[text()='Fun for One']")
     private WebElement selectTTicket;
-    @FindBy(xpath = "//select[@name='fields[1][id_ticket_type]']")
+    @FindBy(xpath = "//div[contains(@class,'selectize-control') and contains(@class,'single')] //div[contains(@class,'selectize-input')]/following::div[contains(@class,'selectize-input')]")
     private WebElement selectizeBundle2;
-    @FindBy(xpath = "//div[contains(@class,'selectize-dropdown-content')]/div[2]")
+    @FindBy(xpath = "//div[text()='Fun for Little One']/following::div[text()='Fun for Little One']")
     private WebElement selectLittle;
     @FindBy(xpath = "//input[@type = 'number']")
     private WebElement bundleQuantity;
-    @FindBy(css = "button[data-label='Save']")
+    @FindBy(xpath = "//input[@type = 'number']/following::input[@type = 'number']")
+    private WebElement bundleQuantity2;
+    @FindBy(xpath = "//h2[normalize-space()=\"Tickets\"]")
+    private WebElement ticketsWait;
+    @FindBy(xpath = "(//span[contains(text(),'Save')])[4]/parent::button")
     private WebElement saveBundle;
     @FindBy(xpath = "//span[normalize-space()='Next'] //parent::button")
     private WebElement nextStep;
@@ -76,19 +78,43 @@ public class BundlesPages extends BasePage {
     private WebElement saveAvail;
     @FindBy(xpath = "//span[normalize-space()='Next'] //parent::button")
     private WebElement goToPreview;
+    @FindBy(xpath = "//iframe[@id='oveit-hub-iframe']")
+    private WebElement iframe;
     @FindBy(css = "h3[class='title-xs mb-[4px] max-w-[180px] md:max-w-[240px]']")
     private WebElement ticket1Preview;
     @FindBy(xpath = "//p[contains(normalize-space(.), 'tickets available')]")
     private WebElement limitPreview;
-    @FindBy(css="p[class='p2-semibold']")
+    @FindBy(css = "p[class='p2-semibold']")
     private WebElement displayedSingle;
     @FindBy(css = "p[class='p4-regular ml-[4px] text-neutral-800 lowercase']")
     private WebElement feeAmountSingle;
-    @FindBy(css = "h3[class='p1-medium mb-[4px] max-w-[180px] md:max-w-[240px]']")
-    private WebElement ticket2Preview;
-    @FindBy(css = "p[class='p4-regular ml-[4px] text-neutral-800 lowercase'][2]")
-    private WebElement feeAmountTwo;
+    @FindBy(xpath = "//h3[contains(@class, 'title-xs') and contains(@class, 'mb-[4px]')]/following::h3[contains(@class, 'title-xs') and contains(@class, 'mb-[4px]')]")
+    private WebElement displayedReduced;
+    @FindBy(xpath = "//span[@class='neutral-label']")
+    private WebElement noLimit;
+    @FindBy(xpath = "(//p[@class='p2-semibold'])[2]")
+    private WebElement displayedReducedPrice;
+    @FindBy(xpath = "(//p[contains(@class, 'p4-regular ml-[4px] text-neutral-800')])[2]")
+    private WebElement feeAmountReduced;
+    @FindBy(xpath = "//h3[contains(@class, 'p1-medium') and contains(@class, 'mb-[4px]')] //parent::div")
+    private WebElement displayedBundle;
+    @FindBy(xpath = "(//p[@class='p2-semibold'])[3]")
+    private WebElement displayedBundlePrice;
+    @FindBy(xpath = "(//p[contains(@class, 'p4-regular ml-[4px] text-neutral-800')])[3]")
+    private WebElement displayedBundleFee;
+    @FindBy(xpath = "//span[contains(normalize-space(.), 'You save')]//parent::div")
+    private WebElement displayedSavings;
+    @FindBy(xpath = "(//button[@data-slot='button'])[2] //parent::div")
+    private WebElement addTicketButton;
+    @FindBy(xpath = "//p[normalize-space()='Sold out']//parent::div")
+    private WebElement soldOut;
 
+    @FindBy(xpath = "//span[contains(normalize-space(.), 'Publish event')] //parent::button")
+    private WebElement publishButton;
+    //@FindBy(xpath = "//span[contains(normalize-space(.), 'Share')] //parent::button")
+    //private WebElement shareButton;
+    //@FindBy(xpath = "//a[@class='event-link-redirect']")
+    //private WebElement goToOveitHub;
 
 
     public BundlesPages(WebDriver driver) {
@@ -96,6 +122,7 @@ public class BundlesPages extends BasePage {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
     }
+
     public void goToTickets() {
         goToticketsTab.click();
     }
@@ -108,29 +135,33 @@ public class BundlesPages extends BasePage {
         }
         createTicketButton.click();
     }
-    public void enterTicketName(String Name1) {
+
+    public void enterTicketName(String SingleFull) {
         Actions actions = new Actions(driver);
         actions.moveToElement(ticketNameField);
         waitForVisibility(ticketNameField, Duration.ofSeconds(10));
         ticketNameField.click();
         ticketNameField.clear();
-        ticketNameField.sendKeys(Name1);
+        ticketNameField.sendKeys(SingleFull);
     }
-    public void enterPrice(double Price1) {
+
+    public void enterPrice(double PriceFull) {
         ticketPriceField.clear();
-        ticketPriceField.sendKeys(String.valueOf(Price1));
+        ticketPriceField.sendKeys(String.valueOf(PriceFull));
         try {
-            Thread.sleep(500)            ;
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        }
+    }
+
     public void excludeFees() {
         if (feesCheckbox.isSelected()) {
             feesCheckbox.click();
         } else {
 
-        }}
+        }
+    }
 
     public void openTicketConfiguration() {
         waitForVisibility(ticketConfiguration, Duration.ofSeconds(5));
@@ -145,6 +176,7 @@ public class BundlesPages extends BasePage {
             driverWait.until(ExpectedConditions.elementToBeClickable(ticketOptions)).click();
         }
     }
+
     public void openNumbering() {
         waitForVisibility(numberingDropDown, Duration.ofSeconds(10));
         scrollToElement(numberingDropDown);
@@ -159,6 +191,7 @@ public class BundlesPages extends BasePage {
         }
         numberingDropDown.click();
     }
+
     public void totalAvailableTickets(int Number1) {
         waitForVisibility(totalLimitInput, Duration.ofSeconds(10));
         scrollToElement(totalLimitInput);
@@ -166,11 +199,13 @@ public class BundlesPages extends BasePage {
         totalLimitInput.clear();
         totalLimitInput.sendKeys(String.valueOf(Number1));
     }
+
     public void orderLimit(int Number2) {
         orderLimitInput.click();
         orderLimitInput.clear();
         orderLimitInput.sendKeys(String.valueOf(Number2));
     }
+
     public void iSaveTicket() throws AWTException {
         waitForVisibility(saveSettings, Duration.ofSeconds(5));
         saveSettings.click();
@@ -180,38 +215,44 @@ public class BundlesPages extends BasePage {
             e.printStackTrace();
         }
     }
-    public void createAnotherSingle(){
+
+    public void createAnotherSingle() {
         setWait();
-        WebDriverWait driverWait1=new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait driverWait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
         waitForVisibility(newSingleTicket, Duration.ofSeconds(5));
         newSingleTicket.click();
     }
-    public void enterTicketName3(String Name3) {
+
+    public void enterTicketName3(String SingleReduced) {
         Actions actions = new Actions(driver);
         actions.moveToElement(ticketNameField);
         waitForVisibility(ticketNameField, Duration.ofSeconds(10));
         ticketNameField.click();
         ticketNameField.clear();
-        ticketNameField.sendKeys(Name3);
+        ticketNameField.sendKeys(SingleReduced);
     }
-    public void enterPrice3(double Price3) {
+
+    public void enterPrice3(double PriceReduced) {
         ticketPriceField.clear();
-        ticketPriceField.sendKeys(String.valueOf(Price3));
+        ticketPriceField.sendKeys(String.valueOf(PriceReduced));
         try {
-            Thread.sleep(500)            ;
+            Thread.sleep(500);
         } catch (InterruptedException e) {
-            e.printStackTrace();}
-            if (feesCheckbox.isSelected()) {
-                feesCheckbox.click();
-            } else {
-            }
+            e.printStackTrace();
         }
+        if (feesCheckbox.isSelected()) {
+            feesCheckbox.click();
+        } else {
+        }
+    }
+
     public void createNewBundle() {
         driver.navigate().refresh();
         scrollToElement(createBundleButton);
         driverWait.until(ExpectedConditions.visibilityOf(createBundleButton));
         createBundleButton.click();
-        }
+    }
+
     public void enterTicketNameBundle(String Name2) {
         Actions actions = new Actions(driver);
         actions.moveToElement(ticketNameField);
@@ -220,6 +261,7 @@ public class BundlesPages extends BasePage {
         bundleName.clear();
         bundleName.sendKeys(Name2);
     }
+
     public void enterTicketPriceBundle(double Price2) {
         bundlePrice.clear();
         bundlePrice.sendKeys(String.valueOf(Price2));
@@ -228,41 +270,43 @@ public class BundlesPages extends BasePage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-           }
-    public void includedTicketsBundle(){
+    }
+
+    public void includedTicketsBundle() {
         includeTicket.click();
         selectizeBundle.click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         waitForVisibility(selectTTicket, Duration.ofSeconds(5));
 
         selectTTicket.click();
-        }
+    }
+
     public void includedQuantity(int Qty1) {
         scrollToElement(bundleQuantity);
         bundleQuantity.sendKeys(String.valueOf(Qty1));
     }
-    public void includeMore(){
+
+    public void includeMore() throws AWTException {
         includeAnother.click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        waitForVisibility(selectizeBundle2, Duration.ofSeconds(5));
-        scrollToElement(selectizeBundle2);
         selectizeBundle2.click();
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+        driverWait.until(ExpectedConditions.visibilityOf(selectLittle));
+
         selectLittle.click();
-
-
-
     }
+
     public void includedQuantity2(int Qty2) {
-        scrollToElement(bundleQuantity);
-        bundleQuantity.sendKeys(String.valueOf(Qty2));
+        scrollToElement(bundleQuantity2);
+        bundleQuantity2.sendKeys(String.valueOf(Qty2));
     }
 
-    public void saveBundle() throws AWTException {
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    public void saveBundleClick() throws AWTException {
+        saveBundle.click();
+        waitForVisibility(ticketsWait, Duration.ofSeconds(10));
+
     }
+
     public void advancedTab() {
         scrollToElement(nextStep);
         setWait();
@@ -276,10 +320,12 @@ public class BundlesPages extends BasePage {
             nextStep.click();
         }
     }
+
     public void goToCheckout() {
         openCheckout.click();
 
     }
+
     public void displayNumberOfTickets() {
         scrollToElement(checkoutForm);
         waitForVisibility(checkoutForm, Duration.ofSeconds(10));
@@ -290,58 +336,68 @@ public class BundlesPages extends BasePage {
         driverWait.until(ExpectedConditions.visibilityOf(goToPreview));
         scrollToElement(goToPreview);
     }
+
     public void saveAvailClick() throws AWTException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         saveAvail.click();
     }
+
     public void nextPreview() {
         goToPreview.click();
     }
+
     public WebElement getTicket1Preview() {
         return this.ticket1Preview;
     }
-    public void assertTicket1name(String Name1) {
-        driver.switchTo().frame("oveit-hub-iframe");
+
+    public void assertTicket1name(String SingleFull) {
+        driver.switchTo().frame(iframe);
         WebDriverWait driverWait = getDriverWait();
         driverWait.until(ExpectedConditions.visibilityOf(ticket1Preview));
-        Assert.assertEquals(getTicket1Preview().getText(),Name1);
+        Assert.assertEquals(getTicket1Preview().getText(), SingleFull);
         System.out.println("Single ticket name found!");
-        }
+    }
 
     public WebElement getDisplayedSingle() {
         return this.displayedSingle;
     }
-    public double extractPriceSingle(){
-        String singlePriceString = displayedSingle.getText();
-        return Double.parseDouble(singlePriceString.replaceAll("[^0-9,]","").replace(",","."));}
 
-    public void assertPriceSingle(double Price1){
+    public double extractPriceSingle() {
+        String singlePriceString = displayedSingle.getText();
+        return Double.parseDouble(singlePriceString.replaceAll("[^0-9,]", "").replace(",", "."));
+    }
+
+    public void assertPriceSingle(double PriceFull) {
         double displayedSingle = extractPriceSingle();
-        Assert.assertEquals(displayedSingle, Price1);
+        Assert.assertEquals(displayedSingle, PriceFull);
         System.out.println("Single price OK!");
     }
 
     public WebElement getLimitPreview() {
         return this.limitPreview;
     }
-    public void assertLimit(String Number1){
+
+    public void assertLimit(String Number1) {
         setWait();
         WebDriverWait driverWait = getDriverWait();
         driverWait.until(ExpectedConditions.visibilityOf(limitPreview));
         scrollToElement(limitPreview);
-        Assert.assertTrue(limitPreview.getText().contains(String.valueOf(Number1)) );
+        Assert.assertTrue(limitPreview.getText().contains(String.valueOf(Number1)));
         System.out.println("Total ticket amount OK!");
     }
+
     public WebElement getFeeAmountSingle() {
         return this.feeAmountSingle;
     }
-    public double extractDoubleFirstTicket(){
-        String feeSingleString = feeAmountSingle.getText();
-        return Double.parseDouble(feeSingleString.replaceAll("[^0-9,]", "").replace(",", "."));}
 
-    public void assertFirstFee(Double Price1){
+    public double extractDoubleFirstTicket() {
+        String feeSingleString = feeAmountSingle.getText();
+        return Double.parseDouble(feeSingleString.replaceAll("[^0-9,]", "").replace(",", "."));
+    }
+
+    public void assertFirstFee(Double Price1) {
         double firstFee = extractDoubleFirstTicket();
-        double expectedFee = Price1*0.03;
+        double expectedFee = Price1 * 0.03;
         if (expectedFee < 4.31) {
             expectedFee = 4.31;
         }
@@ -349,14 +405,164 @@ public class BundlesPages extends BasePage {
         System.out.println("Tax OK!");
     }
 
-    public WebElement getTicket2Preview() {
-        return this.ticket2Preview;
+    public WebElement getDisplayedReduced() {
+        return this.displayedReduced;
     }
-    public void assertTicket2(String Name2){
-        Assert.assertEquals(ticket2Preview.getText(),Name2);
-        System.out.println("Bundle ticket name found!");
+
+    public void assertTicket2(String SingleReduced) {
+        scrollToElement(displayedReduced);
+        waitForVisibility(displayedReduced, Duration.ofSeconds(10));
+        WebDriverWait driverWait = getDriverWait();
+        driverWait.until(ExpectedConditions.visibilityOf(displayedReduced));
+        System.out.println("Reduced ticket found!");
+
+    }
+
+    public WebElement getNoLimit() {
+        return this.noLimit;
+    }
+
+    public void assertUnlimited() {
+        Assert.assertEquals(noLimit.getText(), "Unlimited");
+        System.out.println("Unlimited verified!");
+    }
+
+    public WebElement getDisplayedReducedPrice() {
+        return this.displayedReducedPrice;
+    }
+
+    public double extractReducedPrice() {
+        String reducedPriceString = displayedReducedPrice.getText();
+        return Double.parseDouble(reducedPriceString.replaceAll("[^0-9,]", "").replace(",", "."));
+    }
+
+    public void assertReducedPrice(double PriceReduced) {
+        WebDriverWait driverWait = getDriverWait();
+        driverWait.until(ExpectedConditions.visibilityOf(displayedReducedPrice));
+        double displayedReducedPrice = extractReducedPrice();
+        Assert.assertEquals(displayedReducedPrice, PriceReduced);
+        System.out.println("Reduced price OK!");
+    }
+
+    public WebElement getFeeAmountReduced() {
+        return this.feeAmountReduced;
+    }
+
+    public double extractReducedFee() {
+        String feeAmountReducedString = feeAmountReduced.getText();
+        return Double.parseDouble(feeAmountReducedString.replaceAll("[^0-9,]", "").replace(",", "."));
+    }
+
+    public void assertReducedFee(Double PriceReduced) {
+        double secondFee = extractReducedFee();
+        double expectedReducedFee = PriceReduced * 0.03;
+        if (expectedReducedFee < 4.31) {
+            expectedReducedFee = 4.31;
+        }
+        Assert.assertEquals(secondFee, expectedReducedFee);
+        System.out.println("Reduced tax OK!");
+    }
+
+    public WebElement getDisplayedBundle() {
+        return this.displayedBundle;
+    }
+
+    public void assertBundlename(String bundleName) {
+        scrollToElement(displayedBundle);
+        waitForVisibility(displayedBundle, Duration.ofSeconds(10));
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+        driverWait.until(ExpectedConditions.visibilityOf(this.displayedBundle));
+        Assert.assertTrue(getDisplayedBundle().getText().contains(bundleName));
+        System.out.println("Bundle name found!");
+    }
+
+    public WebElement getBundlePrice() {
+        return this.bundlePrice;
+    }
+
+    public WebElement getDisplayedBundlePrice() {
+        return this.displayedBundlePrice;
+    }
+
+    public double extractDisplayedBundlePrice() {
+        String reducedPriceString = displayedBundlePrice.getText();
+        return Double.parseDouble(reducedPriceString.replaceAll("[^0-9,]", "").replace(",", "."));
+    }
+
+    public void assertDisplayedBundlePrice(double Price2) {
+        WebDriverWait driverWait = getDriverWait();
+        driverWait.until(ExpectedConditions.visibilityOf(displayedBundlePrice));
+        double displayedBundledPrice = extractDisplayedBundlePrice();
+        Assert.assertEquals(displayedBundledPrice, Price2);
+        System.out.println("Bundle price OK!");
+    }
+
+    public WebElement getDisplayedBundleFee() {
+        return this.displayedBundleFee;
+    }
+
+    public double extractBundleFee() {
+        String bundleFeeString = displayedBundleFee.getText();
+        return Double.parseDouble(bundleFeeString.replaceAll("[^0-9,]", "").replace(",", "."));
+    }
+
+    public void assertBundleFee(Double Price2) {
+        double bundleFee = extractBundleFee();
+        double expectedBundleFee = Price2 * 0.03;
+        if (expectedBundleFee < 4.31) {
+            expectedBundleFee = 4.31;
+        }
+        Assert.assertEquals(bundleFee, expectedBundleFee);
+        System.out.println("Bundle tax OK!");
+    }
+
+    public double extractBundleSavings() {
+       String savingsBunsleString = displayedSavings.getText();
+       return Double.parseDouble(savingsBunsleString.replaceAll("[^0-9,]", "").replace(",", "."));
+         }
+
+
+   public double assertBundleSavings(double Price1, double PriceReduced, double Price2) {
+        WebDriverWait driverWait = getDriverWait();
+        driverWait.until(ExpectedConditions.visibilityOf(displayedSavings));
+        double bundleFee = extractBundleFee();
+        double displayedBundleSavings = extractBundleSavings();
+        double expectedSavingsWithoutTax = ((Price1 * 2) + PriceReduced) - Price2;
+        double expectedSavingsFee=expectedSavingsWithoutTax*0.03;
+        double expectedSavingWithTax=expectedSavingsWithoutTax+expectedSavingsFee;
+        Assert.assertEquals(displayedBundleSavings, expectedSavingWithTax);
+        System.out.println("Savings OK!");
+        return expectedSavingWithTax;
+         }
+
+    //public void clickAddButton1(int clicks){
+    //    WebDriverWait driverWait = getDriverWait();
+    //    driverWait.until(ExpectedConditions.elementToBeClickable(addTicketButton));
+    //    for (int i = 0; i < clicks; i++) {
+    //        addTicketButton.click();
+    //    }}
+
+    //public void checkMessagePresent(){
+     //   WebDriverWait driverWait = getDriverWait();
+     //   driverWait.until(ExpectedConditions.visibilityOf(soldOut));
+      //  Assert.assertEquals(soldOut.getText(), "Sold out");
+     //   System.out.println("Limit reached!");
+    //}
+
+
+    public void clickPublishButton() {
+        driver.switchTo().defaultContent();
+        scrollToElement(publishButton);
+        WebDriverWait driverWait = getDriverWait();
+        driverWait.until(ExpectedConditions.visibilityOf(publishButton));
+        publishButton.click();
     }
 }
+
+
+
+
 
 
 
