@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="voucher test case&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/test/java/org/skillbrain/feature/createVoucher.feature&#10;#&#9;src/test/java/org/skillbrain/page/HomePage.java&#10;#&#9;src/test/java/org/skillbrain/page/VoucherPage.java">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_16_2025_7_11_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_16_2025_7_11_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/importVouchers.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/importVouchers.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/AttractionForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/AttractionForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/BasePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/EventsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/EventsPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/HomePage.java" afterDir="false" />
@@ -63,24 +59,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Cucumber Java.Feature: ApproveATicketOrder.executor": "Run",
-    "Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option.executor": "Run",
-    "Maven.TestAutomation [clean].executor": "Run",
-    "Maven.TestAutomation [install].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "TestNG.TestRunner.executor": "Run",
-    "git-widget-placeholder": "DanaM",
-    "kotlin-language-version-configured": "true",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Cucumber Java.Feature: ApproveATicketOrder.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.TestAutomation [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.TestAutomation [install].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;TestNG.TestRunner.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Merging DanaM&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean" />

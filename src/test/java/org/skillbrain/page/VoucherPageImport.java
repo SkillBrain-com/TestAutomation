@@ -1,21 +1,19 @@
 package org.skillbrain.page;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.testng.Assert;
 
 import java.io.File;
 import java.nio.file.Paths;
 import java.time.Duration;
-import java.util.List;
+
 
 public class VoucherPageImport extends BasePage {
 
@@ -24,8 +22,6 @@ public class VoucherPageImport extends BasePage {
     private WebElement voucherNameBox;
     @FindBy(xpath = ("//input[@name='discount']"))
     private WebElement discountBox;
-    //@FindBy(css = (".btn.btn-default.btn-file.btn-sm"))
-    //WebElement BrowseButton;
     @FindBy(xpath = ("//div[@class='form-control-file']//input[@type='text']"))
     private WebElement importCodes;
     @FindBy(xpath = ("(//button[@class='btn btn-primary btn-sm'])[2]"))
@@ -165,13 +161,9 @@ public class VoucherPageImport extends BasePage {
         countryBillingInfoDropDown.sendKeys("Romania");
         countryBillingInfoDropDown.sendKeys(Keys.ENTER);
         countyBillingInfoDropDown.sendKeys("Ilfov");
-        //scrollToElement(countyBillingInfoDropDown);
-        //waitForClick(countyBillingInfoDropDown, Duration.ofSeconds(30));
         countyBillingInfoDropDown.sendKeys(Keys.ENTER);
         cityBillingInfo.sendKeys("Berceni");
         adressBillingInfo.sendKeys("Oituzel");
-
-
     }
 
     public void selectPaymentAndPay() {

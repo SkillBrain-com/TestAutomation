@@ -4,8 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.skillbrain.page.VoucherPageImport;
 import org.skillbrain.utilities.TestContextSetup;
-import org.testng.Assert;
-
 public class VoucherCreateStepDefinitionByImport {
     public VoucherPageImport voucherPageImport;
     private final TestContextSetup testContextSetup;
