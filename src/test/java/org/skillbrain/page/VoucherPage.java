@@ -51,6 +51,7 @@ public class VoucherPage extends BasePage {
     private WebElement generateCodesButton;
     @FindBy(xpath = "//button[span[normalize-space()='OK']]")
     private WebElement okAfterGeneratedCodes;
+
     @FindBy(css = "input[value=\"alpha_lower\"]")
     private WebElement LowerCaseCheckBox;
     @FindBy(css = "input[value=\"alpha_upper\"]")
@@ -675,8 +676,10 @@ public class VoucherPage extends BasePage {
                 "Eroarea așteptată nu a apărut!");
         eroare.accept();
     }
+
+
+//        Assert.assertTrue(notFound, "nu e ok");
+
+
+//MARIA
 }
-
-
-
-

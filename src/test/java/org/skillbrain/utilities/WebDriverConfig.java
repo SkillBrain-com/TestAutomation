@@ -16,6 +16,7 @@ import java.util.Map;
 public class WebDriverConfig {
 
     private WebDriver driver;
+
 //    public ChromeOptions getChromeOptions() {
 //        ChromeOptions options = new ChromeOptions();
 //        options.addArguments("--start-maximized");

@@ -12,7 +12,6 @@ import org.testng.Assert;
 import java.time.Duration;
 
 //TODO MERGE DUPLICATE SELECTORS
-
 public class AttractionForm extends BasePage {
 
     private WebDriver driver;
@@ -290,6 +289,7 @@ public class AttractionForm extends BasePage {
     @FindBy(xpath = "//h3[normalize-space()='Test 2'] //parent::a //parent::div //following-sibling::div[@class='w-full flex justify-between items-center px-[16px] py-[12px] text-neutral-1000 font-semibold'] //a")
     private WebElement buyTest2;
 
+    //MARIA
     public void TheNameOfEvent(String nameEvent) {
         eventName.sendKeys("Eveniment 1");
     }
@@ -300,13 +300,16 @@ public class AttractionForm extends BasePage {
         locationName.sendKeys("Iasi");
     }
 
+
     public void NameOfTicket(String nameTicket) {
         ticketName.sendKeys("Eveniment");
     }
 
+
     public void PriceOfTicket(Double priceTicket) {
         ticketPrice.sendKeys("50");
     }
+
 
     public void PublishButton() {
         buttonOfPublish.click();
@@ -354,3 +357,11 @@ public class AttractionForm extends BasePage {
     }
 
 }
+
+//    @FindBy(xpath = "//button[.//span[text()='Go to Hub']]")
+//    private WebElement buttonHub;
+//    public void GoToHubButton(){
+//        buttonHub.click();
+//    }
+//}
+

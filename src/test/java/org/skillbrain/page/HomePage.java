@@ -72,7 +72,7 @@ public class HomePage extends BasePage {
         //voucherButton.click();
         WebElement vouchersTab = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(normalize-space(),'Vouchers')]")));
         vouchersTab.click();
-
+        vouchersTab.click();
     }
 
    

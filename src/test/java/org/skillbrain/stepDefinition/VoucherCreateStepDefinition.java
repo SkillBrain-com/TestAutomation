@@ -6,6 +6,8 @@ import io.cucumber.java.en.When;
 import org.skillbrain.page.VoucherPage;
 import org.skillbrain.utilities.TestContextSetup;
 
+import static org.bouncycastle.asn1.cms.CMSObjectIdentifiers.data;
+
 public class VoucherCreateStepDefinition {
     public VoucherPage voucherPage;
     private final TestContextSetup testContextSetup;
@@ -75,7 +77,6 @@ public class VoucherCreateStepDefinition {
         voucherPage.InputaCode(code);
     }
 
-    //MARIA
     @Then("I Enter the name of the voucher")
     public void nameVoucher() {
         voucherPage.NameVoucher();
@@ -100,6 +101,7 @@ public class VoucherCreateStepDefinition {
     public void enterCode() {
         voucherPage.EnterCode();
     }
+
     // scenariu 3
     @And("Add a code with special characters")
     public void specialCode() {
@@ -122,7 +124,6 @@ public class VoucherCreateStepDefinition {
     public void codeIncorrect() {
         voucherPage.CodeIncorect("Invalid coupon code");
     }
-
 
     @Then("I input voucher's discount of {string} \\(STRING)")
     public void iInputVoucherSDiscountOfSTRING(String discount) {
@@ -232,7 +233,6 @@ public class VoucherCreateStepDefinition {
         voucherPage.verifyIfCodeisActive(code);
     }
 
-
     @And("I apply the voucher code {string}")
     public void iApplyTheVoucherCode(String code) {
         voucherPage.ApplyVoucherOnTicket(code);
@@ -240,12 +240,12 @@ public class VoucherCreateStepDefinition {
 
     @And("I check if the discount of {double} applied to the price of {double}")
     public void iCheckIfTheDiscountOfAppliedToThePriceOf(double discount, double price) {
-        voucherPage.checkFeeAfterVoucher(discount,price);
+        voucherPage.checkFeeAfterVoucher(discount, price);
     }
 
     @And("i input every code generated and check if the prices is discount by {double} from {double} lei")
     public void iInputEveryCodeGeneratedAndCheckIfThePricesIsDiscountByFromLei(double discount, double price) {
-        voucherPage.applyAllSavedCodesAndVerify(discount,price);
+        voucherPage.applyAllSavedCodesAndVerify(discount, price);
     }
 
     @And("I refresh the page")

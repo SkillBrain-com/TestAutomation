@@ -29,14 +29,15 @@ Feature: Testing voucher page
     Then I check if the "VOUCHERTEST22142" appears in list
     Then Delete the voucher
 
-@maria
-  Scenario: Create a voucher for a specific event only and check if the works
+  @maria
+  Scenario: Create a voucher for a specific event only
     Given User navigates to login page
     When User logs in with valid credentials
     Then Check user is logged in
     When I click on attractions sidebar
     And I click on my attractions
     And  Click the Create attraction button
+
     Then Enter the name of the event with "Eveniment 1"
     Then I expand the Location accordion
     And Enter the name of location address with "Iasi"
@@ -49,6 +50,7 @@ Feature: Testing voucher page
     Then I click the Publish Attraction button
     When I click on attractions sidebar
     And I click on Vouchers
+    When I click on Vouchers
     And I click on Create voucher button
     Then I Enter the name of the voucher
     And I input voucher discount
@@ -87,3 +89,6 @@ Feature: Testing voucher page
     And I input voucher discount
     And Add a code with special characters
     And  Check if the error appears
+    Then I check if the "Testare4" appears in list
+    #And I click on my attractions
+    #Then I click on GoToHub button
