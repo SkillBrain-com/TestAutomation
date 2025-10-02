@@ -34,7 +34,6 @@ public class VoucherCreateStepDefinition {
         voucherPage.verifyTextPresent(text);
     }
 
-
     @Then("Delete the voucher")
     public void deleteTheVoucher() {
         voucherPage.deleteVoucher();
@@ -251,6 +250,31 @@ public class VoucherCreateStepDefinition {
     @And("I refresh the page")
     public void iRefreshThePage() {
         voucherPage.RefreshPage();
+    }
+
+    @And("I choose the RON currency")
+    public void currencySelect() {
+        voucherPage.CurrencySelect();
+    }
+
+    @And("I click on the Generate codes")
+    public void generator() {
+        voucherPage.Generator();
+    }
+
+    @And("I enter the number of codes to {string}")
+    public void numberOfCodes(String codes) {
+        voucherPage.NumberOfCodes(codes);
+    }
+
+    @And("I enter the Generate button")
+    public void generateButton() {
+        voucherPage.GenerateButton();
+    }
+
+    @Then("I enter Save button")
+    public void saveButton() {
+        voucherPage.SaveButton();
     }
 
 }

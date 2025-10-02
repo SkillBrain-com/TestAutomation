@@ -103,6 +103,20 @@ public class VoucherPage extends BasePage {
     private WebElement errorCodeVerify;
     @FindBy(name = "code")
     private WebElement specialCharactersCode;
+    @FindBy(css = "div.selectize-input")
+    private WebElement listDropDown;
+    @FindBy(xpath = "//div[@class='item' and text()='RON']")
+    private WebElement ronChoose;
+    @FindBy(xpath = "//a[normalize-space()='Open generator']")
+    private WebElement generatorCode;
+    @FindBy(css = "input[name='amount']")
+    private WebElement codesNumber;
+    @FindBy(css = "button[data-label='Generate codes']")
+    private WebElement buttonToGenerateCode;
+    @FindBy(xpath = "//button[@data-label='OK']")
+    private WebElement okButton;
+    @FindBy(xpath = "//button[.//span[normalize-space()='Save']]")
+    private WebElement saveToButton;
 
     public VoucherPage(WebDriver driver) {
         super(driver);
@@ -603,7 +617,8 @@ public class VoucherPage extends BasePage {
 
     //MARIA
     public void NameVoucher() {
-        nameOfVoucher.sendKeys("Voucher_Automatizare");
+        // nameOfVoucher.sendKeys("Voucher_Automatizare");
+        nameOfVoucher.sendKeys("Voucher FREE");
     }
 
     public void DiscountVoucher() {
@@ -664,5 +679,60 @@ public class VoucherPage extends BasePage {
         Assert.assertEquals(mesajulDeEroare, "The code may only contain letters and digits",
                 "Eroarea așteptată nu a apărut!");
         eroare.accept();
+    }
+
+    // scenariu 4
+//    @FindBy(css = "div.selectize-input")
+//    private WebElement listDropDown;
+//    @FindBy(xpath = "//div[@class='item' and text()='RON']")
+//    private WebElement ronChoose;
+//    @FindBy(xpath = "//a[normalize-space()='Open generator']")
+//    private WebElement generatorCode;
+//
+//    @FindBy(css = "input[name='amount']")
+//    private WebElement codesNumber;
+//    @FindBy(css = "button[data-label='Generate codes']")
+//    private WebElement buttonToGenerateCode;
+//    @FindBy(xpath = "//button[@data-label='OK']")
+//    private WebElement okButton;
+//    @FindBy(xpath = "//button[.//span[normalize-space()='Save']]")
+//    private WebElement saveToButton;
+    public void CurrencySelect() {
+        listDropDown.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement ronOption = wait.until(
+                ExpectedConditions.elementToBeClickable(
+                        By.xpath("//div[@data-value='RON']")
+                )
+        );
+
+        ronOption.click();
+    }
+
+    public void Generator() {
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.ESCAPE).perform();
+        setWait();
+        WebDriverWait driverWait = getDriverWait();
+        driverWait.until(ExpectedConditions.elementToBeClickable(generatorCode));
+        scrollToElement(generatorCode);
+        generatorCode.click();
+    }
+
+    public void NumberOfCodes(String codes) {
+        codesNumber.sendKeys("1");
+    }
+
+    public void GenerateButton() {
+        buttonToGenerateCode.click();
+    }
+
+    public void SaveButton() {
+        WebDriverWait driverWait = getDriverWait();
+        driverWait.until(ExpectedConditions.elementToBeClickable(okButton));
+        okButton.click();
+        setWait();
+        saveToButton.click();
+
     }
 }
