@@ -1,7 +1,6 @@
 Feature: Create a private invitation ticket so that only invited users can purchase it
-
 # TODO - check E2E script
-  @ramona
+
   Scenario: Create a private invitation ticket and buy it
     Given User navigates to login page
     When User logs in with valid credentials
@@ -21,7 +20,7 @@ Feature: Create a private invitation ticket so that only invited users can purch
     Then I click the Save button
     And I click on Next button
     Then I click on Next button
-    And I insert the "12345"
+    And I insert the "1234"
     Then I click on Apply button
     Then I insert an e-mail address "a@yahoo.com"
     And I click on Register button

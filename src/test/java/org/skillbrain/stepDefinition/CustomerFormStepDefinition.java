@@ -12,9 +12,9 @@ public class CustomerFormStepDefinition {
     public CustomerFormStepDefinition(TestContextSetup testContextSetup) {
         this.testContextSetup = testContextSetup;
         customerForm = testContextSetup.pageObjectFactory.getAttractionForm();
-        }
+    }
 
-//    @Then("Fill the Attraction name field with {string}")
+    //    @Then("Fill the Attraction name field with {string}")
 //    public void fill_the_attraction_name_field_with(String attractionName) {
 //        customerForm.fillAttractionNameField(attractionName);
 //    }
@@ -23,12 +23,10 @@ public class CustomerFormStepDefinition {
         customerForm.expandlocation();
     }
 
-    @And("Fill {string} Field")
-    public void fill_location_field(String location) {
-
-        customerForm.fillLocationName2(location);
+    @And("Fill location {string} Field")
+    public void fill_location_field(String location2) {
+        customerForm.fillLocationName2(location2);
     }
-
 
     @Then("Expand Advanced settings Field")
     public void expandAdvancedSettingsField() {
@@ -40,15 +38,21 @@ public class CustomerFormStepDefinition {
         customerForm.enableCustomerForm();
     }
 
-    @Then("Click {string} Button")
-    public void clickButton(String clickOnNextButton) {
-        customerForm.clickOnNextButtonOverview();
+    @And("Click the Create ticket Button to create the second ticket")
+    public void clickTheCreateTicketButtonToCreateTheSecondTicket() {
+        customerForm.createSecondTicket();
     }
 
-    @And("Click On Create Ticket Button")
-    public void clickOnCreateTicketButton() {
-        customerForm.clickOncreateTicketButton();
-    }
+
+//    @Then("Click {string} Button")
+//    public void clickButton(String clickOnNextButton) {
+//        customerForm.clickOnNextButtonOverview();
+//    }
+
+//    @And("Click On Create Ticket Button")
+//    public void clickOnCreateTicketButton() {
+//        customerForm.clickOncreateTicketButton();
+//    }
 }
 
 

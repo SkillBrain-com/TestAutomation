@@ -238,7 +238,7 @@ public class AttractionForm extends BasePage {
     @FindBy(xpath = "//div[@class='toggler-container toggle-options']//span[normalize-space()='Location']")
     private WebElement expandlocation;
 
-    @FindBy(xpath = "//input[@type='text' and @name='location']")
+    @FindBy(xpath = "//input[@class='standard-input' and @type='text']")
     private WebElement fillLocationName;
 
     @FindBy(xpath = "//div[contains(@class,'toggler-container') and .//span[text()='Advanced settings']]")
@@ -247,11 +247,14 @@ public class AttractionForm extends BasePage {
     @FindBy(xpath = "//input[@name='features[customer_fields]']")
     private WebElement enableCustomerForm;
 
-    @FindBy(xpath = "//span[normalize-space(text())='Next']")
-    private WebElement nextButtonOverview;
+    @FindBy(xpath = "//div[@class='ripple']")
+    private WebElement createSecondTicket;
 
-    @FindBy(xpath = "//img[@src='https://web02.stg.oveit.com/public/images/seller/icons/rounded-plus.svg']")
-    private WebElement createTicket;
+//    @FindBy(xpath = "//div[@class='ripple']")
+//    private WebElement nextButtonOverview;
+//
+//    @FindBy(xpath = "//img[@src='https://web02.stg.oveit.com/public/images/seller/icons/rounded-plus.svg']")
+//    private WebElement createTicket;
 
     public void clickTicketConfiguration() {
         waitForVisibility(ticketConfigurationButton, Duration.ofSeconds(10));
@@ -320,7 +323,6 @@ public class AttractionForm extends BasePage {
     }
 
     //Ramona - Test 2
-
     public void fillAttractionNameField(String atractie) {
         attractionNameField2.sendKeys("Attraction 2");
     }
@@ -328,8 +330,8 @@ public class AttractionForm extends BasePage {
     public void expandlocation() {
         expandlocation.click();
     }
-    public void fillLocationName2(String location){
-        fillLocationName.sendKeys("Milano");
+    public void fillLocationName2(String location2){
+        fillLocationName.sendKeys(location2);
     }
     public void expandAdvancedSettingsField(){
         advancedSettings.click();
@@ -337,12 +339,22 @@ public class AttractionForm extends BasePage {
     public void enableCustomerForm() {
         enableCustomerForm.click();
     }
-    public void clickOnNextButtonOverview() {
-        nextButtonOverview.click();
+    public void createSecondTicket() {
+        createSecondTicket.click();
     }
-    public void clickOncreateTicketButton() {
-        createTicket.click();
-    }
+//    public void clickOnNextButtonOverview() {
+//        setWait();
+//        WebDriverWait wait = getDriverWait();
+//        try {
+//            wait.until(ExpectedConditions.visibilityOf(nextButtonOverview));
+//            nextButtonOverview.click();
+//        } catch (Exception e) {
+//            driver.findElement(By.xpath("//span[normalize-space()='Next'] //parent::button //parent::div")).click();
+//        }
+//    }
+//    public void clickOncreateTicketButton() {
+//        createTicket.click();
+//    }
 }
 
 

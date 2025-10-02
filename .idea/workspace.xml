@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="">
+    <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="voucher test case&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/test/java/org/skillbrain/feature/createVoucher.feature&#10;#&#9;src/test/java/org/skillbrain/page/HomePage.java&#10;#&#9;src/test/java/org/skillbrain/page/VoucherPage.java">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/customerForm.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/customerForm.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/customerFormRamona.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/customerFormRamona.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/privateTicket.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/privateTicket.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/AttractionForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/AttractionForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/CustomerFormStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/CustomerFormStepDefinition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/PrivateTicketStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/PrivateTicketStepDefinition.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +42,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/SkillBrain-com/TestAutomation.git&quot;,
-    &quot;accountId&quot;: &quot;30ff04e7-0d24-4157-b590-9b137d065851&quot;
+    &quot;accountId&quot;: &quot;f9e8d2a7-6620-4cd4-8b6c-298702dcf404&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -56,103 +57,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Cucumber Java.Feature: ApproveATicketOrder.executor": "Run",
-    "Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option.executor": "Run",
-    "Maven.TestAutomation [clean,install].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "TestNG.TestRunner.executor": "Run",
-    "git-widget-placeholder": "Ramona",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Cucumber Java.Feature: ApproveATicketOrder.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: customerFormRamona.executor&quot;: &quot;Debug&quot;,
+    &quot;Cucumber Java.Scenario: Create 2 tickets (one free and one 10 RON) that contains a mandatory custom text field of e-mail address..executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Create a private invitation ticket and buy it.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Generate a Customer Form, that contains a mandatory custom text field of \&quot;Phone Number\&quot;..executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method..executor&quot;: &quot;Run&quot;,
+    &quot;Maven.TestAutomation [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;TestNG.TestRunner.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Ramona&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.TestRunner">
-    <configuration name="Scenario: Create an attraction and place an order for a ticket with approval option on" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Cucumber Java.Scenario: Create 2 tickets (one free and one 10 RON) that contains a mandatory custom text field of e-mail address.">
+    <configuration name="Scenario: Create 2 tickets (one free and one 10 RON) that contains a mandatory custom text field of e-mail address." type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/approvel.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/customerFormRamona.feature" />
       <option name="GLUE" value="org.skillbrain.stepDefinition" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="TestAutomation" />
-      <option name="NAME_FILTER" value="^Create an attraction and place an order for a ticket with approval option on$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Create an attraction and place an order for a ticket with approval option on$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Create an attraction and place an order for a ticket with approval option on" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Scenario: Create an attraction and place an order for a ticket with approval option" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/approvel.feature" />
-      <option name="GLUE" value="org.skillbrain.stepDefinition" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="TestAutomation" />
-      <option name="NAME_FILTER" value="^Create an attraction and place an order for a ticket with approval option$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Create an attraction and place an order for a ticket with approval option$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Create an attraction and place an order for a ticket with approval option" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Scenario: Create an attraction and place an order for a ticket with approval setting enable" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/approvel.feature" />
-      <option name="GLUE" value="org.skillbrain.stepDefinition" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="TestAutomation" />
-      <option name="NAME_FILTER" value="^Create an attraction and place an order for a ticket with approval setting enable$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Create an attraction and place an order for a ticket with approval setting enable$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Create an attraction and place an order for a ticket with approval setting enable" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method." type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/attractions.feature" />
-      <option name="GLUE" value="org.skillbrain.stepDefinition" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="TestAutomation" />
-      <option name="NAME_FILTER" value="^Place an Order for an Attraction\, for a person\, using the Autoprocess payment method\.$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Place an Order for an Attraction\, for a person\, using the Autoprocess payment method\.$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method." />
+      <option name="NAME_FILTER" value="^Create 2 tickets \(one free and one 10 RON\) that contains a mandatory custom text field of e\-mail address\.$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Create 2 tickets \(one free and one 10 RON\) that contains a mandatory custom text field of e\-mail address\.$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Create 2 tickets (one free and one 10 RON) that contains a mandatory custom text field of e-mail address." />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -183,21 +129,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cucumber Java.Scenario: Create 2 tickets (one free and one 10 RON) that contains a mandatory custom text field of e-mail address." />
         <item itemvalue="TestNG.TestRunner" />
-        <item itemvalue="Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option" />
-        <item itemvalue="Cucumber Java.Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method." />
-        <item itemvalue="Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval setting enable" />
-        <item itemvalue="Cucumber Java.Scenario: Create an attraction and place an order for a ticket with approval option on" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
-        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -214,15 +149,13 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/HomePageStepDefinition.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="voucher test case&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/test/java/org/skillbrain/feature/createVoucher.feature&#10;#&#9;src/test/java/org/skillbrain/page/HomePage.java&#10;#&#9;src/test/java/org/skillbrain/page/VoucherPage.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="voucher test case&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/test/java/org/skillbrain/feature/createVoucher.feature&#10;#&#9;src/test/java/org/skillbrain/page/HomePage.java&#10;#&#9;src/test/java/org/skillbrain/page/VoucherPage.java" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TestAutomation$Scenario__Create_2_tickets__one_free_and_one_10_RON__that_contains_a_mandatory_custom_text_field_of_e_mail_address_.ic" NAME="Scenario: Create 2 tickets (one free and one 10 RON) that contains a mandatory custom text field of e-mail address. Coverage Results" MODIFIED="1758812581696" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>io.cucumber.core.cli.*</FILTER>
+    </SUITE>
   </component>
 </project>

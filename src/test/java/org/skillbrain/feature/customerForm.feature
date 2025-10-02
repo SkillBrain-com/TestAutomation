@@ -1,6 +1,6 @@
 Feature: Create 2 tickets (one free and one 10 RON) that contains a mandatory custom text field of e-mail address.
 
-  @test-lsr
+
   Scenario: Create 2 tickets (one free and one 10 RON) that contains a mandatory custom text field of e-mail address.
     Given User navigates to login page
     When User logs in with valid credentials
