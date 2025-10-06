@@ -163,6 +163,7 @@ public class AttractionForm extends BasePage{
     }
 
     public void clickOnAddButton() {
+     waitForVisibility(iframe,Duration.ofSeconds(10));
         driver.switchTo().frame(iframe);
         waitForVisibility(addButton, Duration.ofSeconds(10));
 

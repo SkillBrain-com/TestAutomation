@@ -63,7 +63,7 @@ public class VoucherPage extends BasePage {
     }
 
     public void InputaCode() {
-        ManualCodeInput.sendKeys("celmaitestatcod");
+        ManualCodeInput.sendKeys("celmaitestatcod1");
         AddCodeButton.click();
     }
 
