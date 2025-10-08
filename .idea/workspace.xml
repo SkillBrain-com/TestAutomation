@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af8d402a-98ea-4809-87f5-062a874f5397" name="Changes" comment="">
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/cucumberOptions/TestRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/createVoucher.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/createVoucher.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/AttractionForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/AttractionForm.java" afterDir="false" />
@@ -15,14 +14,12 @@
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/VoucherCreateStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/VoucherCreateStepDefinition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/TestContextSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/TestContextSetup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/utilities/WebDriverConfig.java" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/createVoucher.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/feature/createVoucher.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/AttractionForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/AttractionForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/VoucherPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/page/VoucherPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/AttractionFormStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/AttractionFormStepDefinition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/VoucherCreateStepDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/skillbrain/stepDefinition/VoucherCreateStepDefinition.java" afterDir="false" />
->>>>>>> d3ebcbe (Voucher Free)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,11 +36,8 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-<<<<<<< HEAD
         <entry key="$PROJECT_DIR$" value="mare1" />
-=======
         <entry key="$PROJECT_DIR$" value="Maria_2" />
->>>>>>> d3ebcbe (Voucher Free)
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -72,7 +66,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Cucumber Java.Feature: ApproveATicketOrder.executor": "Run",
@@ -86,7 +79,6 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
-=======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Cucumber Java.Feature: ApproveATicketOrder.executor&quot;: &quot;Run&quot;,
@@ -100,7 +92,6 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
->>>>>>> d3ebcbe (Voucher Free)
   }
 }]]></component>
   <component name="RunManager" selected="TestNG.TestRunner">
@@ -222,7 +213,6 @@
     </task>
     <servers />
   </component>
-<<<<<<< HEAD
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -248,7 +238,7 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-=======
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="OPEN_GENERIC_TABS">
       <map>

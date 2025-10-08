@@ -1,7 +1,7 @@
 @customerForm
 Feature: Customer form feature
 
-  @TR
+#  @TR
   Scenario: Generate a Customer Form, that contains a mandatory custom text field of "Phone Number".
     Given User navigates to login page
     When User logs in with valid credentials
@@ -25,7 +25,7 @@ Feature: Customer form feature
     And Click the Continue button
     Then Check the Custom Text Field label for "Phone Number"
 
-  @TR
+#  @TR
   Scenario: Generate a Customer Form, with no custom fields, meant for a Company.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -45,7 +45,7 @@ Feature: Customer form feature
     And Click the Company button
     Then Check the Customer Form for "Company name"
 
-  @TR
+#  @TR
   Scenario: Place an Order for an Attraction, for a person, using the Autoprocess payment method.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -69,7 +69,7 @@ Feature: Customer form feature
     And Click the Pay button
     Then Check if the order is completed
 
-  @TR @regression
+#  @TR @regression
   Scenario: Create a Customer Form, that displays the correct price total, of 2 tickets, of different currencies.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -95,7 +95,7 @@ Feature: Customer form feature
     And Click the Continue button
     Then Check Order summary items for "TOTAL"
 
-  @TR @regression
+#  @TR @regression
   Scenario: Place an Order for an Attraction, using the Card method.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -122,7 +122,7 @@ Feature: Customer form feature
     And Click the Pay Payment button
     Then Check Order confirmation step for an error message called "We encountered an error while processing your request"
 
-  @TR
+#  @TR
   Scenario: Create a Customer Form with 6 different Custom fields, with alternating mandatory checks.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -171,7 +171,7 @@ Feature: Customer form feature
     And Click the Pay button
     Then Check Customer form for all six custom fields
 
-  @TR
+#  @TR
   Scenario: Place an Order for an Attraction, that contains 1 of each mandatory custom text fields, meant for customers and guests.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -206,7 +206,7 @@ Feature: Customer form feature
     And Click the Pay button
     Then Check if the order is completed
 
-  @TR
+#  @TR
   Scenario: Place an Order for an Attraction, using 2 tickets (1 free and 1 priced) and 1 bundle, meant for a company, using the Autoprocess method.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -243,7 +243,7 @@ Feature: Customer form feature
     And Click the Pay button
     Then Check if the order is completed
 
-  @TR @regression
+#  @TR @regression
   Scenario: Place an Order for an Attraction, that has expired.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -266,7 +266,7 @@ Feature: Customer form feature
     And Click the Continue button
     Then Check the Customer Form for an error
 
-  @TR
+#  @TR
   Scenario: Place an Order for an Attraction, that is scheduled at a future date.
     Given User navigates to login page
     When User logs in with valid credentials

@@ -1,0 +1,17 @@
+iframe {
+  width: 1880px;
+  height: 800px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #333333;
+  color: #fafafa;
+}
+
+h1 {
+  color: #1a73e8;
+}

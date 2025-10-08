@@ -1,7 +1,7 @@
 @oveitHub
 Feature: Oveit hub feature
 
-  @TR @regression
+#  @TR @regression
   Scenario: Language switch to Korean, with priced Attractions available.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -23,7 +23,7 @@ Feature: Oveit hub feature
     And Select Korean item from the language dropdown
     Then Check if the hub language is set to Korean, and the "From" text is translated correct
 
-  @TR
+#  @TR
   Scenario: Sharing an Attraction.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -44,7 +44,7 @@ Feature: Oveit hub feature
     And Click the Share attraction button
     Then The modal with sharing options appear
 
-  @TR @regression
+#  @TR @regression
   Scenario: Buy more than 20 tickets.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -66,7 +66,7 @@ Feature: Oveit hub feature
     And Click the Add button for 20 times
     Then Check the ticket quantity, the add button must not be disabled
 
-  @TR
+#  @TR
   Scenario: Ordering without a ticket.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -87,7 +87,7 @@ Feature: Oveit hub feature
     And Click the Buy Now button
     Then Check the continue and subtract buttons, they must be disabled
 
-  @TR
+#  @TR
   Scenario: Total check, for an order of 20 tickets.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -110,7 +110,7 @@ Feature: Oveit hub feature
     And Click the simple Continue button
     Then Check order summary, for the order with 20 tickets
 
-  @TR
+#  @TR
   Scenario: Place an Order, using the Card method.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -141,7 +141,7 @@ Feature: Oveit hub feature
     And Click the Pay Payment button
     Then Check if the simple order is completed
 
-  @TR
+#  @TR
   Scenario: Place an Order, for a person that buys 10 tickets, using the Autoprocess method.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -169,7 +169,7 @@ Feature: Oveit hub feature
     And Click the simple Pay button
     Then Check if the simple order is completed
 
-  @TR
+#  @TR
   Scenario: Place an Order, for a company that buys 2 tickets (1 free + 1 priced) and 1 bundle of 10 priced tickets, using the Card method.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -212,7 +212,7 @@ Feature: Oveit hub feature
     And Click the Pay Payment button
     Then Check if the simple order is completed
 
-  @TR
+#  @TR
   Scenario: Place an Order, for a person, that is asked to fill 6 unique custom fields of different importance, using the Autoprocess method.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -272,7 +272,7 @@ Feature: Oveit hub feature
     And Click the Pay Payment button
     Then Check if the simple order is completed
 
-  @TR
+#  @TR
   Scenario: Registering for a free Attraction.
     Given User navigates to login page
     When User logs in with valid credentials

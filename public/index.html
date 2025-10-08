@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Oveit Hub Alt Site</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Oveit Hub Alt Site</h1>
+<div id="queryDisplay"></div>
+
+<iframe
+        id="oveitHubAltSite"
+        title="Oveit Hub Alt Site"
+        allow="payment"
+></iframe>
+
+<script>
+    const iframe = document.getElementById("oveitHubAltSite");
+
+    // 1️⃣ Function to get merged query params from current URL
+    function getMergedParams() {
+        const params = new URLSearchParams(window.location.search);
+        return params.toString(); // returns string like "foo=bar&baz=123"
+    }
+
+    // 2️⃣ Display current params for debug
+    const queryDisplay = document.getElementById('queryDisplay');
+    const currentParamsString = getMergedParams();
+    queryDisplay.innerHTML = `<p><strong>Current Query Params:</strong> ${currentParamsString || '(none)'}</p>`;
+
+    // 3️⃣ Function to build dynamic embed URL
+    function getEmbedURL(baseURL) {
+        if (!baseURL) throw new Error("Base embed URL is required");
+
+        const url = new URL(baseURL);
+        const mergedParams = new URLSearchParams(url.search); // existing params in baseURL
+
+        // Merge query params from current page
+        const pageParams = new URLSearchParams(window.location.search);
+        for (const [key, value] of pageParams.entries()) {
+            mergedParams.set(key, value); // overwrites duplicates
+        }
+
+        url.search = mergedParams.toString();
+        return url.toString();
+    }
+
+    // 4️⃣ Example: base URL could be dynamic or come from data-attribute
+    const baseEmbedURL = "https://oveit-marketplace-v2-staging-9vuw7.ondigitalocean.app/hub/event/test-embedded-14875";
+
+    // 5️⃣ Set iframe src dynamically
+    iframe.src = getEmbedURL(baseEmbedURL);
+
+    console.log("🔍 Loaded embed URL:", iframe.src);
+
+</script>
+</body>
+</html>

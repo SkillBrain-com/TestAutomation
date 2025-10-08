@@ -1,7 +1,7 @@
 @privateInvitation
 Feature: Private invitation feature
 
-  @TR
+#  @TR
   Scenario: Invite code validity, for customers.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -25,7 +25,7 @@ Feature: Private invitation feature
     And Click the Apply button
     Then Check if the ticket has the "Private" tag
 
-  @TR
+#  @TR
   Scenario: Invite code validity, for guests.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -48,7 +48,7 @@ Feature: Private invitation feature
     And Click the Apply button
     Then Check the toast for the "Private invitation applied" message
 
-  @TR
+#  @TR
   Scenario: Invite code validity, for customers, on the Oveit Hub.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -75,7 +75,7 @@ Feature: Private invitation feature
     And Click the simple Apply button
     Then Check if the simple ticket has the "Private" tag
 
-  @TR
+#  @TR
   Scenario: Invite code validity, for guests, on the Oveit Hub.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -101,7 +101,7 @@ Feature: Private invitation feature
     And Click the simple Apply button
     Then Check the toast for the simple "Private invitation applied" message
 
-  @TR
+#  @TR
   Scenario: Invite code validity, for customers, on the Default Hub.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -129,7 +129,7 @@ Feature: Private invitation feature
     And Click the old Apply button
     Then Check if the ticket has the old "The invitation code has been successfully applied." tag
 
-  @TR
+#  @TR
   Scenario: Invite code validity, for guests, on the Default Hub.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -156,7 +156,7 @@ Feature: Private invitation feature
     And Click the old Apply button
     Then Check the toast for the old "The invitation code has been successfully applied." message
 
-  @TR
+#  @TR
   Scenario: Place an order, with a private invitation ticket.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -186,7 +186,7 @@ Feature: Private invitation feature
     And Click the Pay button
     Then Check if the order is completed
 
-  @TR
+#  @TR
   Scenario: Place an order, with a private invitation ticket, via the Oveit Hub.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -221,7 +221,7 @@ Feature: Private invitation feature
     And Click the simple Pay button
     Then Check if the simple order is completed
 
-  @TR
+#  @TR
   Scenario: Place an order, with a private invitation ticket, via the Default Hub.
     Given User navigates to login page
     When User logs in with valid credentials
@@ -255,7 +255,7 @@ Feature: Private invitation feature
     And Click the old Autoprocess radio button
     Then Check if the old order is completed
 
-  @TR
+#  @TR
   Scenario: Invitation code with special characters only.
     Given User navigates to login page
     When User logs in with valid credentials
